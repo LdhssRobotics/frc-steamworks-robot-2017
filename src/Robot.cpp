@@ -1,6 +1,6 @@
 #include "Robot.h"
 
-//std::shared_ptr<BallIntake> Robot::ballIntake;
+std::shared_ptr<BallIntake> Robot::ballIntake;
 std::shared_ptr<Climber> Robot::climber;
 std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<Shooter> Robot::shooter;
@@ -9,13 +9,13 @@ std::unique_ptr<OI> Robot::oi;
 void Robot::RobotInit() {
 	RobotMap::init();
 
-//	ballIntake.reset(new BallIntake());
+	ballIntake.reset(new BallIntake());
 	climber.reset(new Climber());
 	drivetrain.reset(new Drivetrain());
 	shooter.reset(new Shooter());
 	oi.reset(new OI());
 
-	autonomousCommand.reset(new ExampleCommand);
+	autonomousCommand.reset(new DriveWithJoystick);
 }
 
 void Robot::DisabledInit() {

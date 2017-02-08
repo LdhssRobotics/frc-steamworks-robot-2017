@@ -13,7 +13,8 @@
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 
-#include "Commands/ExampleCommand.h"
+#include "Commands/DriveWithJoystick.h"
+
 #include "Subsystems/BallIntake.h"
 #include "Subsystems/Climber.h"
 #include "Subsystems/Drivetrain.h"
