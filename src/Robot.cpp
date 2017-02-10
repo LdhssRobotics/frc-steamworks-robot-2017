@@ -3,6 +3,7 @@
 std::shared_ptr<BallIntake> Robot::ballIntake;
 std::shared_ptr<Climber> Robot::climber;
 std::shared_ptr<Drivetrain> Robot::drivetrain;
+std::shared_ptr<Gear> Robot::gear;
 std::shared_ptr<Shooter> Robot::shooter;
 std::unique_ptr<OI> Robot::oi;
 
@@ -12,6 +13,7 @@ void Robot::RobotInit() {
 	ballIntake.reset(new BallIntake());
 	climber.reset(new Climber());
 	drivetrain.reset(new Drivetrain());
+	gear.reset(new Gear());
 	shooter.reset(new Shooter());
 	oi.reset(new OI());
 

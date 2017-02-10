@@ -12,11 +12,16 @@ public:
 	// Climber subsystem
 	static std::shared_ptr<SpeedController> winchMotor;
 	static std::shared_ptr<Servo> ratchetServo;
+	static std::shared_ptr<Encoder> climberEncoder;
 
 	// Drivetrain subsystem
 	static std::shared_ptr<SpeedController> drivetrainSpeedController1;
 	static std::shared_ptr<SpeedController> drivetrainSpeedController2;
 	static std::shared_ptr<RobotDrive> robotDrive;
+
+	// Gear subsystem
+	static std::shared_ptr<Encoder> gearEncoder;
+	static std::shared_ptr<Servo> gearServo;
 
 	// Shooter subsystem
 	static std::shared_ptr<SpeedController> shooterHorizontalAdjust;

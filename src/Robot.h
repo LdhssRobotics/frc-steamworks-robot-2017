@@ -18,6 +18,7 @@
 #include "Subsystems/BallIntake.h"
 #include "Subsystems/Climber.h"
 #include "Subsystems/Drivetrain.h"
+#include "Subsystems/Gear.h"
 #include "Subsystems/Shooter.h"
 #include "OI.h"
 
@@ -29,6 +30,7 @@ public:
 	static std::shared_ptr<BallIntake> ballIntake;
 	static std::shared_ptr<Climber> climber;
 	static std::shared_ptr<Drivetrain> drivetrain;
+	static std::shared_ptr<Gear> gear;
 	static std::shared_ptr<Shooter> shooter;
 
 	virtual void RobotInit();

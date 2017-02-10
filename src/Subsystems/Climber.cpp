@@ -12,6 +12,7 @@
 Climber::Climber() : Subsystem("Climber") {
 	winchMotor = RobotMap::winchMotor;
 	ratchetServo = RobotMap::ratchetServo;
+	climberEncoder = RobotMap::climberEncoder;
 }
 
 void Climber::InitDefaultCommand() {

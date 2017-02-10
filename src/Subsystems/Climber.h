@@ -15,6 +15,7 @@ class Climber: public Subsystem {
 private:
 	std::shared_ptr<SpeedController> winchMotor;
 	std::shared_ptr<Servo> ratchetServo;
+	std::shared_ptr<Encoder> climberEncoder;
 
 public:
 	Climber();
