@@ -44,7 +44,7 @@ void RobotMap::init() {
 	// Climber subsystem
 	winchMotor.reset(new Victor(2));
 	ratchetServo.reset(new Servo(3));
-	climberEncoder.reset(new Encoder(0));
+	climberEncoder.reset(new Encoder(0, 1, false, Encoder::EncodingType::k4X));
 
 	// Drivetrain subsystem
 	drivetrainSpeedController1.reset(new Victor(4));
@@ -57,7 +57,7 @@ void RobotMap::init() {
 	robotDrive->SetMaxOutput(1.0);
 
 	// Gear subsystem
-	gearEncoder.reset(new Encoder(1));
+	gearEncoder.reset(new Encoder(2, 3, false, Encoder::EncodingType::k4X));
 	gearServo.reset(new Servo(6));
 
 	// Shooter subsystem
