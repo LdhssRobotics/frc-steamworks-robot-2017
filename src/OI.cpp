@@ -2,17 +2,15 @@
 
 OI::OI() {
 	joystick1.reset(new Joystick(0));
-
-	aButton.reset(new JoystickButton(joystick1.get(), 0));
-	bButton.reset(new JoystickButton(joystick1.get(), 1));
-	xButton.reset(new JoystickButton(joystick1.get(), 2));
-	yButton.reset(new JoystickButton(joystick1.get(), 3));
-	leftBumperButton.reset(new JoystickButton(joystick1.get(), 4));
-	rightBumperButton.reset(new JoystickButton(joystick1.get(), 5));
-	selectButton.reset(new JoystickButton(joystick1.get(), 6));
-	startButton.reset(new JoystickButton(joystick1.get(), 7));
-	leftStickButton.reset(new JoystickButton(joystick1.get(), 8));
-	rightStickButton.reset(new JoystickButton(joystick1.get(), 9));
+	
+	JoystickButton *aButton = new JoystickButton(joystick1.get(), 1);
+	JoystickButton *bButton = new JoystickButton(joystick1.get(), 2);
+	JoystickButton *xButton = new JoystickButton(joystick1.get(), 3);
+	JoystickButton *yButton = new JoystickButton(joystick1.get(), 4);
+	JoystickButton *leftBumperButton = new JoystickButton(joystick1.get(), 5);
+	JoystickButton *rightBumperButton = new JoystickButton(joystick1.get(), 6);
+	JoystickButton *selectButton = new JoystickButton(joystick1.get(), 7);
+	JoystickButton *startButton = new JoystickButton(joystick1.get(), 8);
 }
 
 std::shared_ptr<Joystick> OI::getJoystick() {
