@@ -6,20 +6,19 @@
  */
 
 #include "RobotMap.h"
+#include "Robot.h"
 #include "LiveWindow/LiveWindow.h"
 
 // Ball intake subsystem
 std::shared_ptr<SpeedController> RobotMap::ballIntakeMotor;
-std::shared_ptr<Servo> RobotMap::ballIntakeServo;
 
 // Climber subsystem
 std::shared_ptr<SpeedController> RobotMap::winchMotor;
-std::shared_ptr<Servo> RobotMap::ratchetServo;
-std::shared_ptr<Encoder> RobotMap::climberEncoder;
+std::shared_ptr<Servo> RobotMap::rachetServo;
 
 // Drivetrain subsystem
-std::shared_ptr<SpeedController> RobotMap::drivetrainSpeedController1;
-std::shared_ptr<SpeedController> RobotMap::drivetrainSpeedController2;
+std::shared_ptr<SpeedController> RobotMap::leftDrive;
+std::shared_ptr<SpeedController> RobotMap::rightDrive;
 std::shared_ptr<RobotDrive> RobotMap::robotDrive;
 
 // Gear subsystem
@@ -27,29 +26,28 @@ std::shared_ptr<Encoder> RobotMap::gearEncoder;
 std::shared_ptr<Servo> RobotMap::gearServo;
 
 // Shooter subsystem
+std::shared_ptr<SpeedController> RobotMap::flywheelMotor;
+std::shared_ptr<DigitalInput> RobotMap::shooterLeftLimitSwitch;
+std::shared_ptr<DigitalInput> RobotMap::shooterRightLimitSwitch;
 std::shared_ptr<SpeedController> RobotMap::shooterHorizontalAdjust;
-std::shared_ptr<SpeedController> RobotMap::shooterFlywheelVictor;
-std::shared_ptr<DigitalInput> RobotMap::shooterLimitSwitch1;
-std::shared_ptr<DigitalInput> RobotMap::shooterLimitSwitch2;
 std::shared_ptr<Servo> RobotMap::shooterVerticalAdjust;
-std::shared_ptr<Servo> RobotMap::shooterBallStopper;
+std::shared_ptr<Servo> RobotMap::ballStopper;
+std::shared_ptr<Encoder> RobotMap::flywheelEncoder;
 
 void RobotMap::init() {
 	LiveWindow *lw = LiveWindow::GetInstance();
 
 	// Ball intake subsystem
 	ballIntakeMotor.reset(new Victor(0));
-	ballIntakeServo.reset(new Servo(1));
 
 	// Climber subsystem
 	winchMotor.reset(new Victor(2));
-	ratchetServo.reset(new Servo(3));
-	climberEncoder.reset(new Encoder(0, 1, false, Encoder::EncodingType::k4X));
+	rachetServo.reset(new Servo(3));
 
 	// Drivetrain subsystem
-	drivetrainSpeedController1.reset(new Victor(4));
-	drivetrainSpeedController2.reset(new Victor(5));
-	robotDrive.reset(new RobotDrive(drivetrainSpeedController1, drivetrainSpeedController2));
+	leftDrive.reset(new Victor(4));
+	rightDrive.reset(new Victor(5));
+	robotDrive.reset(new RobotDrive(leftDrive, rightDrive));
 
 	robotDrive->SetSafetyEnabled(false);
 	robotDrive->SetExpiration(0.1);
@@ -57,14 +55,42 @@ void RobotMap::init() {
 	robotDrive->SetMaxOutput(1.0);
 
 	// Gear subsystem
-	gearEncoder.reset(new Encoder(2, 3, false, Encoder::EncodingType::k4X));
 	gearServo.reset(new Servo(6));
+	lw->AddActuator("Gear", "Servo", gearServo);
+	gearEncoder.reset(new Encoder(0, 1, false, Encoder::EncodingType::k4X));
+	lw->AddSensor("Gear", "Encoder", gearEncoder);
+
+	gearEncoder->SetMaxPeriod(0.1);
+	gearEncoder->SetMinRate(1);
+	gearEncoder->SetSamplesToAverage(7);
+	gearEncoder->SetReverseDirection(false);
+	gearEncoder->SetDistancePerPulse(1/360*2.0*3.1415*1.5); //1.5 will be replaced with radius
 
 	// Shooter subsystem
-	shooterHorizontalAdjust.reset(new Victor(7));
-	shooterFlywheelVictor.reset(new Victor(8));
-	shooterLimitSwitch1.reset(new DigitalInput(0));
-	shooterLimitSwitch2.reset(new DigitalInput(1));
+	flywheelMotor.reset(new Victor(8));
+
+	shooterLeftLimitSwitch.reset(new DigitalInput(0));
+	lw->AddSensor("Shooter", "Left Limit Switch", shooterLeftLimitSwitch);
+
+	shooterRightLimitSwitch.reset(new DigitalInput(1));
+	lw->AddSensor("Shooter", "Limit Switch 2", shooterRightLimitSwitch);
+
 	shooterVerticalAdjust.reset(new Servo(9));
-	shooterBallStopper.reset(new Servo(10));
+	lw->AddActuator("Shooter", "Vertical Angle Adjust", shooterVerticalAdjust);
+
+	shooterHorizontalAdjust.reset(new Victor(7));
+
+	ballStopper.reset(new Servo(10));
+	lw->AddActuator("Shooter", "Ball Stopper", ballStopper);
+
+	flywheelEncoder.reset(new Encoder(2, 3, false, Encoder::EncodingType::k4X));
+	lw->AddSensor("Shooter", "Flywheel Encoder", flywheelEncoder);
+}
+
+void RobotMap::reset() {
+	Robot::ballIntake->Reset();
+	Robot::climber->Reset();
+	Robot::drivetrain->Reset();
+	Robot::gear->Reset();
+	Robot::shooter->Reset();
 }

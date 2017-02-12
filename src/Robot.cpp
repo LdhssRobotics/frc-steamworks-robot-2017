@@ -17,11 +17,17 @@ void Robot::RobotInit() {
 	shooter.reset(new Shooter());
 	oi.reset(new OI());
 
-	autonomousCommand.reset(new DriveWithJoystick);
+	chooser.AddDefault("Blue 1", new Blue1AutoMode());
+	chooser.AddObject("Blue 2", new Blue2AutoMode());
+	chooser.AddObject("Blue 3", new Blue3AutoMode());
+	chooser.AddObject("Red 1", new Red1AutoMode());
+	chooser.AddObject("Red 2", new Red2AutoMode());
+	chooser.AddObject("Red 3", new Red3AutoMode());
+	SmartDashboard::PutData("Auto Modes", &chooser);
 }
 
 void Robot::DisabledInit() {
-
+	RobotMap::reset();
 }
 
 void Robot::DisabledPeriodic() {
@@ -29,6 +35,7 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
+	autonomousCommand.reset(chooser.GetSelected());
 	if (autonomousCommand.get() != nullptr) {
 		autonomousCommand->Cancel();
 	}

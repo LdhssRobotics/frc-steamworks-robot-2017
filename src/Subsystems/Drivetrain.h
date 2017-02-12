@@ -13,8 +13,8 @@
 
 class Drivetrain: public Subsystem {
 private:
-	std::shared_ptr<SpeedController> drivetrainSpeedController1;
-	std::shared_ptr<SpeedController> drivetrainSpeedController2;
+	std::shared_ptr<SpeedController> leftDrive;
+	std::shared_ptr<SpeedController> rightDrive;
 	std::shared_ptr<RobotDrive> robotDrive;
 
 public:
@@ -22,6 +22,7 @@ public:
 	void InitDefaultCommand();
 	void ArcadeDrive(double, double);
 	void Stop();
+	void Reset();
 };
 
 #endif /* SRC_SUBSYSTEMS_DRIVETRAIN_H_ */

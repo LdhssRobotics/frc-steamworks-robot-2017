@@ -11,10 +11,27 @@
 
 Climber::Climber() : Subsystem("Climber") {
 	winchMotor = RobotMap::winchMotor;
-	ratchetServo = RobotMap::ratchetServo;
-	climberEncoder = RobotMap::climberEncoder;
+	rachetServo = RobotMap::rachetServo;
 }
 
-void Climber::InitDefaultCommand() {
+void Climber::SetWinchSpeed(float speed) {
+	winchMotor->Set(speed);
+}
 
+void Climber::SetRachet(float position) {
+	rachetServo->Set(position);
+}
+
+void Climber::StartClimb() {
+	SetWinchSpeed(1);
+	SetRachet(0);
+}
+
+void Climber::StopClimb() {
+	SetWinchSpeed(0);
+	SetRachet(1);
+}
+
+void Climber::Reset() {
+	SetRachet(0);
 }

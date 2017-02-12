@@ -9,8 +9,8 @@ DriveWithJoystick::DriveWithJoystick() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveWithJoystick::Execute() {
-	Robot::drivetrain->ArcadeDrive(Robot::oi->joystick1->GetRawAxis(OI::LEFT_Y_AXIS),
-			Robot::oi->joystick1->GetRawAxis(OI::RIGHT_X_AXIS));
+	Robot::drivetrain->ArcadeDrive(Robot::oi->joystick->GetRawAxis(OI::LEFT_Y_AXIS),
+			-(Robot::oi->joystick->GetRawAxis(OI::RIGHT_X_AXIS)));
 }
 
 // Make this return true when this Command no longer needs to run execute()

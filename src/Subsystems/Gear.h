@@ -12,6 +12,7 @@ private:
 public:
 	Gear();
 	void InitDefaultCommand();
+	void Reset();
 };
 
 #endif  // Gear_H

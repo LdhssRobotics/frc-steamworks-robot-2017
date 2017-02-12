@@ -5,18 +5,18 @@
 
 class OI {
 public:
-	std::shared_ptr<Joystick> joystick1;
+	std::shared_ptr<Joystick> joystick;
 
-	std::shared_ptr<JoystickButton> aButton;
-	std::shared_ptr<JoystickButton> bButton;
-	std::shared_ptr<JoystickButton> xButton;
-	std::shared_ptr<JoystickButton> yButton;
-	std::shared_ptr<JoystickButton> leftBumperButton;
-	std::shared_ptr<JoystickButton> rightBumperButton;
-	std::shared_ptr<JoystickButton> selectButton;
-	std::shared_ptr<JoystickButton> startButton;
-	std::shared_ptr<JoystickButton> leftStickButton;
-	std::shared_ptr<JoystickButton> rightStickButton;
+	JoystickButton *aButton;
+	JoystickButton *bButton;
+	JoystickButton *xButton;
+	JoystickButton *yButton;
+	JoystickButton *leftBumperButton;
+	JoystickButton *rightBumperButton;
+	JoystickButton *selectButton;
+	JoystickButton *startButton;
+	JoystickButton *leftStickButton;
+	JoystickButton *rightStickButton;
 
 	static const int LEFT_X_AXIS = 0;
 	static const int LEFT_Y_AXIS = 1;

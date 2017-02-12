@@ -13,7 +13,12 @@
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 
-#include "Commands/DriveWithJoystick.h"
+#include "Commands/AutoModes/Blue1AutoMode.h"
+#include "Commands/AutoModes/Blue2AutoMode.h"
+#include "Commands/AutoModes/Blue3AutoMode.h"
+#include "Commands/AutoModes/Red1AutoMode.h"
+#include "Commands/AutoModes/Red2AutoMode.h"
+#include "Commands/AutoModes/Red3AutoMode.h"
 
 #include "Subsystems/BallIntake.h"
 #include "Subsystems/Climber.h"
@@ -25,6 +30,7 @@
 class Robot : public IterativeRobot {
 public:
 	std::unique_ptr<Command> autonomousCommand;
+	frc::SendableChooser<frc::Command*> chooser;
 	static std::unique_ptr<OI> oi;
 	LiveWindow *lw = LiveWindow::GetInstance();
 	static std::shared_ptr<BallIntake> ballIntake;

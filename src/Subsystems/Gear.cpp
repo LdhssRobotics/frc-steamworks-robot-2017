@@ -12,5 +12,8 @@ void Gear::InitDefaultCommand() {
 	// SetDefaultCommand(new MySpecialCommand());
 }
 
+void Gear::Reset() {
+
+}
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
