@@ -14,24 +14,16 @@ Climber::Climber() : Subsystem("Climber") {
 	rachetServo = RobotMap::rachetServo;
 }
 
-void Climber::SetWinchSpeed(float speed) {
-	winchMotor->Set(speed);
-}
-
-void Climber::SetRachet(float position) {
-	rachetServo->Set(position);
-}
-
 void Climber::StartClimb() {
-	SetWinchSpeed(1);
-	SetRachet(0);
+	rachetServo->Set(0);
+	winchMotor->Set(1);
 }
 
 void Climber::StopClimb() {
-	SetWinchSpeed(0);
-	SetRachet(1);
+	winchMotor->Set(0);
+	rachetServo->Set(1);
 }
 
 void Climber::Reset() {
-	SetRachet(0);
+	rachetServo->Set(0);
 }

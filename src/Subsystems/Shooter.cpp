@@ -12,11 +12,6 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	flywheelEncoder = RobotMap::flywheelEncoder;
 }
 
-void Shooter::InitDefaultCommand() {
-	// Set the default command for a subsystem here.
-	// SetDefaultCommand(new MySpecialCommand());
-}
-
 void Shooter::Reset() {
 
 }

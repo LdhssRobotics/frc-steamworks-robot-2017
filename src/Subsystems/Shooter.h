@@ -16,7 +16,6 @@ private:
 
 public:
 	Shooter();
-	void InitDefaultCommand();
 	void Reset();
 };
 

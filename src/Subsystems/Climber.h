@@ -18,8 +18,6 @@ private:
 
 public:
 	Climber();
-	void SetWinchSpeed(float speed);
-	void SetRachet(float position);
 	void StartClimb();
 	void StopClimb();
 	void Reset();
