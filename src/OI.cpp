@@ -37,7 +37,6 @@ OI::OI() {
 
 	// Recovery Stick Controls
 	aButtonR->WhenPressed(new PlaceGear());
-
 }
 
 std::shared_ptr<Joystick> OI::getDriveStick() {

@@ -8,6 +8,7 @@
 #include "RobotMap.h"
 #include "Robot.h"
 #include "LiveWindow/LiveWindow.h"
+#include "Encoder.h"
 
 // Ball intake subsystem
 std::shared_ptr<SpeedController> RobotMap::ballIntakeMotor;
