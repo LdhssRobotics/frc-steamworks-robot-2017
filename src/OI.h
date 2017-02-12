@@ -5,19 +5,34 @@
 
 class OI {
 public:
-	std::shared_ptr<Joystick> joystick;
+	std::shared_ptr<Joystick> driveStick;
+	std::shared_ptr<Joystick> recoveryStick;
 
-	JoystickButton *aButton;
-	JoystickButton *bButton;
-	JoystickButton *xButton;
-	JoystickButton *yButton;
-	JoystickButton *leftBumperButton;
-	JoystickButton *rightBumperButton;
-	JoystickButton *selectButton;
-	JoystickButton *startButton;
-	JoystickButton *leftStickButton;
-	JoystickButton *rightStickButton;
+	// Drive Stick Buttons
+	JoystickButton *aButtonD;
+	JoystickButton *bButtonD;
+	JoystickButton *xButtonD;
+	JoystickButton *yButtonD;
+	JoystickButton *leftBumperButtonD;
+	JoystickButton *rightBumperButtonD;
+	JoystickButton *selectButtonD;
+	JoystickButton *startButtonD;
+	JoystickButton *leftStickButtonD;
+	JoystickButton *rightStickButtonD;
 
+	// Recovery Stick Buttons
+	JoystickButton *aButtonR;
+	JoystickButton *bButtonR;
+	JoystickButton *xButtonR;
+	JoystickButton *yButtonR;
+	JoystickButton *leftBumperButtonR;
+	JoystickButton *rightBumperButtonR;
+	JoystickButton *selectButtonR;
+	JoystickButton *startButtonR;
+	JoystickButton *leftStickButtonR;
+	JoystickButton *rightStickButtonR;
+
+	// Axes
 	static const int LEFT_X_AXIS = 0;
 	static const int LEFT_Y_AXIS = 1;
 	static const int LEFT_TRIGGER_AXIS = 2;
@@ -27,7 +42,8 @@ public:
 
 	OI();
 
-	std::shared_ptr<Joystick> getJoystick();
+	std::shared_ptr<Joystick> getDriveStick();
+	std::shared_ptr<Joystick> getRecoveryStick();
 };
 
 #endif  // OI_H

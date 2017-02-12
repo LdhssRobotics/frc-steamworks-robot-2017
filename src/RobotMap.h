@@ -19,7 +19,8 @@ public:
 
 	// Gear subsystem
 	static std::shared_ptr<Encoder> gearEncoder;
-	static std::shared_ptr<Servo> gearServo;
+	static std::shared_ptr<SpeedController> gearMotor;
+	static std::shared_ptr<DigitalInput> gearLimitSwitch;
 
 	// Shooter subsystem
 	static std::shared_ptr<SpeedController> flywheelMotor;

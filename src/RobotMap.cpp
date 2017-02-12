@@ -23,7 +23,8 @@ std::shared_ptr<RobotDrive> RobotMap::robotDrive;
 
 // Gear subsystem
 std::shared_ptr<Encoder> RobotMap::gearEncoder;
-std::shared_ptr<Servo> RobotMap::gearServo;
+std::shared_ptr<SpeedController> RobotMap::gearMotor;
+std::shared_ptr<DigitalInput> RobotMap::gearLimitSwitch;
 
 // Shooter subsystem
 std::shared_ptr<SpeedController> RobotMap::flywheelMotor;
@@ -55,8 +56,10 @@ void RobotMap::init() {
 	robotDrive->SetMaxOutput(1.0);
 
 	// Gear subsystem
-	gearServo.reset(new Servo(6));
-	lw->AddActuator("Gear", "Servo", gearServo);
+	gearMotor.reset(new Victor(6));
+	gearLimitSwitch.reset(new DigitalInput(3));
+	lw->AddSensor("Gear", "Limit Switch", gearLimitSwitch);
+
 	gearEncoder.reset(new Encoder(0, 1, false, Encoder::EncodingType::k4X));
 	lw->AddSensor("Gear", "Encoder", gearEncoder);
 
@@ -69,10 +72,10 @@ void RobotMap::init() {
 	// Shooter subsystem
 	flywheelMotor.reset(new Victor(8));
 
-	shooterLeftLimitSwitch.reset(new DigitalInput(0));
+	shooterLeftLimitSwitch.reset(new DigitalInput(1));
 	lw->AddSensor("Shooter", "Left Limit Switch", shooterLeftLimitSwitch);
 
-	shooterRightLimitSwitch.reset(new DigitalInput(1));
+	shooterRightLimitSwitch.reset(new DigitalInput(2));
 	lw->AddSensor("Shooter", "Limit Switch 2", shooterRightLimitSwitch);
 
 	shooterVerticalAdjust.reset(new Servo(9));
