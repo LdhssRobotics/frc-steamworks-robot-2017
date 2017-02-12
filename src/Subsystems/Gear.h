@@ -12,9 +12,9 @@ private:
 
 public:
 	Gear();
-	void SetMotorSpeed(float speed);
-	bool InCorrectPosition();
-	void Reset();
+	void SetMotorSpeed(float speed); // Sets the motor speed
+	bool InCorrectPosition(); // Check if gear mechanism is at correct angle
+	void Reset(); // Pull gear mechanism in until limit switch is triggered
 };
 
 #endif  // Gear_H

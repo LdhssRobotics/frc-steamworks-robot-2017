@@ -3,6 +3,9 @@
 
 #include "WPILib.h"
 
+#include "Commands/ClimbRope.h"
+#include "Commands/PlaceGear.h"
+
 class OI {
 public:
 	std::shared_ptr<Joystick> driveStick;

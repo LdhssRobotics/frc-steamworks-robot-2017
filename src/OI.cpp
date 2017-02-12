@@ -1,7 +1,4 @@
 #include "OI.h"
-#include "Commands/ClimbRope.h"
-#include "Commands/PlaceGear.h"
-#include "WPILib.h"
 
 OI::OI() {
 	driveStick.reset(new Joystick(0));
@@ -32,12 +29,12 @@ OI::OI() {
 	rightStickButtonR = new JoystickButton(recoveryStick.get(), 1);
 
 	// Assigning Commands to Buttons
+
 	// Drive Stick Controls
 	startButtonD->ToggleWhenPressed(new ClimbRope());
 
 	// Recovery Stick Controls
 	aButtonR->WhenPressed(new PlaceGear());
-
 }
 
 std::shared_ptr<Joystick> OI::getDriveStick() {

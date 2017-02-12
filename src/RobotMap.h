@@ -2,6 +2,8 @@
 #define ROBOTMAP_H
 
 #include "WPILib.h"
+#include "Robot.h"
+#include "LiveWindow/LiveWindow.h"
 
 class RobotMap {
 public:
@@ -31,8 +33,8 @@ public:
 	static std::shared_ptr<Servo> ballStopper;
 	static std::shared_ptr<Encoder> flywheelEncoder;
 
-	static void init();
-	static void reset();
+	static void init(); // Initializes all the speed controllers and sensors
+	static void reset(); // Resets all the subsystems
 };
 
 #endif  // ROBOTMAP_H

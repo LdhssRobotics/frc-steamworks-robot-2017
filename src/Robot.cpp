@@ -40,8 +40,10 @@ void Robot::VisionThread() {
 }
 
 void Robot::RobotInit() {
+	// Initialize the speed controllers and sensors
 	RobotMap::init();
 
+	// Initialize the subsystems
 	ballIntake.reset(new BallIntake());
 	climber.reset(new Climber());
 	drivetrain.reset(new Drivetrain());
@@ -49,6 +51,7 @@ void Robot::RobotInit() {
 	shooter.reset(new Shooter());
 	oi.reset(new OI());
 
+	// The different autonomous modes, blue 1 will be selected by default
 	chooser.AddDefault("Blue 1", new Blue1AutoMode());
 	chooser.AddObject("Blue 2", new Blue2AutoMode());
 	chooser.AddObject("Blue 3", new Blue3AutoMode());
@@ -59,6 +62,7 @@ void Robot::RobotInit() {
 }
 
 void Robot::DisabledInit() {
+	// Reset all the subsystems (ex. moving servos)
 	RobotMap::reset();
 }
 

@@ -8,7 +8,6 @@ class ClimbRope : public Command {
 public:
 	ClimbRope();
 	void Initialize();
-	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();

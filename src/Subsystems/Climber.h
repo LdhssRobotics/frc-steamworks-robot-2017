@@ -18,9 +18,9 @@ private:
 
 public:
 	Climber();
-	void StartClimb();
-	void StopClimb();
-	void Reset();
+	void StartClimb(); // Retracts rachet and starts winch
+	void StopClimb(); // Stops winch and engages rachet
+	void Reset(); // Retracts rachet
 };
 
 #endif /* SRC_SUBSYSTEMS_CLIMBER_H_ */

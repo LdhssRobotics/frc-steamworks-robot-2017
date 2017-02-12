@@ -6,6 +6,8 @@ DriveWithJoystick::DriveWithJoystick() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveWithJoystick::Execute() {
+	/* On driveStick, left y-axis controls forward/backwards movement,
+	 * right x-axis controls turn */
 	Robot::drivetrain->ArcadeDrive(Robot::oi->driveStick->GetRawAxis(OI::LEFT_Y_AXIS),
 			-(Robot::oi->driveStick->GetRawAxis(OI::RIGHT_X_AXIS)));
 }
