@@ -11,9 +11,12 @@
 
 BallIntake::BallIntake() : Subsystem("BallIntake") {
 	ballIntakeMotor = RobotMap::ballIntakeMotor;
-	ballIntakeServo = RobotMap::ballIntakeServo;
 }
 
 void BallIntake::InitDefaultCommand() {
+
+}
+
+void BallIntake::Reset() {
 
 }

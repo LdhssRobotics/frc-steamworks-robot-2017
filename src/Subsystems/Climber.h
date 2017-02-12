@@ -14,12 +14,13 @@
 class Climber: public Subsystem {
 private:
 	std::shared_ptr<SpeedController> winchMotor;
-	std::shared_ptr<Servo> ratchetServo;
-	std::shared_ptr<Encoder> climberEncoder;
+	std::shared_ptr<Servo> rachetServo;
 
 public:
 	Climber();
-	void InitDefaultCommand();
+	void StartClimb(); // Retracts rachet and starts winch
+	void StopClimb(); // Stops winch and engages rachet
+	void Reset(); // Retracts rachet
 };
 
 #endif /* SRC_SUBSYSTEMS_CLIMBER_H_ */

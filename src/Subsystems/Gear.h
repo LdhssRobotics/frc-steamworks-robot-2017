@@ -7,11 +7,14 @@
 class Gear : public Subsystem {
 private:
 	std::shared_ptr<Encoder> gearEncoder;
-	std::shared_ptr<Servo> gearServo;
+	std::shared_ptr<SpeedController> gearMotor;
+	std::shared_ptr<DigitalInput> gearLimitSwitch;
 
 public:
 	Gear();
-	void InitDefaultCommand();
+	void SetMotorSpeed(float speed); // Sets the motor speed
+	bool InCorrectPosition(); // Check if gear mechanism is at correct angle
+	void Reset(); // Pull gear mechanism in until limit switch is triggered
 };
 
 #endif  // Gear_H

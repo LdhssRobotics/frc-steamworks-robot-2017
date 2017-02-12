@@ -3,17 +3,17 @@
 #include "../Robot.h"
 
 Shooter::Shooter() : Subsystem("Shooter") {
+	flywheelMotor = RobotMap::flywheelMotor;
+	shooterLeftLimitSwitch = RobotMap::shooterLeftLimitSwitch;
+	shooterRightLimitSwitch = RobotMap::shooterRightLimitSwitch;
 	shooterHorizontalAdjust = RobotMap::shooterHorizontalAdjust;
-	shooterFlywheelVictor = RobotMap::shooterFlywheelVictor;
-	shooterLimitSwitch1 = RobotMap::shooterLimitSwitch1;
-	shooterLimitSwitch2 = RobotMap::shooterLimitSwitch2;
 	shooterVerticalAdjust = RobotMap::shooterVerticalAdjust;
-	shooterBallStopper = RobotMap::shooterBallStopper;
+	ballStopper = RobotMap::ballStopper;
+	flywheelEncoder = RobotMap::flywheelEncoder;
 }
 
-void Shooter::InitDefaultCommand() {
-	// Set the default command for a subsystem here.
-	// SetDefaultCommand(new MySpecialCommand());
+void Shooter::Reset() {
+
 }
 
 // Put methods for controlling this subsystem
