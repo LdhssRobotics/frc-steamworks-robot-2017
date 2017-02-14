@@ -13,7 +13,20 @@
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 
-#include "Commands/DriveWithJoystick.h"
+#include <thread>
+#include <CameraServer.h>
+#include <IterativeRobot.h>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/core/core.hpp>
+#include <opencv2/core/types.hpp>
+#include <WPILib.h>
+
+#include "Commands/AutoModes/Blue1AutoMode.h"
+#include "Commands/AutoModes/Blue2AutoMode.h"
+#include "Commands/AutoModes/Blue3AutoMode.h"
+#include "Commands/AutoModes/Red1AutoMode.h"
+#include "Commands/AutoModes/Red2AutoMode.h"
+#include "Commands/AutoModes/Red3AutoMode.h"
 
 #include "Subsystems/BallIntake.h"
 #include "Subsystems/Climber.h"
@@ -25,6 +38,7 @@
 class Robot : public IterativeRobot {
 public:
 	std::unique_ptr<Command> autonomousCommand;
+	frc::SendableChooser<frc::Command*> chooser;
 	static std::unique_ptr<OI> oi;
 	LiveWindow *lw = LiveWindow::GetInstance();
 	static std::shared_ptr<BallIntake> ballIntake;
@@ -33,6 +47,7 @@ public:
 	static std::shared_ptr<Gear> gear;
 	static std::shared_ptr<Shooter> shooter;
 
+	static void VisionThread();
 	virtual void RobotInit();
 	virtual void DisabledInit();
 	virtual void DisabledPeriodic();

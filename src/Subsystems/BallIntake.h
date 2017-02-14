@@ -14,11 +14,11 @@
 class BallIntake: public Subsystem {
 private:
 	std::shared_ptr<SpeedController> ballIntakeMotor;
-	std::shared_ptr<Servo> ballIntakeServo;
 
 public:
 	BallIntake();
 	void InitDefaultCommand();
+	void Reset();
 };
 
 #endif /* SRC_SUBSYSTEMS_BALLINTAKE_H_ */

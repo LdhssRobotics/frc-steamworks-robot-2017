@@ -6,16 +6,17 @@
 
 class Shooter: public Subsystem {
 private:
+	std::shared_ptr<SpeedController> flywheelMotor;
+	std::shared_ptr<DigitalInput> shooterLeftLimitSwitch;
+	std::shared_ptr<DigitalInput> shooterRightLimitSwitch;
 	std::shared_ptr<SpeedController> shooterHorizontalAdjust;
-	std::shared_ptr<SpeedController> shooterFlywheelVictor;
-	std::shared_ptr<DigitalInput> shooterLimitSwitch1;
-	std::shared_ptr<DigitalInput> shooterLimitSwitch2;
 	std::shared_ptr<Servo> shooterVerticalAdjust;
-	std::shared_ptr<Servo> shooterBallStopper;
+	std::shared_ptr<Servo> ballStopper;
+	std::shared_ptr<Encoder> flywheelEncoder;
 
 public:
 	Shooter();
-	void InitDefaultCommand();
+	void Reset();
 };
 
 #endif  // Shooter_H

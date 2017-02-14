@@ -11,8 +11,8 @@
 #include "../Robot.h"
 
 Drivetrain::Drivetrain() : Subsystem("Drivetrain"){
-	drivetrainSpeedController1 = RobotMap::drivetrainSpeedController1;
-	drivetrainSpeedController2 = RobotMap::drivetrainSpeedController2;
+	leftDrive = RobotMap::leftDrive;
+	rightDrive = RobotMap::rightDrive;
 	robotDrive = RobotMap::robotDrive;
 }
 
@@ -26,4 +26,8 @@ void Drivetrain::ArcadeDrive(double speed, double turn){
 
 void Drivetrain::Stop(){
 	ArcadeDrive(0, 0);
+}
+
+void Drivetrain::Reset() {
+
 }
