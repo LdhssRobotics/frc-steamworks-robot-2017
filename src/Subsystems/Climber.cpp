@@ -25,5 +25,4 @@ void Climber::StopClimb() {
 }
 
 void Climber::Reset() {
-	rachetServo->Set(0);
 }

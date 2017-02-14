@@ -68,7 +68,7 @@ void RobotMap::init() {
 	gearEncoder->SetMinRate(1);
 	gearEncoder->SetSamplesToAverage(7);
 	gearEncoder->SetReverseDirection(false);
-	gearEncoder->SetDistancePerPulse(1/360*2.0*3.1415*1.5); //1.5 will be replaced with radius
+	gearEncoder->SetDistancePerPulse(1); // Not accurate measurement, ratio instead
 
 	// Shooter subsystem
 	flywheelMotor.reset(new Victor(8));

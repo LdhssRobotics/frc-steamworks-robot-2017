@@ -13,7 +13,7 @@ void Gear::SetMotorSpeed(float speed) {
 }
 
 bool Gear::InCorrectPosition() {
-	return gearEncoder->GetDistance() > 0.008;
+	return gearEncoder->GetDistance() > 0.25; // A quarter turn
 }
 
 void Gear::Reset() {
