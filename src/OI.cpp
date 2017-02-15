@@ -2,6 +2,7 @@
 #include "Commands/ClimbRope.h"
 #include "Commands/PlaceGear.h"
 #include "WPILib.h"
+#include "Commands/ToggleBallIntake.h"
 
 OI::OI() {
 	driveStick.reset(new Joystick(0));
@@ -34,6 +35,8 @@ OI::OI() {
 	// Assigning Commands to Buttons
 	// Drive Stick Controls
 	startButtonD->ToggleWhenPressed(new ClimbRope());
+	xButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::INTAKE_SPEED));
+	yButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::REVERSEINTAKE_SPEED));
 
 	// Recovery Stick Controls
 	aButtonR->WhenPressed(new PlaceGear());
