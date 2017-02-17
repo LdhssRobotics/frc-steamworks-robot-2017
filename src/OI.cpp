@@ -2,7 +2,6 @@
 #include "Commands/ClimbRope.h"
 #include "Commands/PlaceGear.h"
 #include "WPILib.h"
-#include "Commands/testingReset.h"
 #include "Commands/GearMechanism.h"
 
 OI::OI() {
@@ -39,7 +38,6 @@ OI::OI() {
 
 	// Recovery Stick Controls
 	aButtonR->WhenPressed(new GearMechanism());
-	bButtonR->WhenPressed(new testingReset());
 }
 
 std::shared_ptr<Joystick> OI::getDriveStick() {

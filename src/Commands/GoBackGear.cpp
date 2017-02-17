@@ -15,7 +15,7 @@ GoBackGear::GoBackGear() {
 
 // Called just before this Command runs the first time
 void GoBackGear::Initialize() {
-	SmartDashboard::PutString("BackingGear:", "going back");
+	SmartDashboard::PutString("Gear:", "going back");
 	Robot::gear->SetMotorSpeed(-0.2); //GO BACKWARDS
 }
 
@@ -28,8 +28,7 @@ bool GoBackGear::IsFinished() {
 // Called once after isFinished returns true
 void GoBackGear::End() {
 	Robot::gear->SetMotorSpeed(0);
-	//Wait(0.5);
-	SmartDashboard::PutString("BackingGear:", "hello back");
+	SmartDashboard::PutString("Gear:", "hello back");
 	Robot::gear->ResetEncoder();
 }
 
