@@ -8,25 +8,24 @@ Gear::Gear() : Subsystem("Gear") {
 	gearLimitSwitch = RobotMap::gearLimitSwitch;
 }
 
-void Gear::SetMotorSpeed(float speed) { //GO FORWARD
+void Gear::SetMotorSpeed(float speed) {
 	gearMotor->Set(speed);
 }
 
-/*void Gear::GoBackMotorSpeed(float speed){
-		gearMotor->Set(-speed);
-	}
-	*/
+//checks the current position of the encoder
 float Gear::GetPosition() {
 	return gearEncoder->GetDistance();
 }
 
+//Check when it is reset to original position
 bool Gear::InCorrectReturnPosition(){
 		float y;
 		y = gearEncoder->GetDistance();
 		SmartDashboard::PutNumber("Go Back", y);
-		return  y > 0; // A quarter turn backwards
+		return  y > 0; // A quarter turn backwards (stop when angle is more than 0)
 	}
 
+//Check when it is at the desired position (120 degrees from origin ccw)
 bool Gear::InCorrectPosition() {
 	float x;
 	x = gearEncoder->GetDistance();
@@ -41,5 +40,4 @@ void Gear::ResetEncoder(){
 void Gear::Reset() {
 	ResetEncoder();
 }
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+
