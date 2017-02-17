@@ -30,7 +30,7 @@ bool Gear::InCorrectPosition() {
 	float x;
 	x = gearEncoder->GetDistance();
 	SmartDashboard::PutNumber("IsFinished", x);
-	return  x < -120; // A quarter turn
+	return  x < -100; // A quarter turn
 	}
 
 void Gear::ResetEncoder(){
