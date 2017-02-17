@@ -10,6 +10,7 @@ class PlaceGear : public Command {
 public:
 	PlaceGear();
 	void Initialize();
+	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();

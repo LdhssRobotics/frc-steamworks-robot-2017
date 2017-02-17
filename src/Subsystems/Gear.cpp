@@ -19,22 +19,17 @@ float Gear::GetPosition() {
 
 //Check when it is reset to original position
 bool Gear::InCorrectReturnPosition(){
-		float y;
-		y = gearEncoder->GetDistance();
-		SmartDashboard::PutNumber("Go Back", y);
-		return  y > 0; // A quarter turn backwards (stop when angle is more than 0)
+	return !(gearLimitSwitch->Get());
 	}
 
-//Check when it is at the desired position (120 degrees from origin ccw)
+//Check when it is at the desired position (80 degrees from origin
 bool Gear::InCorrectPosition() {
-	float x;
-	x = gearEncoder->GetDistance();
-	SmartDashboard::PutNumber("IsFinished", x);
-	return  x < -100; // A quarter turn
+	return  gearEncoder->GetDistance() < -80; // Roughly a quarter turn
 	}
 
 void Gear::ResetEncoder(){
 	gearEncoder->Reset();
+	SmartDashboard::PutNumber("Gear encoder:", GetPosition());
 }
 
 void Gear::Reset() {
