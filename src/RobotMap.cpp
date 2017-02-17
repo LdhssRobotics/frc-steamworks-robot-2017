@@ -57,11 +57,11 @@ void RobotMap::init() {
 	robotDrive->SetMaxOutput(1.0);
 
 	// Gear subsystem
-	gearMotor.reset(new Victor(6));
-	gearLimitSwitch.reset(new DigitalInput(3));
+	gearMotor.reset(new Victor(8));
+	gearLimitSwitch.reset(new DigitalInput(1));
 	lw->AddSensor("Gear", "Limit Switch", gearLimitSwitch);
 
-	gearEncoder.reset(new Encoder(0, 1, false, Encoder::EncodingType::k4X));
+	gearEncoder.reset(new Encoder(3, 4, false, Encoder::EncodingType::k4X));
 	lw->AddSensor("Gear", "Encoder", gearEncoder);
 
 	gearEncoder->SetMaxPeriod(0.1);

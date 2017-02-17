@@ -6,6 +6,7 @@
 #include "WPILib.h"
 
 class PlaceGear : public Command {
+
 public:
 	PlaceGear();
 	void Initialize();

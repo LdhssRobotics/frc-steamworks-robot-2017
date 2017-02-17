@@ -8,19 +8,38 @@ Gear::Gear() : Subsystem("Gear") {
 	gearLimitSwitch = RobotMap::gearLimitSwitch;
 }
 
-void Gear::SetMotorSpeed(float speed) {
+void Gear::SetMotorSpeed(float speed) { //GO FORWARD
 	gearMotor->Set(speed);
 }
 
+/*void Gear::GoBackMotorSpeed(float speed){
+		gearMotor->Set(-speed);
+	}
+	*/
+float Gear::GetPosition() {
+	return gearEncoder->GetDistance();
+}
+
+bool Gear::InCorrectReturnPosition(){
+		float y;
+		y = gearEncoder->GetDistance();
+		SmartDashboard::PutNumber("Go Back", y);
+		return  y > 0; // A quarter turn backwards
+	}
+
 bool Gear::InCorrectPosition() {
-	return gearEncoder->GetDistance() > 0.25; // A quarter turn
+	float x;
+	x = gearEncoder->GetDistance();
+	SmartDashboard::PutNumber("IsFinished", x);
+	return  x < -120; // A quarter turn
+	}
+
+void Gear::ResetEncoder(){
+	gearEncoder->Reset();
 }
 
 void Gear::Reset() {
-	while(!gearLimitSwitch->Get()) {
-		SetMotorSpeed(0.2);
-	}
-	SetMotorSpeed(0);
+	ResetEncoder();
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
