@@ -19,6 +19,7 @@ class GoBackGear : public Command {
 public:
 	GoBackGear();
 	void Initialize();
+	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
