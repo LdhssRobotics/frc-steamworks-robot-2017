@@ -10,7 +10,7 @@
 
 #include "Commands/Subsystem.h"
 #include "WPILib.h"
-// Testing
+
 class BallIntake: public Subsystem {
 private:
 	std::shared_ptr<SpeedController> ballIntakeMotor;
