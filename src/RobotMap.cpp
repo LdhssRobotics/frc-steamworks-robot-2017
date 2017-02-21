@@ -43,12 +43,12 @@ void RobotMap::init() {
 	ballIntakeMotor.reset(new Victor(8));
 
 	// Climber subsystem
-	winchMotor.reset(new Victor(2));
-	rachetServo.reset(new Servo(3));
+	winchMotor.reset(new Victor(1));
+	rachetServo.reset(new Servo(2));
 
 	// Drivetrain subsystem
-	leftDrive.reset(new Victor(4));
-	rightDrive.reset(new Victor(5));
+	leftDrive.reset(new Victor(3));
+	rightDrive.reset(new Victor(4));
 	robotDrive.reset(new RobotDrive(leftDrive, rightDrive));
 
 	robotDrive->SetSafetyEnabled(false);
@@ -57,21 +57,21 @@ void RobotMap::init() {
 	robotDrive->SetMaxOutput(1.0);
 
 	// Gear subsystem
-	gearMotor.reset(new Victor(6));
-	gearLimitSwitch.reset(new DigitalInput(3));
+	gearMotor.reset(new Victor(8));
+	gearLimitSwitch.reset(new DigitalInput(0));
 	lw->AddSensor("Gear", "Limit Switch", gearLimitSwitch);
 
-	gearEncoder.reset(new Encoder(0, 1, false, Encoder::EncodingType::k4X));
+	gearEncoder.reset(new Encoder(3, 4, false, Encoder::EncodingType::k4X));
 	lw->AddSensor("Gear", "Encoder", gearEncoder);
 
 	gearEncoder->SetMaxPeriod(0.1);
 	gearEncoder->SetMinRate(1);
 	gearEncoder->SetSamplesToAverage(7);
 	gearEncoder->SetReverseDirection(false);
-	gearEncoder->SetDistancePerPulse(1/360*2.0*3.1415*1.5); //1.5 will be replaced with radius
+	gearEncoder->SetDistancePerPulse(1); // Not accurate measurement, ratio instead
 
 	// Shooter subsystem
-	flywheelMotor.reset(new Victor(8));
+	flywheelMotor.reset(new Victor(5));
 
 	shooterLeftLimitSwitch.reset(new DigitalInput(1));
 	lw->AddSensor("Shooter", "Left Limit Switch", shooterLeftLimitSwitch);
@@ -79,15 +79,15 @@ void RobotMap::init() {
 	shooterRightLimitSwitch.reset(new DigitalInput(2));
 	lw->AddSensor("Shooter", "Limit Switch 2", shooterRightLimitSwitch);
 
-	shooterVerticalAdjust.reset(new Servo(9));
+	shooterVerticalAdjust.reset(new Servo(6));
 	lw->AddActuator("Shooter", "Vertical Angle Adjust", shooterVerticalAdjust);
 
 	shooterHorizontalAdjust.reset(new Victor(7));
 
-	ballStopper.reset(new Servo(10));
+	ballStopper.reset(new Servo(9));
 	lw->AddActuator("Shooter", "Ball Stopper", ballStopper);
 
-	flywheelEncoder.reset(new Encoder(2, 3, false, Encoder::EncodingType::k4X));
+	flywheelEncoder.reset(new Encoder(5, 6, false, Encoder::EncodingType::k4X));
 	lw->AddSensor("Shooter", "Flywheel Encoder", flywheelEncoder);
 }
 

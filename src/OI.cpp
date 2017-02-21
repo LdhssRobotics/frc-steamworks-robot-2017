@@ -3,6 +3,7 @@
 #include "Commands/PlaceGear.h"
 #include "WPILib.h"
 #include "Commands/ToggleBallIntake.h"
+#include "Commands/GearMechanism.h"
 
 OI::OI() {
 	driveStick.reset(new Joystick(0));
@@ -39,7 +40,7 @@ OI::OI() {
 	yButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::REVERSEINTAKE_SPEED));
 
 	// Recovery Stick Controls
-	aButtonR->WhenPressed(new PlaceGear());
+	aButtonR->WhenPressed(new GearMechanism());
 }
 
 std::shared_ptr<Joystick> OI::getDriveStick() {
