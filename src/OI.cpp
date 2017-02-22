@@ -40,7 +40,7 @@ OI::OI() {
 	yButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::REVERSEINTAKE_SPEED));
 
 	// Recovery Stick Controls
-	aButtonR->WhenPressed(new GearMechanism());
+	//aButtonR->WhenPressed(new GearMechanism());
 }
 
 std::shared_ptr<Joystick> OI::getDriveStick() {

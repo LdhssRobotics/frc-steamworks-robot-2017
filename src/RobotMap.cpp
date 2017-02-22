@@ -40,7 +40,7 @@ void RobotMap::init() {
 	LiveWindow *lw = LiveWindow::GetInstance();
 
 	// Ball intake subsystem
-	ballIntakeMotor.reset(new Victor(8));
+	ballIntakeMotor.reset(new Victor(0));
 
 	// Climber subsystem
 	winchMotor.reset(new Victor(1));

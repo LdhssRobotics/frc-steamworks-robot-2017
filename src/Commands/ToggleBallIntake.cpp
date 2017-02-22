@@ -18,6 +18,10 @@ void ToggleBallIntake::Initialize(){
 	Robot::ballIntake->SetIntakeSpeed(intakeSpeed);
 }
 
+/*void ToggleBallIntake::Execute(){
+	Robot::ballIntake->SetIntakeSpeed(intakeSpeed);
+}*/
+
 // Make this return true when this Command no longer needs to run execute()
 bool ToggleBallIntake::IsFinished() {
 	return true;
