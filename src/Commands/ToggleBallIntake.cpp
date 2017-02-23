@@ -16,6 +16,7 @@ ToggleBallIntake::ToggleBallIntake(float speed):
 
 void ToggleBallIntake::Initialize(){
 	Robot::ballIntake->SetIntakeSpeed(intakeSpeed);
+	SmartDashboard::PutString("BallIntake", "command started");
 }
 
 /*void ToggleBallIntake::Execute(){
@@ -24,12 +25,13 @@ void ToggleBallIntake::Initialize(){
 
 // Make this return true when this Command no longer needs to run execute()
 bool ToggleBallIntake::IsFinished() {
-	return true;
+	return false;
 }
 
 // Called once after isFinished returns true
 void ToggleBallIntake::End() {
 	Robot::ballIntake->Stop();
+	SmartDashboard::PutString("BallIntake", "command ended");
 }
 
 // Called when another command which requires one or more of the same
