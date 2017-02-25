@@ -13,6 +13,9 @@
 
 class Drivetrain: public Subsystem {
 private:
+	std::shared_ptr<AnalogGyro> gyro;
+	std::shared_ptr<Ultrasonic> ultrasonic;
+	std::shared_ptr<Encoder> driveEncoder;
 	std::shared_ptr<SpeedController> leftDrive;
 	std::shared_ptr<SpeedController> rightDrive;
 	std::shared_ptr<RobotDrive> robotDrive;
