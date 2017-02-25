@@ -11,40 +11,70 @@
 #include "Encoder.h"
 
 // PORT MAPPINGS
-#define BALL_INTAKE_MOTOR_PORT 0 //PWM
-#define WINCH_MOTOR_PORT 1 //PWM
-#define RATCHET_SERVO_PORT 2 //PWM
-#define GYRO_PORT 0 //Analog
-#define ULTRASONIC_ECHO_PORT 0 //Digital
-#define ULTRASONIC_TRIGGER_PORT 1 //Digital
-#define DRIVE_ENCODER_A_PORT 2 //Digital
-#define DRIVE_ENCODER_B_PORT 3 //Digital
-#define LEFT_DRIVE_PORT 3 //PWM
-#define RIGHT_DRIVE_PORT 4 //PWM
-#define GEAR_ENCODER_A_PORT 4 //Digital
-#define GEAR_ENCODER_B_PORT 5 //Digital
-#define GEAR_MOTOR_PORT 5 //PWM
-#define GEAR_LIMIT_SWITCH_PORT 6 //Digital
-#define FLYWHEEL_MOTOR_1_PORT 6 //PWM
-#define FLYWHEEL_MOTOR_2_PORT 7 //PWM
-#define SHOOTER_LEFT_LIMIT_SWITCH_PORT 7 //Digital
-#define SHOOTER_RIGHT_LIMIT_SWITCH_PORT 8 //Digital
-#define SHOOTER_FLAP_PORT 8 //PWM
-#define BALL_STOPPER_PORT 9 //PWM
-#define SHOOTER_HORIZONTAL_MOTOR_PORT 10 //PWM
-#define FLYWHEEL_ENCODER_1A_PORT 9 //Digital
-#define FLYWHEEL_ENCODER_1B_PORT 10 //Digital
-#define FLYWHEEL_ENCODER_2A_PORT 11 //Digital
-#define FLYWHEEL_ENCODER_2B_PORT 12 //Digital
+	// PWM Ports
+		// Ball intake subsystem
+#define BALL_INTAKE_MOTOR_PORT 0
 
-// Ball intake subsystem
+		// Climber subsystem
+#define WINCH_MOTOR_PORT 1
+#define RATCHET_SERVO_PORT 2
+
+		// Drivetrain subsystem
+#define LEFT_DRIVE_PORT 3
+#define RIGHT_DRIVE_PORT 4
+
+		// Gear subsystem
+#define GEAR_MOTOR_PORT 5
+
+		// Shooter subsystem
+#define FLYWHEEL_MOTOR_1_PORT 6
+#define FLYWHEEL_MOTOR_2_PORT 7
+#define SHOOTER_FLAP_PORT 8
+#define BALL_STOPPER_PORT 9
+#define SHOOTER_HORIZONTAL_MOTOR_PORT 10
+
+	// Digital Ports
+		// Drivetrain subsystem
+#define ULTRASONIC_ECHO_PORT 0
+#define ULTRASONIC_TRIGGER_PORT 1
+
+#define DRIVE_ENCODER_A_PORT 2
+#define DRIVE_ENCODER_B_PORT 3
+
+// Room for second drivetrain encoder to be added later
+//#define DRIVE_ENCODER_2A_PORT 4
+//#define DRIVE_ENCODER_2B_PORT 5
+
+		// Gear subsystem
+#define GEAR_ENCODER_A_PORT 6
+#define GEAR_ENCODER_B_PORT 7
+
+#define GEAR_LIMIT_SWITCH_PORT 8
+
+		// Shooter subsystem
+#define SHOOTER_LEFT_LIMIT_SWITCH_PORT 9
+
+#define SHOOTER_RIGHT_LIMIT_SWITCH_PORT 10
+
+#define FLYWHEEL_ENCODER_1A_PORT 11
+#define FLYWHEEL_ENCODER_1B_PORT 12
+
+#define FLYWHEEL_ENCODER_2A_PORT 13
+#define FLYWHEEL_ENCODER_2B_PORT 14
+
+	//Analog Ports
+#define GYRO_PORT 0
+
+// POINTERS
+
+	// Ball intake subsystem
 std::shared_ptr<SpeedController> RobotMap::ballIntakeMotor;
 
-// Climber subsystem
+	// Climber subsystem
 std::shared_ptr<SpeedController> RobotMap::winchMotor;
 std::shared_ptr<Servo> RobotMap::rachetServo;
 
-// Drivetrain subsystem
+	// Drivetrain subsystem
 std::shared_ptr<AnalogGyro> RobotMap::gyro;
 std::shared_ptr<Ultrasonic> RobotMap::ultrasonic;
 std::shared_ptr<Encoder> RobotMap::driveEncoder;
@@ -52,12 +82,12 @@ std::shared_ptr<SpeedController> RobotMap::leftDrive;
 std::shared_ptr<SpeedController> RobotMap::rightDrive;
 std::shared_ptr<RobotDrive> RobotMap::robotDrive;
 
-// Gear subsystem
+	// Gear subsystem
 std::shared_ptr<Encoder> RobotMap::gearEncoder;
 std::shared_ptr<SpeedController> RobotMap::gearMotor;
 std::shared_ptr<DigitalInput> RobotMap::gearLimitSwitch;
 
-// Shooter subsystem
+	// Shooter subsystem
 std::shared_ptr<SpeedController> RobotMap::flywheelMotor1;
 std::shared_ptr<SpeedController> RobotMap::flywheelMotor2;
 std::shared_ptr<DigitalInput> RobotMap::shooterLeftLimitSwitch;
