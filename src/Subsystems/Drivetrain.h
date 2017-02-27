@@ -12,11 +12,13 @@
 #include "WPILib.h"
 
 class Drivetrain: public Subsystem {
-public:
+private:
+	std::shared_ptr<AnalogGyro> gyro;
+	std::shared_ptr<Ultrasonic> ultrasonic;
+	std::shared_ptr<Encoder> driveEncoder;
 	std::shared_ptr<SpeedController> leftDrive;
 	std::shared_ptr<SpeedController> rightDrive;
 	std::shared_ptr<RobotDrive> robotDrive;
-	std::shared_ptr<AnalogGyro> gyro;
 
 	Drivetrain();
 	void InitDefaultCommand();

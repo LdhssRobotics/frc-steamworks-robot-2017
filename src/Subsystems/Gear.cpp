@@ -12,12 +12,27 @@ void Gear::SetMotorSpeed(float speed) {
 	gearMotor->Set(speed);
 }
 
+//checks the current position of the encoder
+float Gear::GetPosition() {
+	return gearEncoder->GetDistance();
+}
+
+//Check when it is reset to original position
+bool Gear::InCorrectReturnPosition(){
+	return !(gearLimitSwitch->Get());
+	}
+
+//Check when it is at the desired position (80 degrees from origin
 bool Gear::InCorrectPosition() {
-	return gearEncoder->GetDistance() > 0.008;
+	return  gearEncoder->GetDistance() < -80; // Roughly a quarter turn
+	}
+
+void Gear::ResetEncoder(){
+	gearEncoder->Reset();
+	SmartDashboard::PutNumber("Gear encoder:", GetPosition());
 }
 
 void Gear::Reset() {
-
+	ResetEncoder();
 }
-// Put methods for controlling this subsystem
-// here. Call these from Commands.
+

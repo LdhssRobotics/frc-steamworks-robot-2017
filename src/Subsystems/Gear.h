@@ -14,7 +14,10 @@ public:
 	Gear();
 	void SetMotorSpeed(float speed);
 	bool InCorrectPosition();
+	void ResetEncoder();
 	void Reset();
+	bool InCorrectReturnPosition();
+	float GetPosition();
 };
 
 #endif  // Gear_H

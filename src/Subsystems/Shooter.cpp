@@ -3,13 +3,15 @@
 #include "../Robot.h"
 
 Shooter::Shooter() : Subsystem("Shooter") {
-	flywheelMotor = RobotMap::flywheelMotor;
+	flywheelMotor1 = RobotMap::flywheelMotor1;
+	flywheelMotor2 = RobotMap::flywheelMotor2;
 	shooterLeftLimitSwitch = RobotMap::shooterLeftLimitSwitch;
 	shooterRightLimitSwitch = RobotMap::shooterRightLimitSwitch;
-	shooterHorizontalAdjust = RobotMap::shooterHorizontalAdjust;
-	shooterVerticalAdjust = RobotMap::shooterVerticalAdjust;
+	shooterHorizontalMotor = RobotMap::shooterHorizontalMotor;
+	shooterFlap = RobotMap::shooterFlap;
 	ballStopper = RobotMap::ballStopper;
-	flywheelEncoder = RobotMap::flywheelEncoder;
+	flywheelEncoder1 = RobotMap::flywheelEncoder1;
+	flywheelEncoder2 = RobotMap::flywheelEncoder2;
 }
 
 void Shooter::Reset() {

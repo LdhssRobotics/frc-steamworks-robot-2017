@@ -3,6 +3,7 @@
 #include "Commands/PlaceGear.h"
 #include "Commands/SetHeading.h"
 #include "WPILib.h"
+#include "Commands/GearMechanism.h"
 
 OI::OI() {
 	driveStick.reset(new Joystick(0));
@@ -37,9 +38,7 @@ OI::OI() {
 	startButtonD->ToggleWhenPressed(new ClimbRope());
 
 	// Recovery Stick Controls
-	aButtonR->WhenPressed(new PlaceGear());
-	bButtonR->WhenPressed(new SetHeading(45));
-	xButtonR->WhenPressed(new SetHeading(180));
+	aButtonR->WhenPressed(new GearMechanism());
 }
 
 std::shared_ptr<Joystick> OI::getDriveStick() {
