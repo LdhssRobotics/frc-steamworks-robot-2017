@@ -4,11 +4,13 @@
  *  Created on: Feb 7, 2017
  *      Author: programmer
  */
-
+#include <PIDController.h>
 #include "RobotMap.h"
 #include "Robot.h"
 #include "LiveWindow/LiveWindow.h"
 #include "Encoder.h"
+#include "Commands/SetHeading.h"
+#include "Subsystems/Drivetrain.h"
 
 // PORT MAPPINGS
 	// PWM Ports
@@ -81,6 +83,7 @@ std::shared_ptr<Encoder> RobotMap::driveEncoder;
 std::shared_ptr<SpeedController> RobotMap::leftDrive;
 std::shared_ptr<SpeedController> RobotMap::rightDrive;
 std::shared_ptr<RobotDrive> RobotMap::robotDrive;
+std::shared_ptr<AnalogGyro> RobotMap::gyro;
 
 	// Gear subsystem
 std::shared_ptr<Encoder> RobotMap::gearEncoder;
@@ -126,6 +129,10 @@ void RobotMap::init() {
 	robotDrive->SetExpiration(0.1);
 	robotDrive->SetSensitivity(0.65);
 	robotDrive->SetMaxOutput(1.0);
+
+	gyro.reset(new AnalogGyro(1));
+	gyro->SetSensitivity(0.00666);
+	gyro->Calibrate();
 
 	// Gear subsystem
 	gearMotor.reset(new Victor(GEAR_MOTOR_PORT));

@@ -1,6 +1,7 @@
 #include "OI.h"
 #include "Commands/ClimbRope.h"
 #include "Commands/PlaceGear.h"
+#include "Commands/SetHeading.h"
 #include "WPILib.h"
 #include "Commands/GearMechanism.h"
 
