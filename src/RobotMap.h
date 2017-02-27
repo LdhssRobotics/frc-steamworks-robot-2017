@@ -16,6 +16,8 @@ public:
 	static std::shared_ptr<SpeedController> leftDrive;
 	static std::shared_ptr<SpeedController> rightDrive;
 	static std::shared_ptr<RobotDrive> robotDrive;
+	static std::shared_ptr<AnalogGyro> gyro;
+	static std::shared_ptr<PIDController> pidController;
 
 	// Gear subsystem
 	static std::shared_ptr<Encoder> gearEncoder;

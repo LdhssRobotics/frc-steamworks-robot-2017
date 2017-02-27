@@ -12,17 +12,19 @@
 #include "WPILib.h"
 
 class Drivetrain: public Subsystem {
-private:
+public:
 	std::shared_ptr<SpeedController> leftDrive;
 	std::shared_ptr<SpeedController> rightDrive;
 	std::shared_ptr<RobotDrive> robotDrive;
+	std::shared_ptr<AnalogGyro> gyro;
 
-public:
 	Drivetrain();
 	void InitDefaultCommand();
 	void ArcadeDrive(double, double);
 	void Stop();
 	void Reset();
+	double GetHeading();
+	void Log();
 };
 
 #endif /* SRC_SUBSYSTEMS_DRIVETRAIN_H_ */

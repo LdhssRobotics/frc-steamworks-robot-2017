@@ -1,6 +1,7 @@
 #include "OI.h"
 #include "Commands/ClimbRope.h"
 #include "Commands/PlaceGear.h"
+#include "Commands/SetHeading.h"
 #include "WPILib.h"
 
 OI::OI() {
@@ -37,6 +38,8 @@ OI::OI() {
 
 	// Recovery Stick Controls
 	aButtonR->WhenPressed(new PlaceGear());
+	bButtonR->WhenPressed(new SetHeading(45));
+	xButtonR->WhenPressed(new SetHeading(180));
 }
 
 std::shared_ptr<Joystick> OI::getDriveStick() {

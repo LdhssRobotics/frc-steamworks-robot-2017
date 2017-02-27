@@ -17,10 +17,7 @@ bool Gear::InCorrectPosition() {
 }
 
 void Gear::Reset() {
-	while(!gearLimitSwitch->Get()) {
-		SetMotorSpeed(0.2);
-	}
-	SetMotorSpeed(0);
+
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
