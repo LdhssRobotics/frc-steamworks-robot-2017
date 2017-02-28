@@ -3,6 +3,7 @@
 #include "Commands/PlaceGear.h"
 #include "Commands/SetHeading.h"
 #include "WPILib.h"
+#include "Commands/ToggleBallIntake.h"
 #include "Commands/GearMechanism.h"
 
 OI::OI() {
@@ -38,7 +39,9 @@ OI::OI() {
 	startButtonD->ToggleWhenPressed(new ClimbRope());
 
 	// Recovery Stick Controls
-	aButtonR->WhenPressed(new GearMechanism());
+	//aButtonR->WhenPressed(new GearMechanism());
+	xButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::INTAKE_SPEED));
+	yButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::REVERSEINTAKE_SPEED));
 }
 
 std::shared_ptr<Joystick> OI::getDriveStick() {
