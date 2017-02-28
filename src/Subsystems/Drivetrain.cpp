@@ -19,7 +19,6 @@ Drivetrain::Drivetrain() : Subsystem("Drivetrain"){
 	leftDrive = RobotMap::leftDrive;
 	rightDrive = RobotMap::rightDrive;
 	robotDrive = RobotMap::robotDrive;
-	gyro = RobotMap::gyro;
 }
 
 void Drivetrain::InitDefaultCommand(){

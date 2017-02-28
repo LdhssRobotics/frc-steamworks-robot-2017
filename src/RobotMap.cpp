@@ -9,6 +9,7 @@
 #include "Robot.h"
 #include "LiveWindow/LiveWindow.h"
 #include "Encoder.h"
+#include "Ultrasonic.h"
 #include "Commands/SetHeading.h"
 #include "Subsystems/Drivetrain.h"
 
@@ -83,7 +84,6 @@ std::shared_ptr<Encoder> RobotMap::driveEncoder;
 std::shared_ptr<SpeedController> RobotMap::leftDrive;
 std::shared_ptr<SpeedController> RobotMap::rightDrive;
 std::shared_ptr<RobotDrive> RobotMap::robotDrive;
-std::shared_ptr<AnalogGyro> RobotMap::gyro;
 
 	// Gear subsystem
 std::shared_ptr<Encoder> RobotMap::gearEncoder;
@@ -116,7 +116,9 @@ void RobotMap::init() {
 	lw->AddSensor("Drive", "Gyro", gyro);
 
 	ultrasonic.reset(new Ultrasonic(ULTRASONIC_ECHO_PORT, ULTRASONIC_TRIGGER_PORT));
-	lw->AddSensor("Drive", "Ultraonic", ultrasonic);
+	lw->AddSensor("Drive", "Ultrasonic", ultrasonic);
+
+	ultrasonic->SetAutomaticMode(true);
 
 	driveEncoder.reset(new Encoder(DRIVE_ENCODER_A_PORT, DRIVE_ENCODER_B_PORT, false, Encoder::EncodingType::k4X));
 	lw->AddSensor("Drive", "Encoder", driveEncoder);
@@ -150,7 +152,7 @@ void RobotMap::init() {
 	gearEncoder->SetDistancePerPulse(1); // Not accurate measurement, ratio instead
 
 	// Shooter subsystem
-	flywheelMotor1.reset(new Victor(FLYWHEEL_MOTOR_1_PORT));
+	flywheelMotor1.reset(new Victor(4));
 	flywheelMotor2.reset(new Victor(FLYWHEEL_MOTOR_2_PORT));
 
 	shooterLeftLimitSwitch.reset(new DigitalInput(SHOOTER_LEFT_LIMIT_SWITCH_PORT));
@@ -181,4 +183,5 @@ void RobotMap::reset() {
 	Robot::drivetrain->Reset();
 	Robot::gear->Reset();
 	Robot::shooter->Reset();
+	Robot::ultrasonic->Reset();
 }

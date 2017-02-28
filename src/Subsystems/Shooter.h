@@ -19,6 +19,8 @@ private:
 public:
 	Shooter();
 	void Reset();
+	void getRPMfromEncoder();
+	void moveMotor1();
 };
 
 #endif  // Shooter_H
