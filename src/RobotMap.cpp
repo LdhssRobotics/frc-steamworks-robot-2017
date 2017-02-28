@@ -128,7 +128,7 @@ void RobotMap::init() {
 	robotDrive->SetSensitivity(0.65);
 	robotDrive->SetMaxOutput(1.0);
 
-	gyro.reset(new AnalogGyro(1));
+	gyro.reset(new AnalogGyro(GYRO_PORT));
 	gyro->SetSensitivity(0.00666);
 	gyro->Calibrate();
 
