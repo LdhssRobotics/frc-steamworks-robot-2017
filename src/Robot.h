@@ -13,14 +13,6 @@
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 
-#include <thread>
-#include <CameraServer.h>
-#include <IterativeRobot.h>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/core/core.hpp>
-#include <opencv2/core/types.hpp>
-#include <WPILib.h>
-
 #include "Commands/AutoModes/Blue1AutoMode.h"
 #include "Commands/AutoModes/Blue2AutoMode.h"
 #include "Commands/AutoModes/Blue3AutoMode.h"
@@ -47,7 +39,6 @@ public:
 	static std::shared_ptr<Gear> gear;
 	static std::shared_ptr<Shooter> shooter;
 
-	static void VisionThread();
 	virtual void RobotInit();
 	virtual void DisabledInit();
 	virtual void DisabledPeriodic();

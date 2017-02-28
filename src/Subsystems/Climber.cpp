@@ -25,4 +25,5 @@ void Climber::StopClimb() {
 }
 
 void Climber::Reset() {
+
 }

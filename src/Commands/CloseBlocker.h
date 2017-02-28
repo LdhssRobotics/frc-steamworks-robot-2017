@@ -1,14 +1,14 @@
-#ifndef PlaceGear_H
-#define PlaceGear_H
+#ifndef CloseBlocker_H
+#define CloseBlocker_H
 
 #include "../RobotMap.h"
 #include "../Robot.h"
 #include "WPILib.h"
 
-class PlaceGear : public Command {
-
+class CloseBlocker: public Command
+{
 public:
-	PlaceGear();
+	CloseBlocker();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -16,4 +16,4 @@ public:
 	void Interrupted();
 };
 
-#endif  // PlaceGear_H
+#endif

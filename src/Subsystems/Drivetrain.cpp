@@ -11,6 +11,9 @@
 #include "../Robot.h"
 
 Drivetrain::Drivetrain() : Subsystem("Drivetrain"){
+	gyro = RobotMap::gyro;
+	ultrasonic = RobotMap::ultrasonic;
+	driveEncoder = RobotMap::driveEncoder;
 	leftDrive = RobotMap::leftDrive;
 	rightDrive = RobotMap::rightDrive;
 	robotDrive = RobotMap::robotDrive;

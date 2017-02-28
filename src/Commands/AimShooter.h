@@ -1,14 +1,14 @@
-#ifndef PlaceGear_H
-#define PlaceGear_H
+#ifndef AimShooter_H
+#define AimShooter_H
 
 #include "../RobotMap.h"
-#include "../Robot.h"
 #include "WPILib.h"
+#include "../Robot.h"
 
-class PlaceGear : public Command {
-
+class AimShooter: public Command
+{
 public:
-	PlaceGear();
+	AimShooter();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -16,4 +16,4 @@ public:
 	void Interrupted();
 };
 
-#endif  // PlaceGear_H
+#endif
