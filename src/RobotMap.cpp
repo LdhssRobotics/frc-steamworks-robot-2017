@@ -4,7 +4,6 @@
  *  Created on: Feb 7, 2017
  *      Author: programmer
  */
-#include <PIDController.h>
 #include "RobotMap.h"
 #include "Robot.h"
 #include "LiveWindow/LiveWindow.h"
@@ -83,7 +82,6 @@ std::shared_ptr<Encoder> RobotMap::driveEncoder;
 std::shared_ptr<SpeedController> RobotMap::leftDrive;
 std::shared_ptr<SpeedController> RobotMap::rightDrive;
 std::shared_ptr<RobotDrive> RobotMap::robotDrive;
-std::shared_ptr<AnalogGyro> RobotMap::gyro;
 
 	// Gear subsystem
 std::shared_ptr<Encoder> RobotMap::gearEncoder;
