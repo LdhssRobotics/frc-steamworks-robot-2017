@@ -15,7 +15,6 @@ private:
 
 public:
 
-//	DriveStraight();
 	DriveStraight(float, float);
 	void Initialize();
 	void Execute();

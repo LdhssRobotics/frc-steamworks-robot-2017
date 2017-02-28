@@ -13,6 +13,15 @@
 #include "RobotMap.h"
 #include "LiveWindow/LiveWindow.h"
 
+// Vision includes
+#include <thread>
+#include <CameraServer.h>
+#include <IterativeRobot.h>
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/core/core.hpp>
+#include <opencv2/core/types.hpp>
+
+// Autonomous mode includes
 #include "Commands/AutoModes/Blue1AutoMode.h"
 #include "Commands/AutoModes/Blue2AutoMode.h"
 #include "Commands/AutoModes/Blue3AutoMode.h"
@@ -20,6 +29,7 @@
 #include "Commands/AutoModes/Red2AutoMode.h"
 #include "Commands/AutoModes/Red3AutoMode.h"
 
+// Subsystem includes
 #include "Subsystems/BallIntake.h"
 #include "Subsystems/Climber.h"
 #include "Subsystems/Drivetrain.h"
@@ -39,6 +49,7 @@ public:
 	static std::shared_ptr<Gear> gear;
 	static std::shared_ptr<Shooter> shooter;
 
+	static void VisionThread();
 	virtual void RobotInit();
 	virtual void DisabledInit();
 	virtual void DisabledPeriodic();

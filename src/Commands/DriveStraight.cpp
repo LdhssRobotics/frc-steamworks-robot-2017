@@ -1,12 +1,6 @@
 #include "Commands/DriveStraight.h"
 #include "../Robot.h"
-//DriveStraight::DriveStraight()
-//{
-//	Requires(Robot::drivetrain.get());
 
-//	speed = -0.65;
-//	duration = 2.5;
-//}
 DriveStraight::DriveStraight(float speed, float duration) :
 	heading(0),
 	speed(-speed),
