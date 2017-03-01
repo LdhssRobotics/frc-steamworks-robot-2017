@@ -31,7 +31,7 @@ bool StopShooters::IsFinished()
 		else{
 			SmartDashboard::PutString("Shooters", "Not Stopped Yet");
 		}
-		return IsTimedOut();
+		return timedOut;
 }
 
 // Called once after isFinished returns true

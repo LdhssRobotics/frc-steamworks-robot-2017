@@ -19,8 +19,8 @@ void Robot::VisionThread() {
 void Robot::RobotInit() {
 	// We need to run our vision program in a separate Thread.
 	// If not, our robot program will not run
-	std::thread visionThread(VisionThread);
-	visionThread.detach();
+	//std::thread visionThread(VisionThread);
+	//visionThread.detach();
 
 	RobotMap::init();
 
@@ -29,8 +29,9 @@ void Robot::RobotInit() {
 	drivetrain.reset(new Drivetrain());
 	gear.reset(new Gear());
 	shooter.reset(new Shooter());
-	oi.reset(new OI());
 	ultrasonicSubsystem.reset(new UltrasonicSubsystem());
+
+	oi.reset(new OI());
 
 	chooser.AddDefault("Blue 1", new Blue1AutoMode());
 	chooser.AddObject("Blue 2", new Blue2AutoMode());
@@ -51,9 +52,7 @@ void Robot::DisabledPeriodic() {
 
 void Robot::AutonomousInit() {
 	autonomousCommand.reset(chooser.GetSelected());
-	if (autonomousCommand.get() != nullptr) {
-		autonomousCommand->Cancel();
-	}
+	autonomousCommand->Start();
 }
 
 void Robot::AutonomousPeriodic() {

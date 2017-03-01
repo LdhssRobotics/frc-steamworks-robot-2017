@@ -34,50 +34,6 @@
 
 	// Digital Ports
 		// Drivetrain subsystem
-#define DRIVE_ENCODER_A_PORT 2
-#define DRIVE_ENCODER_B_PORT 3
-
-// Room for second drivetrain encoder to be added later
-//#define DRIVE_ENCODER_2A_PORT 4
-//#define DRIVE_ENCODER_2B_PORT 5
-
-		// Gear subsystem
-#define GEAR_ENCODER_A_PORT 6
-#define GEAR_ENCODER_B_PORT 7
-
-#define GEAR_LIMIT_SWITCH_PORT 8
-
-		// Shooter subsystem
-#define SHOOTER_LEFT_LIMIT_SWITCH_PORT 9
-
-#define SHOOTER_RIGHT_LIMIT_SWITCH_PORT 10
-
-
-// PORT MAPPINGS
-	// PWM Ports
-		// Ball intake subsystem
-#define BALL_INTAKE_MOTOR_PORT 0
-
-		// Climber subsystem
-#define WINCH_MOTOR_PORT 1
-#define RATCHET_SERVO_PORT 2
-
-		// Drivetrain subsystem
-#define LEFT_DRIVE_PORT 3
-#define RIGHT_DRIVE_PORT 4
-
-		// Gear subsystem
-#define GEAR_MOTOR_PORT 5
-
-		// Shooter subsystem
-#define FLYWHEEL_MOTOR_1_PORT 6
-#define FLYWHEEL_MOTOR_2_PORT 7
-#define SHOOTER_FLAP_PORT 8
-#define BALL_STOPPER_PORT 9
-#define SHOOTER_HORIZONTAL_MOTOR_PORT 10
-
-	// Digital Ports
-		// Drivetrain subsystem
 #define ULTRASONIC_ECHO_PORT 0
 #define ULTRASONIC_TRIGGER_PORT 1
 
@@ -159,9 +115,6 @@ void RobotMap::init() {
 	rachetServo.reset(new Servo(RATCHET_SERVO_PORT));
 
 	// Drivetrain subsystem
-	gyro.reset(new AnalogGyro(GYRO_PORT));
-	lw->AddSensor("Drive", "Gyro", gyro);
-
 	ultrasonic.reset(new Ultrasonic(ULTRASONIC_TRIGGER_PORT, ULTRASONIC_ECHO_PORT));
 	lw->AddSensor("Drive", "Ultrasonic", ultrasonic);
 
@@ -171,7 +124,8 @@ void RobotMap::init() {
 	lw->AddSensor("Drive", "Encoder", driveEncoder);
 
 	leftDrive.reset(new Victor(LEFT_DRIVE_PORT));
-	rightDrive.reset(new Victor(RIGHT_DRIVE_PORT));
+	//rightDrive.reset(new Victor(RIGHT_DRIVE_PORT));
+	rightDrive.reset(new Victor(15));
 	robotDrive.reset(new RobotDrive(leftDrive, rightDrive));
 
 	robotDrive->SetSafetyEnabled(false);
@@ -180,6 +134,7 @@ void RobotMap::init() {
 	robotDrive->SetMaxOutput(1.0);
 
 	gyro.reset(new AnalogGyro(GYRO_PORT));
+	lw->AddSensor("Drive", "Gyro", gyro);
 	gyro->SetSensitivity(0.00666);
 	gyro->Calibrate();
 
@@ -211,7 +166,8 @@ void RobotMap::init() {
 	shooterFlap.reset(new Servo(SHOOTER_FLAP_PORT));
 	lw->AddActuator("Shooter", "Vertical Angle Adjust", shooterFlap);
 
-	shooterHorizontalMotor.reset(new Victor(SHOOTER_HORIZONTAL_MOTOR_PORT));
+	//shooterHorizontalMotor.reset(new Victor(SHOOTER_HORIZONTAL_MOTOR_PORT));
+	shooterHorizontalMotor.reset(new Victor(16));
 
 	ballStopper.reset(new Servo(BALL_STOPPER_PORT));
 	lw->AddActuator("Shooter", "Ball Stopper", ballStopper);

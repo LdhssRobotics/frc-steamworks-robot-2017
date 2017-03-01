@@ -15,12 +15,6 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	flywheelEncoder2 = RobotMap::flywheelEncoder2;
 }
 
-void Shooter::getRPMfromEncoder(){
-	float rate = flywheelEncoder1->GetRate();
-	float currentRPM = 60*rate;
-	SmartDashboard::GetNumber("Current RPM M1", currentRPM);
-}
-
 void Shooter::MoveHorizontalMotor(float horizontalMotorSpeed){
 	if((shooterLeftLimitSwitch==false) && (shooterRightLimitSwitch==false)) {
 		shooterHorizontalMotor->Set(horizontalMotorSpeed);

@@ -31,7 +31,7 @@ bool StartShooters::IsFinished()
 	else{
 		SmartDashboard::PutString("Flywheels", "Not Ready");
 	}
-	return IsTimedOut();
+	return timedOut;
 }
 
 // Called once after isFinished returns true

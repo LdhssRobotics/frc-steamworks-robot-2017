@@ -28,7 +28,7 @@ bool CloseBlocker::IsFinished()
 		else{
 			SmartDashboard::PutString("Blocker", "Not Closed");
 		}
-		return IsTimedOut();
+		return timedOut;
 }
 
 // Called once after isFinished returns true
