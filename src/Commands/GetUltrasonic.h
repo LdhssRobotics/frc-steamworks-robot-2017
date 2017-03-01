@@ -8,7 +8,6 @@
 class GetUltrasonic : public Command {
 public:
 	GetUltrasonic();
-	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();

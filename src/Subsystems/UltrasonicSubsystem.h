@@ -12,9 +12,10 @@
 #define SRC_SUBSYSTEMS_ULTRASONICSUBSYSTEM_H_
 
 class UltrasonicSubsystem: public Subsystem {
-public:
+private:
 	std::shared_ptr<Ultrasonic> ultrasonic;
 
+public:
 	UltrasonicSubsystem();
 	void InitDefaultCommand();
 	void GetRange();

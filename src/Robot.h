@@ -8,7 +8,6 @@
 #ifndef SRC_ROBOT_H_
 #define SRC_ROBOT_H_
 
-#include <Subsystems/UltrasonicSubsystem.h>
 #include "WPILib.h"
 #include "Commands/Command.h"
 #include "RobotMap.h"
@@ -26,8 +25,9 @@
 #include "Subsystems/Drivetrain.h"
 #include "Subsystems/Gear.h"
 #include "Subsystems/Shooter.h"
-#include "OI.h"
 #include "Subsystems/UltrasonicSubsystem.h"
+
+#include "OI.h"
 
 
 class Robot : public IterativeRobot {

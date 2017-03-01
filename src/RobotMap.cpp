@@ -4,14 +4,10 @@
  *  Created on: Feb 7, 2017
  *      Author: programmer
  */
-#include <PIDController.h>
 #include "RobotMap.h"
 #include "Robot.h"
 #include "LiveWindow/LiveWindow.h"
 #include "Encoder.h"
-//#include "UltrasonicSubsystem.h"
-#include "Commands/SetHeading.h"
-#include "Subsystems/Drivetrain.h"
 
 // PORT MAPPINGS
 	// PWM Ports
@@ -38,9 +34,6 @@
 
 	// Digital Ports
 		// Drivetrain subsystem
-#define ULTRASONIC_ECHO_PORT 0
-#define ULTRASONIC_TRIGGER_PORT 1
-
 #define DRIVE_ENCODER_A_PORT 2
 #define DRIVE_ENCODER_B_PORT 3
 
@@ -65,6 +58,10 @@
 #define FLYWHEEL_ENCODER_2A_PORT 13
 #define FLYWHEEL_ENCODER_2B_PORT 14
 
+		// Ultrasonic subsystem
+#define ULTRASONIC_ECHO_PORT 0
+#define ULTRASONIC_TRIGGER_PORT 1
+
 	//Analog Ports
 #define GYRO_PORT 0
 
@@ -79,7 +76,7 @@ std::shared_ptr<Servo> RobotMap::rachetServo;
 
 	// Drivetrain subsystem
 std::shared_ptr<AnalogGyro> RobotMap::gyro;
-std::shared_ptr<frc::Ultrasonic> RobotMap::ultrasonic;
+std::shared_ptr<Ultrasonic> RobotMap::ultrasonic;
 std::shared_ptr<Encoder> RobotMap::driveEncoder;
 std::shared_ptr<SpeedController> RobotMap::leftDrive;
 std::shared_ptr<SpeedController> RobotMap::rightDrive;

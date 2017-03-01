@@ -2,8 +2,6 @@
 #define ROBOTMAP_H
 
 #include "WPILib.h"
-#include "CameraServer.h"
-
 
 class RobotMap {
 public:
@@ -37,8 +35,6 @@ public:
 	static std::shared_ptr<Servo> ballStopper;
 	static std::shared_ptr<Encoder> flywheelEncoder1;
 	static std::shared_ptr<Encoder> flywheelEncoder2;
-
-
 
 	static void init();
 	static void reset();

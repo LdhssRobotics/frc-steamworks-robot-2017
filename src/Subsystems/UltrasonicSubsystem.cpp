@@ -5,26 +5,26 @@
  *      Author: programmer
  */
 
-#include <Subsystems/UltrasonicSubsystem.h>
-#include <Subsystems/UltrasonicSubsystem.h>
+#include "UltrasonicSubsystem.h"
 #include "Commands/GetUltrasonic.h"
 #include "../RobotMap.h"
 #include "../Robot.h"
-#include "WPILib.h"
 
 UltrasonicSubsystem::UltrasonicSubsystem(): Subsystem ("UltrasonicSubsystem"){
 	ultrasonic = RobotMap::ultrasonic;
-
 }
 
 void UltrasonicSubsystem::InitDefaultCommand() {
+	// Data from the ultrasonic will be sent the whole time the program is running
 	SetDefaultCommand(new GetUltrasonic());
 }
 
 void UltrasonicSubsystem::GetRange(){
-	SmartDashboard::PutNumber("Distance-inches", ultrasonic->GetRangeInches());
-	SmartDashboard::PutNumber("Distance-feet ",(ultrasonic->GetRangeInches())*0.0833333);
+	// Return distance in inches and feet
+	SmartDashboard::PutNumber("Distance-inches: ", ultrasonic->GetRangeInches());
+	SmartDashboard::PutNumber("Distance-feet: ", (ultrasonic->GetRangeInches() * 0.0833333));
 }
 
 void UltrasonicSubsystem::Reset(){
+
 }

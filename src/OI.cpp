@@ -1,10 +1,9 @@
 #include "OI.h"
-#include "Commands/ClimbRope.h"
-#include "Commands/PlaceGear.h"
-#include "Commands/SetHeading.h"
 #include "WPILib.h"
+
+#include "Commands/ClimbRope.h"
+#include "Commands/SetHeading.h"
 #include "Commands/GearMechanism.h"
-#include "Commands/ShooterRPM.h"
 
 OI::OI() {
 	driveStick.reset(new Joystick(0));
@@ -40,7 +39,6 @@ OI::OI() {
 
 	// Recovery Stick Controls
 	aButtonR->WhenPressed(new GearMechanism());
-	xButtonR->ToggleWhenPressed(new ShooterRPM());
 }
 
 std::shared_ptr<Joystick> OI::getDriveStick() {
