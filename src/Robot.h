@@ -8,6 +8,7 @@
 #ifndef SRC_ROBOT_H_
 #define SRC_ROBOT_H_
 
+#include <Subsystems/UltrasonicSubsystem.h>
 #include "WPILib.h"
 #include "Commands/Command.h"
 #include "RobotMap.h"
@@ -26,7 +27,8 @@
 #include "Subsystems/Gear.h"
 #include "Subsystems/Shooter.h"
 #include "OI.h"
-#include "Subsystems/Ultrasonic.h"
+#include "Subsystems/UltrasonicSubsystem.h"
+
 
 class Robot : public IterativeRobot {
 public:
@@ -39,7 +41,7 @@ public:
 	static std::shared_ptr<Drivetrain> drivetrain;
 	static std::shared_ptr<Gear> gear;
 	static std::shared_ptr<Shooter> shooter;
-	static std::shared_ptr<Ultrasonic> ultrasonic;
+	static std::shared_ptr<UltrasonicSubsystem> ultrasonicSubsystem;
 
 	virtual void RobotInit();
 	virtual void DisabledInit();

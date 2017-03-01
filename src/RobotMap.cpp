@@ -9,7 +9,7 @@
 #include "Robot.h"
 #include "LiveWindow/LiveWindow.h"
 #include "Encoder.h"
-#include "Ultrasonic.h"
+//#include "UltrasonicSubsystem.h"
 #include "Commands/SetHeading.h"
 #include "Subsystems/Drivetrain.h"
 
@@ -79,7 +79,7 @@ std::shared_ptr<Servo> RobotMap::rachetServo;
 
 	// Drivetrain subsystem
 std::shared_ptr<AnalogGyro> RobotMap::gyro;
-std::shared_ptr<Ultrasonic> RobotMap::ultrasonic;
+std::shared_ptr<frc::Ultrasonic> RobotMap::ultrasonic;
 std::shared_ptr<Encoder> RobotMap::driveEncoder;
 std::shared_ptr<SpeedController> RobotMap::leftDrive;
 std::shared_ptr<SpeedController> RobotMap::rightDrive;
@@ -115,7 +115,7 @@ void RobotMap::init() {
 	gyro.reset(new AnalogGyro(GYRO_PORT));
 	lw->AddSensor("Drive", "Gyro", gyro);
 
-	ultrasonic.reset(new Ultrasonic(ULTRASONIC_ECHO_PORT, ULTRASONIC_TRIGGER_PORT));
+	ultrasonic.reset(new frc::Ultrasonic(ULTRASONIC_TRIGGER_PORT, ULTRASONIC_ECHO_PORT));
 	lw->AddSensor("Drive", "Ultrasonic", ultrasonic);
 
 	ultrasonic->SetAutomaticMode(true);
@@ -183,5 +183,5 @@ void RobotMap::reset() {
 	Robot::drivetrain->Reset();
 	Robot::gear->Reset();
 	Robot::shooter->Reset();
-	Robot::ultrasonic->Reset();
+	Robot::ultrasonicSubsystem->Reset();
 }

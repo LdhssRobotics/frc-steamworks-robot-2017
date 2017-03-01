@@ -16,7 +16,7 @@ public:
 
 	// Drivetrain subsystem
 	static std::shared_ptr<AnalogGyro> gyro;
-	static std::shared_ptr<Ultrasonic> ultrasonic;
+	static std::shared_ptr<frc::Ultrasonic> ultrasonic;
 	static std::shared_ptr<Encoder> driveEncoder;
 	static std::shared_ptr<SpeedController> leftDrive;
 	static std::shared_ptr<SpeedController> rightDrive;
@@ -37,6 +37,8 @@ public:
 	static std::shared_ptr<Servo> ballStopper;
 	static std::shared_ptr<Encoder> flywheelEncoder1;
 	static std::shared_ptr<Encoder> flywheelEncoder2;
+
+
 
 	static void init();
 	static void reset();
