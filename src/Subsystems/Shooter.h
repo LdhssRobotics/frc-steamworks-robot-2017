@@ -19,6 +19,7 @@ private:
 public:
 	Shooter();
 	void Reset();
+
 	void SetFlapAngle(float flapAngle);
 	void CloseBlocker();
 	void OpenBlocker();

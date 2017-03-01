@@ -6,6 +6,7 @@ std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<Gear> Robot::gear;
 std::shared_ptr<Shooter> Robot::shooter;
 std::unique_ptr<OI> Robot::oi;
+std::shared_ptr<UltrasonicSubsystem> Robot::ultrasonicSubsystem;
 
 void Robot::VisionThread() {
 	cs::UsbCamera frontCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
@@ -29,6 +30,7 @@ void Robot::RobotInit() {
 	gear.reset(new Gear());
 	shooter.reset(new Shooter());
 	oi.reset(new OI());
+	ultrasonicSubsystem.reset(new UltrasonicSubsystem());
 
 	chooser.AddDefault("Blue 1", new Blue1AutoMode());
 	chooser.AddObject("Blue 2", new Blue2AutoMode());

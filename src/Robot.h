@@ -31,7 +31,10 @@
 #include "Subsystems/Drivetrain.h"
 #include "Subsystems/Gear.h"
 #include "Subsystems/Shooter.h"
+#include "Subsystems/UltrasonicSubsystem.h"
+
 #include "OI.h"
+
 
 class Robot : public IterativeRobot {
 public:
@@ -44,6 +47,7 @@ public:
 	static std::shared_ptr<Drivetrain> drivetrain;
 	static std::shared_ptr<Gear> gear;
 	static std::shared_ptr<Shooter> shooter;
+	static std::shared_ptr<UltrasonicSubsystem> ultrasonicSubsystem;
 
 	static void VisionThread();
 	virtual void RobotInit();

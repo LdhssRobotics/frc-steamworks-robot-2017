@@ -2,8 +2,6 @@
 #define ROBOTMAP_H
 
 #include "WPILib.h"
-#include "CameraServer.h"
-
 
 class RobotMap {
 public:
@@ -16,7 +14,7 @@ public:
 
 	// Drivetrain subsystem
 	static std::shared_ptr<AnalogGyro> gyro;
-	static std::shared_ptr<Ultrasonic> ultrasonic;
+	static std::shared_ptr<frc::Ultrasonic> ultrasonic;
 	static std::shared_ptr<Encoder> driveEncoder;
 	static std::shared_ptr<SpeedController> leftDrive;
 	static std::shared_ptr<SpeedController> rightDrive;

@@ -8,8 +8,6 @@
 #include "Robot.h"
 #include "LiveWindow/LiveWindow.h"
 #include "Encoder.h"
-#include "Commands/SetHeading.h"
-#include "Subsystems/Drivetrain.h"
 
 // PORT MAPPINGS
 	// PWM Ports
@@ -36,12 +34,6 @@
 
 	// Digital Ports
 		// Drivetrain subsystem
-#define ULTRASONIC_FRONT_ECHO_PORT 0
-#define ULTRASONIC_FRONT_TRIGGER_PORT 1
-
-#define ULTRASONIC_BACK_ECHO_PORT 15
-#define ULTRASONIC_BACK_TRIGGER_PORT 16
-
 #define DRIVE_ENCODER_A_PORT 2
 #define DRIVE_ENCODER_B_PORT 3
 
@@ -113,6 +105,13 @@
 #define FLYWHEEL_ENCODER_2A_PORT 13
 #define FLYWHEEL_ENCODER_2B_PORT 14
 
+		// Ultrasonic subsystem
+#define ULTRASONIC_ECHO_PORT 0
+#define ULTRASONIC_TRIGGER_PORT 1
+
+#define ULTRASONIC_BACK_ECHO_PORT 15
+#define ULTRASONIC_BACK_TRIGGER_PORT 16
+
 	//Analog Ports
 #define GYRO_PORT 0
 
@@ -163,8 +162,10 @@ void RobotMap::init() {
 	gyro.reset(new AnalogGyro(GYRO_PORT));
 	lw->AddSensor("Drive", "Gyro", gyro);
 
-	ultrasonic.reset(new Ultrasonic(ULTRASONIC_FRONT_TRIGGER_PORT, ULTRASONIC_FRONT_ECHO_PORT));
+	ultrasonic.reset(new Ultrasonic(ULTRASONIC_TRIGGER_PORT, ULTRASONIC_ECHO_PORT));
 	lw->AddSensor("Drive", "Ultrasonic", ultrasonic);
+
+	ultrasonic->SetAutomaticMode(true);
 
 	driveEncoder.reset(new Encoder(DRIVE_ENCODER_A_PORT, DRIVE_ENCODER_B_PORT, false, Encoder::EncodingType::k4X));
 	lw->AddSensor("Drive", "Encoder", driveEncoder);
@@ -198,7 +199,7 @@ void RobotMap::init() {
 	gearEncoder->SetDistancePerPulse(1); // Not accurate measurement, ratio instead
 
 	// Shooter subsystem
-	flywheelMotor1.reset(new Victor(FLYWHEEL_MOTOR_1_PORT));
+	flywheelMotor1.reset(new Victor(4));
 	flywheelMotor2.reset(new Victor(FLYWHEEL_MOTOR_2_PORT));
 
 	shooterLeftLimitSwitch.reset(new DigitalInput(SHOOTER_LEFT_LIMIT_SWITCH_PORT));
@@ -229,4 +230,5 @@ void RobotMap::reset() {
 	Robot::drivetrain->Reset();
 	Robot::gear->Reset();
 	Robot::shooter->Reset();
+	Robot::ultrasonicSubsystem->Reset();
 }
