@@ -116,7 +116,7 @@ void RobotMap::init() {
 	gyro.reset(new AnalogGyro(GYRO_PORT));
 	lw->AddSensor("Drive", "Gyro", gyro);
 
-	ultrasonic.reset(new Ultrasonic(ULTRASONIC_FRONT_ECHO_PORT, ULTRASONIC_FRONT_TRIGGER_PORT));
+	ultrasonic.reset(new Ultrasonic(ULTRASONIC_FRONT_TRIGGER_PORT, ULTRASONIC_FRONT_ECHO_PORT));
 	lw->AddSensor("Drive", "Ultrasonic", ultrasonic);
 
 	driveEncoder.reset(new Encoder(DRIVE_ENCODER_A_PORT, DRIVE_ENCODER_B_PORT, false, Encoder::EncodingType::k4X));
