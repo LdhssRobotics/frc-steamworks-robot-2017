@@ -49,7 +49,8 @@ public:
 	static std::shared_ptr<Gear> gear;
 	static std::shared_ptr<Shooter> shooter;
 
-	static void VisionThread();
+	static void FrontCameraVisionThread();
+	static void BackCameraVisionThread();
 	virtual void RobotInit();
 	virtual void DisabledInit();
 	virtual void DisabledPeriodic();

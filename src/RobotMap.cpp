@@ -36,8 +36,11 @@
 
 	// Digital Ports
 		// Drivetrain subsystem
-#define ULTRASONIC_ECHO_PORT 0
-#define ULTRASONIC_TRIGGER_PORT 1
+#define ULTRASONIC_FRONT_ECHO_PORT 0
+#define ULTRASONIC_FRONT_TRIGGER_PORT 1
+
+#define ULTRASONIC_BACK_ECHO_PORT 15
+#define ULTRASONIC_BACK_TRIGGER_PORT 16
 
 #define DRIVE_ENCODER_A_PORT 2
 #define DRIVE_ENCODER_B_PORT 3
@@ -113,8 +116,8 @@ void RobotMap::init() {
 	gyro.reset(new AnalogGyro(GYRO_PORT));
 	lw->AddSensor("Drive", "Gyro", gyro);
 
-	ultrasonic.reset(new Ultrasonic(ULTRASONIC_ECHO_PORT, ULTRASONIC_TRIGGER_PORT));
-	lw->AddSensor("Drive", "Ultraonic", ultrasonic);
+	ultrasonic.reset(new Ultrasonic(ULTRASONIC_FRONT_ECHO_PORT, ULTRASONIC_FRONT_TRIGGER_PORT));
+	lw->AddSensor("Drive", "Ultrasonic", ultrasonic);
 
 	driveEncoder.reset(new Encoder(DRIVE_ENCODER_A_PORT, DRIVE_ENCODER_B_PORT, false, Encoder::EncodingType::k4X));
 	lw->AddSensor("Drive", "Encoder", driveEncoder);
