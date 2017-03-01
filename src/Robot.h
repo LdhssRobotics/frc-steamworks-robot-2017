@@ -16,10 +16,6 @@
 // Vision includes
 #include <thread>
 #include <CameraServer.h>
-#include <IterativeRobot.h>
-#include <opencv2/imgproc/imgproc.hpp>
-#include <opencv2/core/core.hpp>
-#include <opencv2/core/types.hpp>
 
 // Autonomous mode includes
 #include "Commands/AutoModes/Blue1AutoMode.h"
