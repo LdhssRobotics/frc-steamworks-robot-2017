@@ -3,10 +3,11 @@
 
 #include "Commands/ClimbRope.h"
 #include "Commands/SetHeading.h"
-#include "WPILib.h"
-#include "Commands/ToggleBallIntake.h"
 #include "Commands/GearMechanism.h"
-
+#include "Commands/ManualShoot.h"
+#include "Commands/ResetShooter.h"
+#include "Commands/ToggleBallIntake.h"
+  
 OI::OI() {
 	driveStick.reset(new Joystick(0));
 	recoveryStick.reset(new Joystick(1));
@@ -38,9 +39,11 @@ OI::OI() {
 	// Assigning Commands to Buttons
 	// Drive Stick Controls
 	startButtonD->ToggleWhenPressed(new ClimbRope());
+	rightBumperButtonD->WhileHeld(new ManualShoot());
+	rightBumperButtonD->WhenReleased(new ResetShooter());
 
 	// Recovery Stick Controls
-	//aButtonR->WhenPressed(new GearMechanism());
+	aButtonR->WhenPressed(new GearMechanism());
 	xButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::INTAKE_SPEED));
 	yButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::REVERSEINTAKE_SPEED));
 }

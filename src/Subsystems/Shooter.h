@@ -19,8 +19,13 @@ private:
 public:
 	Shooter();
 	void Reset();
-	void getRPMfromEncoder();
-	void moveMotor1();
+
+	void SetFlapAngle(float flapAngle);
+	void CloseBlocker();
+	void OpenBlocker();
+	void StartFlyWheelMotors();
+	void StopFlyWheelMotors();
+	void MoveHorizontalMotor(float horizontalMotorSpeed);
 };
 
 #endif  // Shooter_H

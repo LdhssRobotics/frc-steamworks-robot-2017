@@ -52,6 +52,53 @@
 
 #define SHOOTER_RIGHT_LIMIT_SWITCH_PORT 10
 
+
+// PORT MAPPINGS
+	// PWM Ports
+		// Ball intake subsystem
+#define BALL_INTAKE_MOTOR_PORT 0
+
+		// Climber subsystem
+#define WINCH_MOTOR_PORT 1
+#define RATCHET_SERVO_PORT 2
+
+		// Drivetrain subsystem
+#define LEFT_DRIVE_PORT 3
+#define RIGHT_DRIVE_PORT 4
+
+		// Gear subsystem
+#define GEAR_MOTOR_PORT 5
+
+		// Shooter subsystem
+#define FLYWHEEL_MOTOR_1_PORT 6
+#define FLYWHEEL_MOTOR_2_PORT 7
+#define SHOOTER_FLAP_PORT 8
+#define BALL_STOPPER_PORT 9
+#define SHOOTER_HORIZONTAL_MOTOR_PORT 10
+
+	// Digital Ports
+		// Drivetrain subsystem
+#define ULTRASONIC_ECHO_PORT 0
+#define ULTRASONIC_TRIGGER_PORT 1
+
+#define DRIVE_ENCODER_A_PORT 2
+#define DRIVE_ENCODER_B_PORT 3
+
+// Room for second drivetrain encoder to be added later
+//#define DRIVE_ENCODER_2A_PORT 4
+//#define DRIVE_ENCODER_2B_PORT 5
+
+		// Gear subsystem
+#define GEAR_ENCODER_A_PORT 6
+#define GEAR_ENCODER_B_PORT 7
+
+#define GEAR_LIMIT_SWITCH_PORT 8
+
+		// Shooter subsystem
+#define SHOOTER_LEFT_LIMIT_SWITCH_PORT 9
+
+#define SHOOTER_RIGHT_LIMIT_SWITCH_PORT 10
+
 #define FLYWHEEL_ENCODER_1A_PORT 11
 #define FLYWHEEL_ENCODER_1B_PORT 12
 
