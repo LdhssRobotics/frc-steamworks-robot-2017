@@ -4,9 +4,7 @@
  *  Created on: Feb 16, 2017
  *      Author: programmer
  */
-
 #include "GoBackGear.h"
-
 
 GoBackGear::GoBackGear() {
 	Requires(Robot::gear.get());

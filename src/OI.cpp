@@ -1,10 +1,14 @@
 #include "OI.h"
+#include "WPILib.h"
+
 #include "Commands/ClimbRope.h"
 #include "Commands/PlaceGear.h"
-#include "WPILib.h"
+#include "Commands/SetHeading.h"
 #include "Commands/GearMechanism.h"
 #include "Commands/ManualShoot.h"
 #include "Commands/ResetShooter.h"
+#include "Commands/ToggleBallIntake.h"
+  
 OI::OI() {
 	driveStick.reset(new Joystick(0));
 	recoveryStick.reset(new Joystick(1));
@@ -41,7 +45,8 @@ OI::OI() {
 
 	// Recovery Stick Controls
 	aButtonR->WhenPressed(new GearMechanism());
-
+	xButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::INTAKE_SPEED));
+	yButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::REVERSEINTAKE_SPEED));
 }
 
 std::shared_ptr<Joystick> OI::getDriveStick() {

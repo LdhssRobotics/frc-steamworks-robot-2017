@@ -4,11 +4,62 @@
  *  Created on: Feb 7, 2017
  *      Author: programmer
  */
-
 #include "RobotMap.h"
 #include "Robot.h"
 #include "LiveWindow/LiveWindow.h"
 #include "Encoder.h"
+#include "Commands/SetHeading.h"
+#include "Subsystems/Drivetrain.h"
+
+// PORT MAPPINGS
+	// PWM Ports
+		// Ball intake subsystem
+#define BALL_INTAKE_MOTOR_PORT 0
+
+		// Climber subsystem
+#define WINCH_MOTOR_PORT 1
+#define RATCHET_SERVO_PORT 2
+
+		// Drivetrain subsystem
+#define LEFT_DRIVE_PORT 3
+#define RIGHT_DRIVE_PORT 4
+
+		// Gear subsystem
+#define GEAR_MOTOR_PORT 5
+
+		// Shooter subsystem
+#define FLYWHEEL_MOTOR_1_PORT 6
+#define FLYWHEEL_MOTOR_2_PORT 7
+#define SHOOTER_FLAP_PORT 8
+#define BALL_STOPPER_PORT 9
+#define SHOOTER_HORIZONTAL_MOTOR_PORT 10
+
+	// Digital Ports
+		// Drivetrain subsystem
+#define ULTRASONIC_FRONT_ECHO_PORT 0
+#define ULTRASONIC_FRONT_TRIGGER_PORT 1
+
+#define ULTRASONIC_BACK_ECHO_PORT 15
+#define ULTRASONIC_BACK_TRIGGER_PORT 16
+
+#define DRIVE_ENCODER_A_PORT 2
+#define DRIVE_ENCODER_B_PORT 3
+
+// Room for second drivetrain encoder to be added later
+//#define DRIVE_ENCODER_2A_PORT 4
+//#define DRIVE_ENCODER_2B_PORT 5
+
+		// Gear subsystem
+#define GEAR_ENCODER_A_PORT 6
+#define GEAR_ENCODER_B_PORT 7
+
+#define GEAR_LIMIT_SWITCH_PORT 8
+
+		// Shooter subsystem
+#define SHOOTER_LEFT_LIMIT_SWITCH_PORT 9
+
+#define SHOOTER_RIGHT_LIMIT_SWITCH_PORT 10
+
 
 // PORT MAPPINGS
 	// PWM Ports
@@ -112,8 +163,8 @@ void RobotMap::init() {
 	gyro.reset(new AnalogGyro(GYRO_PORT));
 	lw->AddSensor("Drive", "Gyro", gyro);
 
-	ultrasonic.reset(new Ultrasonic(ULTRASONIC_ECHO_PORT, ULTRASONIC_TRIGGER_PORT));
-	lw->AddSensor("Drive", "Ultraonic", ultrasonic);
+	ultrasonic.reset(new Ultrasonic(ULTRASONIC_FRONT_TRIGGER_PORT, ULTRASONIC_FRONT_ECHO_PORT));
+	lw->AddSensor("Drive", "Ultrasonic", ultrasonic);
 
 	driveEncoder.reset(new Encoder(DRIVE_ENCODER_A_PORT, DRIVE_ENCODER_B_PORT, false, Encoder::EncodingType::k4X));
 	lw->AddSensor("Drive", "Encoder", driveEncoder);
@@ -126,6 +177,10 @@ void RobotMap::init() {
 	robotDrive->SetExpiration(0.1);
 	robotDrive->SetSensitivity(0.65);
 	robotDrive->SetMaxOutput(1.0);
+
+	gyro.reset(new AnalogGyro(GYRO_PORT));
+	gyro->SetSensitivity(0.00666);
+	gyro->Calibrate();
 
 	// Gear subsystem
 	gearMotor.reset(new Victor(GEAR_MOTOR_PORT));

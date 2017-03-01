@@ -7,7 +7,20 @@ std::shared_ptr<Gear> Robot::gear;
 std::shared_ptr<Shooter> Robot::shooter;
 std::unique_ptr<OI> Robot::oi;
 
+void Robot::VisionThread() {
+	cs::UsbCamera frontCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
+	frontCamera.SetResolution(160, 120);
+
+	cs::UsbCamera backCamera = CameraServer::GetInstance()->StartAutomaticCapture(1);
+	backCamera.SetResolution(160, 120);
+}
+
 void Robot::RobotInit() {
+	// We need to run our vision program in a separate Thread.
+	// If not, our robot program will not run
+	std::thread visionThread(VisionThread);
+	visionThread.detach();
+
 	RobotMap::init();
 
 	ballIntake.reset(new BallIntake());

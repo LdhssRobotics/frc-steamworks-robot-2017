@@ -13,9 +13,6 @@ Shooter::Shooter() : Subsystem("Shooter") {
 	ballStopper = RobotMap::ballStopper;
 	flywheelEncoder1 = RobotMap::flywheelEncoder1;
 	flywheelEncoder2 = RobotMap::flywheelEncoder2;
-
-
-
 }
 
 void Shooter::MoveHorizontalMotor(float horizontalMotorSpeed){
@@ -42,9 +39,9 @@ void Shooter::SetFlapAngle(float flapAngle)
    shooterFlap->Set(120.65*cos(flapAngle)/50); //value between 0 and 1 for flap servo
 }
 
-
 void Shooter::Reset(){
-
+  CloseBlocker();
+  StopFlyWheelMotors();
 }
 
 void Shooter::CloseBlocker(){
