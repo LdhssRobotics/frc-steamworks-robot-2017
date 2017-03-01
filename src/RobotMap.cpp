@@ -62,6 +62,9 @@
 #define ULTRASONIC_ECHO_PORT 0
 #define ULTRASONIC_TRIGGER_PORT 1
 
+#define ULTRASONIC_BACK_ECHO_PORT 15
+#define ULTRASONIC_BACK_TRIGGER_PORT 16
+
 	//Analog Ports
 #define GYRO_PORT 0
 
@@ -112,7 +115,7 @@ void RobotMap::init() {
 	gyro.reset(new AnalogGyro(GYRO_PORT));
 	lw->AddSensor("Drive", "Gyro", gyro);
 
-	ultrasonic.reset(new frc::Ultrasonic(ULTRASONIC_TRIGGER_PORT, ULTRASONIC_ECHO_PORT));
+	ultrasonic.reset(new Ultrasonic(ULTRASONIC_TRIGGER_PORT, ULTRASONIC_ECHO_PORT));
 	lw->AddSensor("Drive", "Ultrasonic", ultrasonic);
 
 	ultrasonic->SetAutomaticMode(true);
@@ -129,7 +132,7 @@ void RobotMap::init() {
 	robotDrive->SetSensitivity(0.65);
 	robotDrive->SetMaxOutput(1.0);
 
-	gyro.reset(new AnalogGyro(1));
+	gyro.reset(new AnalogGyro(GYRO_PORT));
 	gyro->SetSensitivity(0.00666);
 	gyro->Calibrate();
 

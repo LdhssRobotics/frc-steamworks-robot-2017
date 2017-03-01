@@ -13,10 +13,18 @@ BallIntake::BallIntake() : Subsystem("BallIntake") {
 	ballIntakeMotor = RobotMap::ballIntakeMotor;
 }
 
-void BallIntake::InitDefaultCommand() {
-
-}
-
 void BallIntake::Reset() {
-
+	Stop();
 }
+void BallIntake::SetIntakeSpeed(float speed){
+	ballIntakeMotor->Set(speed);
+}
+
+void BallIntake::ReverseIntakeSpeed(float speed){
+	ballIntakeMotor->Set(-speed);
+}
+
+void BallIntake::Stop(){
+	ballIntakeMotor->Set(0);
+}
+
