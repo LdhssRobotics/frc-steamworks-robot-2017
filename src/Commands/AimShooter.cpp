@@ -11,7 +11,7 @@ AimShooter::AimShooter()
 // Called just before this Command runs the first time
 void AimShooter::Initialize()
 {
-	Robot::shooter->SetFlapAngle(idk wtf the angle is);
+	Robot::shooter->SetFlapAngle(1); // TODO: placeholder value
 }
 
 // Called repeatedly when this Command is scheduled to run
