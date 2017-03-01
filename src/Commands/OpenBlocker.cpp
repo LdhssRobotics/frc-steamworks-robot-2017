@@ -2,8 +2,6 @@
 
 OpenBlocker::OpenBlocker()
 {
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(chassis);
 	Requires(Robot::shooter.get());
 }
 
@@ -11,7 +9,7 @@ OpenBlocker::OpenBlocker()
 void OpenBlocker::Initialize()
 {
 	Robot::shooter->OpenBlocker();
-	SetTimeout(1);
+	SetTimeout(0.5);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -30,7 +28,7 @@ bool OpenBlocker::IsFinished()
 		else{
 			SmartDashboard::PutString("Blocker", "Not Ready");
 		}
-		return IsTimedOut();
+		return timedOut;
 }
 
 // Called once after isFinished returns true
