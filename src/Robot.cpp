@@ -19,8 +19,8 @@ void Robot::VisionThread() {
 void Robot::RobotInit() {
 	// We need to run our vision program in a separate Thread.
 	// If not, our robot program will not run
-	//std::thread visionThread(VisionThread);
-	//visionThread.detach();
+	std::thread visionThread(VisionThread);
+	visionThread.detach();
 
 	RobotMap::init();
 
