@@ -34,6 +34,7 @@ void Drivetrain::Stop(){
 
 void Drivetrain::Reset() {
 	gyro->Reset();
+	Stop();
 }
 
 double Drivetrain::GetHeading()
@@ -43,5 +44,5 @@ double Drivetrain::GetHeading()
 
 void Drivetrain::Log()
 {
-	SmartDashboard::PutNumber("RobotHeadingInDegrees", GetHeading());
+	SmartDashboard::PutNumber("Robot heading in degrees", GetHeading());
 }

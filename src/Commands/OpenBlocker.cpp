@@ -23,10 +23,7 @@ bool OpenBlocker::IsFinished()
 {
 	bool timedOut = IsTimedOut();
 		if(timedOut) {
-			SmartDashboard::PutString("Blocker", "Ready");
-		}
-		else{
-			SmartDashboard::PutString("Blocker", "Not Ready");
+			SmartDashboard::PutString("Ball blocker", "not blocking");
 		}
 		return timedOut;
 }

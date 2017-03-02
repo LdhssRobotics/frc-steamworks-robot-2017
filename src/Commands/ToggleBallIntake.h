@@ -10,11 +10,10 @@ private:
 
 public:
 	static const float INTAKE_SPEED;
-	static const float REVERSEINTAKE_SPEED;
+	static const float REVERSE_INTAKE_SPEED;
 
 	ToggleBallIntake(float speed);
 	void Initialize();
-//	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();

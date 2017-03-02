@@ -10,15 +10,9 @@ StopShooters::StopShooters()
 // Called just before this Command runs the first time
 void StopShooters::Initialize()
 {
-	SmartDashboard::PutString("Shooters:", "Off");
+	SmartDashboard::PutString("Flywheels:", "slowing down...");
 	Robot::shooter->StopFlyWheelMotors();
 	SetTimeout(3);
-}
-
-// Called repeatedly when this Command is scheduled to run
-void StopShooters::Execute()
-{
-
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -26,10 +20,7 @@ bool StopShooters::IsFinished()
 {
 	bool timedOut = IsTimedOut();
 		if(timedOut) {
-			SmartDashboard::PutString("Shooters", "Stopped");
-		}
-		else{
-			SmartDashboard::PutString("Shooters", "Not Stopped Yet");
+			SmartDashboard::PutString("Flywheels:", "off");
 		}
 		return timedOut;
 }

@@ -23,10 +23,7 @@ bool CloseBlocker::IsFinished()
 {
 	bool timedOut = IsTimedOut();
 		if(timedOut) {
-			SmartDashboard::PutString("Blocker", "Closed");
-		}
-		else{
-			SmartDashboard::PutString("Blocker", "Not Closed");
+			SmartDashboard::PutString("Ball blocker", "blocking");
 		}
 		return timedOut;
 }

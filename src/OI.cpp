@@ -41,11 +41,11 @@ OI::OI() {
 	startButtonD->ToggleWhenPressed(new ClimbRope());
 	rightBumperButtonD->WhileHeld(new ManualShoot());
 	rightBumperButtonD->WhenReleased(new ResetShooter());
+	aButtonD->WhenPressed(new GearMechanism());
 
 	// Recovery Stick Controls
-	aButtonR->WhenPressed(new GearMechanism());
-	xButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::INTAKE_SPEED));
-	yButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::REVERSEINTAKE_SPEED));
+	bButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::INTAKE_SPEED));
+	xButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::REVERSE_INTAKE_SPEED));
 }
 
 std::shared_ptr<Joystick> OI::getDriveStick() {

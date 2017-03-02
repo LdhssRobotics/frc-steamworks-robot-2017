@@ -11,7 +11,6 @@ class StartShooters: public Command
 public:
 	StartShooters();
 	void Initialize();
-	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();

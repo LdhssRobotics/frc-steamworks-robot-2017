@@ -28,3 +28,6 @@ void BallIntake::Stop(){
 	ballIntakeMotor->Set(0);
 }
 
+void BallIntake::Log(float intakeSpeed) {
+	SmartDashboard::PutNumber("Ball intake speed:", intakeSpeed);
+}

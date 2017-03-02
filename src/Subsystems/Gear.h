@@ -18,6 +18,7 @@ public:
 	void Reset();
 	bool InCorrectReturnPosition();
 	float GetPosition();
+	void Log();
 };
 
 #endif  // Gear_H

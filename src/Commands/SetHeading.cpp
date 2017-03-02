@@ -33,14 +33,14 @@ void SetHeading::Execute()
 	Robot::drivetrain->rightDrive->Set(turningValue);
 
 	//Display current heading on Smart Dashboard
-	SmartDashboard::PutNumber("RobotHeadingInDegrees", Robot::drivetrain->GetHeading());
+	Robot::drivetrain->Log();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool SetHeading::IsFinished()
 {
 	//Determine if robot has attained target within 2 degrees on each side
-	return ((desHeading+2) >= Robot::drivetrain->GetHeading() && ((desHeading-2) <= Robot::drivetrain->GetHeading()));
+	return ((desHeading + 2) >= Robot::drivetrain->GetHeading() && ((desHeading - 2) <= Robot::drivetrain->GetHeading()));
 }
 // Called once after isFinished returns true
 void SetHeading::End()

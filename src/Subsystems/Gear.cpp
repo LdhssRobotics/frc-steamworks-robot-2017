@@ -29,10 +29,14 @@ bool Gear::InCorrectPosition() {
 
 void Gear::ResetEncoder(){
 	gearEncoder->Reset();
-	SmartDashboard::PutNumber("Gear encoder:", GetPosition());
+	Log();
 }
 
 void Gear::Reset() {
 	ResetEncoder();
+}
+
+void Gear::Log() {
+	SmartDashboard::PutNumber("Gear encoder:", GetPosition());
 }
 

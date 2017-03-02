@@ -12,7 +12,6 @@ class StopShooters: public Command
 public:
 	StopShooters();
 	void Initialize();
-	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
