@@ -30,7 +30,7 @@
 #define FLYWHEEL_MOTOR_2_PORT 7
 #define SHOOTER_FLAP_PORT 8
 #define BALL_STOPPER_PORT 9
-#define SHOOTER_HORIZONTAL_MOTOR_PORT 10
+#define SHOOTER_HORIZONTAL_MOTOR_PORT 8
 
 	// Digital Ports
 		// Drivetrain subsystem
@@ -124,8 +124,8 @@ void RobotMap::init() {
 	lw->AddSensor("Drive", "Encoder", driveEncoder);
 
 	leftDrive.reset(new Victor(LEFT_DRIVE_PORT));
-	//rightDrive.reset(new Victor(RIGHT_DRIVE_PORT));
-	rightDrive.reset(new Victor(15));
+	rightDrive.reset(new Victor(RIGHT_DRIVE_PORT));
+	//rightDrive.reset(new Victor(15));
 	robotDrive.reset(new RobotDrive(leftDrive, rightDrive));
 
 	robotDrive->SetSafetyEnabled(false);
@@ -154,7 +154,7 @@ void RobotMap::init() {
 	gearEncoder->SetDistancePerPulse(1); // Not accurate measurement, ratio instead
 
 	// Shooter subsystem
-	flywheelMotor1.reset(new Victor(4));
+	flywheelMotor1.reset(new Victor(FLYWHEEL_MOTOR_1_PORT));
 	flywheelMotor2.reset(new Victor(FLYWHEEL_MOTOR_2_PORT));
 
 	shooterLeftLimitSwitch.reset(new DigitalInput(SHOOTER_LEFT_LIMIT_SWITCH_PORT));
@@ -163,11 +163,11 @@ void RobotMap::init() {
 	shooterRightLimitSwitch.reset(new DigitalInput(SHOOTER_RIGHT_LIMIT_SWITCH_PORT));
 	lw->AddSensor("Shooter", "Limit Switch 2", shooterRightLimitSwitch);
 
-	shooterFlap.reset(new Servo(SHOOTER_FLAP_PORT));
-	lw->AddActuator("Shooter", "Vertical Angle Adjust", shooterFlap);
+//	shooterFlap.reset(new Servo(SHOOTER_FLAP_PORT));
+//	lw->AddActuator("Shooter", "Vertical Angle Adjust", shooterFlap);
 
-	//shooterHorizontalMotor.reset(new Victor(SHOOTER_HORIZONTAL_MOTOR_PORT));
-	shooterHorizontalMotor.reset(new Victor(16));
+	shooterHorizontalMotor.reset(new Victor(SHOOTER_HORIZONTAL_MOTOR_PORT));
+	//shooterHorizontalMotor.reset(new Victor(16));
 
 	ballStopper.reset(new Servo(BALL_STOPPER_PORT));
 	lw->AddActuator("Shooter", "Ball Stopper", ballStopper);

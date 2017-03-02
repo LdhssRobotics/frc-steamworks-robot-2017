@@ -1,7 +1,11 @@
 #include "Blue2AutoMode.h"
+#include "../DriveDistance.h"
+#include "../SetHeading.h"
 
 Blue2AutoMode::Blue2AutoMode() {
 	// Add Commands here:
+	AddSequential(new DriveDistance(100, 5));
+	Wait(1);
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.
