@@ -1,18 +1,11 @@
-#include "Blue3AutoMode.h"
-#include "../DriveDistance.h"
-#include "../SetHeading.h"
-#include "../GearMechanism.h"
+#include "GetGear.h"
+#include "CollectGear.h"
+#include "GoBackGear.h"
 
-Blue3AutoMode::Blue3AutoMode() {
+GetGear::GetGear() {
+	AddSequential(new CollectGear());
+	AddSequential(new GoBackGear());
 	// Add Commands here:
-	AddSequential(new DriveDistance(1, 0.58));
-	AddSequential(new SetHeading(-45));
-	AddSequential(new DriveDistance(1, 0.19));
-	AddSequential(new DriveDistance(0,0));
-	AddSequential(new GearMechanism());
-	AddSequential(new DriveDistance(-1, 0.19));
-	AddSequential(new SetHeading(45));
-	AddSequential(new DriveDistance(1, 2.37));
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.

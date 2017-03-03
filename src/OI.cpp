@@ -7,6 +7,10 @@
 #include "Commands/ManualShoot.h"
 #include "Commands/ResetShooter.h"
 #include "Commands/ToggleBallIntake.h"
+#include "Commands/GetGear.h"
+#include "Commands/CollectGear.h"
+#include "Commands/GoBackGear.h"
+#include "Commands/PlaceGear.h"
   
 OI::OI() {
 	driveStick.reset(new Joystick(0));
@@ -41,7 +45,9 @@ OI::OI() {
 	startButtonD->ToggleWhenPressed(new ClimbRope());
 	rightBumperButtonD->WhileHeld(new ManualShoot());
 	rightBumperButtonD->WhenReleased(new ResetShooter());
-	aButtonD->WhenPressed(new GearMechanism());
+	aButtonD->WhenPressed(new PlaceGear());
+	bButtonD->WhenPressed(new GoBackGear());
+	yButtonD->WhenPressed(new CollectGear());
 
 	// Recovery Stick Controls
 	bButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::INTAKE_SPEED));

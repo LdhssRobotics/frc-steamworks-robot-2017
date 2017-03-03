@@ -1,16 +1,18 @@
 #include "Red1AutoMode.h"
 #include "../DriveDistance.h"
 #include "../SetHeading.h"
+#include "../GearMechanism.h"
 
 Red1AutoMode::Red1AutoMode() {
 	// Add Commands here:
-	AddSequential(new DriveDistance(0.75, 1));
+	AddSequential(new DriveDistance(1, 0.58));
 	AddSequential(new SetHeading(45));
-	AddSequential(new DriveDistance(0.75, 0.5));
-	Wait(1);
-	AddSequential(new DriveDistance(0.75, 0.25));
+	AddSequential(new DriveDistance(1, 0.19));
+	AddSequential(new DriveDistance(0,0));
+	AddSequential(new GearMechanism());
+	AddSequential(new DriveDistance(-1, 0.19));
 	AddSequential(new SetHeading(-45));
-	AddSequential(new DriveDistance(0.75, 1.5));
+	AddSequential(new DriveDistance(1, 2.37));
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.

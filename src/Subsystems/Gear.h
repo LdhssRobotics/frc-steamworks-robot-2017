@@ -17,6 +17,7 @@ public:
 	void ResetEncoder();
 	void Reset();
 	bool InCorrectReturnPosition();
+	bool InCorrectCollectPosition();
 	float GetPosition();
 	void Log();
 };
