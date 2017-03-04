@@ -7,7 +7,7 @@ CollectGear::CollectGear() {
 // Called just before this Command runs the first time
 void CollectGear::Initialize() {
 	SmartDashboard::PutString("Gear:", "collecting gear");
-	Robot::gear->SetMotorSpeed(0.4);
+	Robot::gear->SetMotorSpeed(0.35);
 }
 
 // Called repeatedly when this Command is scheduled to run

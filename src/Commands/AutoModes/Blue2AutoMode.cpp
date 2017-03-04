@@ -5,8 +5,8 @@
 
 Blue2AutoMode::Blue2AutoMode() {
 	// Add Commands here:
-	AddSequential(new DriveDistance(1, 1));
-	AddSequential(new DriveDistance(0,0));
+	AddSequential(new DriveDistance(0.5, 3));
+	AddSequential(new DriveDistance(0, 0.2));
 	AddSequential(new GearMechanism());
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

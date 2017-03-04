@@ -5,6 +5,7 @@
 
 class RobotMap {
 public:
+
 	// Ball intake subsystem
 	static std::shared_ptr<SpeedController> ballIntakeMotor;
 

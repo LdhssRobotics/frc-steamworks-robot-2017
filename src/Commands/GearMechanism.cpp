@@ -4,5 +4,6 @@
 
 GearMechanism::GearMechanism() {
 	AddSequential(new PlaceGear());
+	Wait(2);
 	AddSequential(new GoBackGear());
 }

@@ -2,6 +2,7 @@
 #include "WPILib.h"
 
 #include "Commands/ClimbRope.h"
+#include "Commands/ReverseRope.h"
 #include "Commands/SetHeading.h"
 #include "Commands/GearMechanism.h"
 #include "Commands/ManualShoot.h"
@@ -43,6 +44,7 @@ OI::OI() {
 	// Assigning Commands to Buttons
 	// Drive Stick Controls
 	startButtonD->ToggleWhenPressed(new ClimbRope());
+	selectButtonD->ToggleWhenPressed(new ReverseRope());
 	rightBumperButtonD->WhileHeld(new ManualShoot());
 	rightBumperButtonD->WhenReleased(new ResetShooter());
 	aButtonD->WhenPressed(new PlaceGear());
