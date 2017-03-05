@@ -12,7 +12,8 @@
 #include "Commands/CollectGear.h"
 #include "Commands/GoBackGear.h"
 #include "Commands/PlaceGear.h"
-  
+#include "Commands/CatchRope.h"
+
 OI::OI() {
 	driveStick.reset(new Joystick(0));
 	recoveryStick.reset(new Joystick(1));
@@ -44,9 +45,10 @@ OI::OI() {
 	// Assigning Commands to Buttons
 	// Drive Stick Controls
 	startButtonD->ToggleWhenPressed(new ClimbRope());
-	selectButtonD->ToggleWhenPressed(new ReverseRope());
-	rightBumperButtonD->WhileHeld(new ManualShoot());
-	rightBumperButtonD->WhenReleased(new ResetShooter());
+	selectButtonD->ToggleWhenPressed(new CatchRope());
+	xButtonD->ToggleWhenPressed(new ReverseRope());
+	//rightBumperButtonD->WhileHeld(new ManualShoot());
+	//rightBumperButtonD->WhenReleased(new ResetShooter());
 	aButtonD->WhenPressed(new PlaceGear());
 	bButtonD->WhenPressed(new GoBackGear());
 	yButtonD->WhenPressed(new CollectGear());

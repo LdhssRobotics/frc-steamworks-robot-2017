@@ -29,6 +29,11 @@ void Climber::ReverseClimb() {
 	rachetServo->Set(1);
 }
 
-void Climber::Reset() {
+void Climber::SlowClimb(){
+	winchMotor->Set(0.5);
+}
 
+void Climber::Reset() {
+	rachetServo->Set(1);
+	winchMotor->Set(0);
 }

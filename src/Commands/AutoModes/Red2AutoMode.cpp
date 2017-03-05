@@ -7,7 +7,7 @@ Red2AutoMode::Red2AutoMode() {
 	// Add Commands here:
 	AddSequential(new DriveDistance(0.5, 3));
 	AddSequential(new DriveDistance(0, 0.2));
-	AddSequential(new GearMechanism());
+	//AddSequential(new GearMechanism());
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.

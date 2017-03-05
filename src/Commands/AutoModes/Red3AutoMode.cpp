@@ -9,10 +9,10 @@ Red3AutoMode::Red3AutoMode() {
 	AddSequential(new SetHeading(-45));
 	AddSequential(new DriveDistance(1, 0.5));
 	AddSequential(new DriveDistance(0,0.2));
-	AddSequential(new GearMechanism());
-	AddSequential(new DriveDistance(-1, 0.4));
-	AddSequential(new SetHeading(45));
-	AddSequential(new DriveDistance(1, 2.5));
+	//AddSequential(new GearMechanism());
+	//AddSequential(new DriveDistance(-1, 0.4));
+	//AddSequential(new SetHeading(45));
+	//AddSequential(new DriveDistance(1, 2.5));
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.

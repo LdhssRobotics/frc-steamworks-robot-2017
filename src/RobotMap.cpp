@@ -125,7 +125,8 @@ void RobotMap::init() {
 
 	leftDrive.reset(new Victor(LEFT_DRIVE_PORT));
 	rightDrive.reset(new Victor(RIGHT_DRIVE_PORT));
-	rightDrive->SetInverted(true);
+	rightDrive->SetInverted(false);
+	leftDrive->SetInverted(true);
 	robotDrive.reset(new RobotDrive(leftDrive, rightDrive));
 
 	robotDrive->SetSafetyEnabled(false);

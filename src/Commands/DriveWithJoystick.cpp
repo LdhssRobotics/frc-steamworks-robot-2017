@@ -7,7 +7,7 @@ DriveWithJoystick::DriveWithJoystick() {
 // Called repeatedly when this Command is scheduled to run
 void DriveWithJoystick::Execute() {
 	float speed = -Robot::oi->driveStick->GetRawAxis(OI::LEFT_Y_AXIS);
-	float turn = 0.75 * Robot::oi->driveStick->GetRawAxis(OI::RIGHT_X_AXIS);
+	float turn = -0.75 * Robot::oi->driveStick->GetRawAxis(OI::RIGHT_X_AXIS);
 
 	if (Robot::oi->driveStick->GetRawButton(5)) {
 		speed = 0.65 * speed;

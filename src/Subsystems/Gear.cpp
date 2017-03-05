@@ -24,11 +24,11 @@ bool Gear::InCorrectReturnPosition(){
 
 //Check when it is at the desired position (80 degrees from origin
 bool Gear::InCorrectPosition() {
-	return gearEncoder->GetDistance() > 80; // Roughly a quarter turn
+	return gearEncoder->GetDistance() > 135; // Roughly a quarter turn
 	}
 
 bool Gear::InCorrectCollectPosition() {
-	return gearEncoder->GetDistance() > 37.5;
+	return gearEncoder->GetDistance() > 90;
 }
 
 void Gear::ResetEncoder(){

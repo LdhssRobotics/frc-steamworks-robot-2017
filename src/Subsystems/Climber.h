@@ -21,6 +21,7 @@ public:
 	void StartClimb();
 	void ReverseClimb();
 	void StopClimb();
+	void SlowClimb();
 	void Reset();
 };
 
