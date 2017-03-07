@@ -89,6 +89,14 @@ void RobotMap::init() {
 
 	flywheelEncoder.reset(new Encoder(5, 6, false, Encoder::EncodingType::k4X));
 	lw->AddSensor("Shooter", "Flywheel Encoder", flywheelEncoder);
+
+	//Ultrasonic Subsystem
+	trigger.reset(new DigitalOutput(2));
+	lw->AddSensor("Ultrasonic","trigger pin", trigger);
+
+	echo.reset(new DigitalInput(3));
+	lw->AddSensor("Ultrasonic", "echo pin", echo);
+
 }
 
 void RobotMap::reset() {

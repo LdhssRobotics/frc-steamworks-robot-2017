@@ -31,6 +31,13 @@ public:
 	static std::shared_ptr<Servo> ballStopper;
 	static std::shared_ptr<Encoder> flywheelEncoder;
 
+	//Ultrasonic Sensor subsystem
+	static std:: shared_ptr<DigitalInput> echo;
+	static std:: shared_ptr<DigitalOutput> trigger;
+
+
+
+
 	static void init();
 	static void reset();
 };
