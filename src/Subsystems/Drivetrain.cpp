@@ -9,8 +9,12 @@
 #include "../RobotMap.h"
 #include "Commands/DriveWithJoystick.h"
 #include "../Robot.h"
+#include "OI.h"
+
 
 Drivetrain::Drivetrain() : Subsystem("Drivetrain"){
+	gyro = RobotMap::gyro;
+	driveEncoder = RobotMap::driveEncoder;
 	leftDrive = RobotMap::leftDrive;
 	rightDrive = RobotMap::rightDrive;
 	robotDrive = RobotMap::robotDrive;
@@ -29,5 +33,16 @@ void Drivetrain::Stop(){
 }
 
 void Drivetrain::Reset() {
+	gyro->Reset();
+	Stop();
+}
 
+double Drivetrain::GetHeading()
+{
+	return gyro->GetAngle();
+}
+
+void Drivetrain::Log()
+{
+	SmartDashboard::PutNumber("Robot heading in degrees", GetHeading());
 }

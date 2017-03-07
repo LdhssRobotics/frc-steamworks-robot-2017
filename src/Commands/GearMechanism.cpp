@@ -3,7 +3,7 @@
 #include "Commands/GoBackGear.h"
 
 GearMechanism::GearMechanism() {
-
 	AddSequential(new PlaceGear());
+	Wait(2);
 	AddSequential(new GoBackGear());
 }

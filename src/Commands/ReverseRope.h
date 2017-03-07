@@ -1,16 +1,16 @@
-#ifndef ClimbRope_H
-#define ClimbRope_H
+#ifndef ReverseRope_H
+#define ReverseRope_H
 
 #include "../RobotMap.h"
 #include "WPILib.h"
 
-class ClimbRope : public Command {
+class ReverseRope : public Command {
 public:
-	ClimbRope();
+	ReverseRope();
 	void Initialize();
 	bool IsFinished();
 	void End();
 	void Interrupted();
 };
 
-#endif  // ClimbRope_H
+#endif  // ReverseRope_H

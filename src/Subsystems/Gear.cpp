@@ -24,15 +24,19 @@ bool Gear::InCorrectReturnPosition(){
 
 //Check when it is at the desired position (80 degrees from origin
 bool Gear::InCorrectPosition() {
-	return  gearEncoder->GetDistance() < -80; // Roughly a quarter turn
+	return gearEncoder->GetDistance() > 100; // Roughly a quarter turn
 	}
 
 void Gear::ResetEncoder(){
 	gearEncoder->Reset();
-	SmartDashboard::PutNumber("Gear encoder:", GetPosition());
+	Log();
 }
 
 void Gear::Reset() {
 	ResetEncoder();
+}
+
+void Gear::Log() {
+	SmartDashboard::PutNumber("Gear encoder:", GetPosition());
 }
 

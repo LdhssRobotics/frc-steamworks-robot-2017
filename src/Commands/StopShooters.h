@@ -1,16 +1,20 @@
-#ifndef ClimbRope_H
-#define ClimbRope_H
+#ifndef StopShooters_H
+#define StopShooters_H
+
 
 #include "../RobotMap.h"
 #include "WPILib.h"
+#include "../Robot.h"
 
-class ClimbRope : public Command {
+
+class StopShooters: public Command
+{
 public:
-	ClimbRope();
+	StopShooters();
 	void Initialize();
 	bool IsFinished();
 	void End();
 	void Interrupted();
 };
 
-#endif  // ClimbRope_H
+#endif

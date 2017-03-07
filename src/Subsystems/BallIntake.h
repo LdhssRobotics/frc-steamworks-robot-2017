@@ -17,8 +17,11 @@ private:
 
 public:
 	BallIntake();
-	void InitDefaultCommand();
 	void Reset();
+	void SetIntakeSpeed(float speed);
+	void ReverseIntakeSpeed(float speed);
+	void Stop();
+	void Log(float intakeSpeed);
 };
 
 #endif /* SRC_SUBSYSTEMS_BALLINTAKE_H_ */

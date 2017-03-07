@@ -1,8 +1,15 @@
 #include "OI.h"
-#include "Commands/ClimbRope.h"
-#include "Commands/PlaceGear.h"
 #include "WPILib.h"
+
+#include "Commands/ClimbRope.h"
+#include "Commands/ReverseRope.h"
+#include "Commands/SetHeading.h"
 #include "Commands/GearMechanism.h"
+#include "Commands/ManualShoot.h"
+#include "Commands/ResetShooter.h"
+#include "Commands/ToggleBallIntake.h"
+#include "Commands/GoBackGear.h"
+#include "Commands/PlaceGear.h"
 
 OI::OI() {
 	driveStick.reset(new Joystick(0));
@@ -34,10 +41,16 @@ OI::OI() {
 
 	// Assigning Commands to Buttons
 	// Drive Stick Controls
-	startButtonD->ToggleWhenPressed(new ClimbRope());
+	startButtonD->ToggleWhenPressed(new ClimbRope()); // Climb the rope (full speed)
+	xButtonD->ToggleWhenPressed(new ReverseRope()); // Reverses the rope mechanism (to bring the robot down after a match)
+	//rightBumperButtonD->WhileHeld(new ManualShoot());
+	//rightBumperButtonD->WhenReleased(new ResetShooter());
+	aButtonD->WhenPressed(new PlaceGear()); // Place gear on peg
+	bButtonD->WhenPressed(new GoBackGear()); // Return to original position
 
 	// Recovery Stick Controls
-	aButtonR->WhenPressed(new GearMechanism());
+	bButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::INTAKE_SPEED));
+	xButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::REVERSE_INTAKE_SPEED));
 }
 
 std::shared_ptr<Joystick> OI::getDriveStick() {
