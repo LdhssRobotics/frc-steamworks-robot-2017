@@ -37,13 +37,6 @@ public:
 	static std::shared_ptr<Encoder> flywheelEncoder1;
 	static std::shared_ptr<Encoder> flywheelEncoder2;
 
-	//Ultrasonic Sensor subsystem
-	static std:: shared_ptr<DigitalInput> echo;
-	static std:: shared_ptr<DigitalOutput> trigger;
-
-
-
-
 	static void init();
 	static void reset();
 };
