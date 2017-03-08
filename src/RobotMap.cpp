@@ -181,12 +181,25 @@ void RobotMap::init() {
 	ballStopper.reset(new Servo(BALL_STOPPER_PORT));
 	lw->AddActuator("Shooter", "Ball Stopper", ballStopper);
 
+<<<<<<< HEAD
+	flywheelEncoder.reset(new Encoder(5, 6, false, Encoder::EncodingType::k4X));
+	lw->AddSensor("Shooter", "Flywheel Encoder", flywheelEncoder);
+
+	//Ultrasonic Subsystem
+	trigger.reset(new DigitalOutput(2));
+	lw->AddSensor("Ultrasonic","trigger pin", trigger);
+
+	echo.reset(new DigitalInput(3));
+	lw->AddSensor("Ultrasonic", "echo pin", echo);
+
+=======
 	flywheelEncoder1.reset(new Encoder(FLYWHEEL_ENCODER_1A_PORT,
 			FLYWHEEL_ENCODER_1B_PORT, false, Encoder::EncodingType::k4X));
 	lw->AddSensor("Shooter", "Flywheel Encoder", flywheelEncoder1);
 
 	flywheelEncoder2.reset(new Encoder(FLYWHEEL_ENCODER_2A_PORT,
 			FLYWHEEL_ENCODER_2B_PORT, false, Encoder::EncodingType::k4X));
+>>>>>>> c7cbfe56039fec65da20a8b8d9415812b9fcfc48
 }
 
 void RobotMap::reset() {
