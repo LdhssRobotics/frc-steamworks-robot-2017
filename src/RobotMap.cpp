@@ -135,7 +135,7 @@ void RobotMap::init() {
 	backRightDrive->SetInverted(true);
 	frontRightDrive->SetInverted(true);
 
-	robotDrive.reset(new RobotDrive(frontLeftDrive, frontRightDrive, backLeftDrive, backRightDrive));
+	robotDrive.reset(new RobotDrive(frontRightDrive, backRightDrive, frontLeftDrive, backLeftDrive));
 
 	robotDrive->SetSafetyEnabled(false);
 	robotDrive->SetExpiration(0.1);
