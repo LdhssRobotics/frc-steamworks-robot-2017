@@ -6,8 +6,22 @@ std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<Gear> Robot::gear;
 std::shared_ptr<Shooter> Robot::shooter;
 std::unique_ptr<OI> Robot::oi;
+std::shared_ptr<UltrasonicSubsystem> Robot::ultrasonicSubsystem;
+
+void Robot::VisionThread() {
+	cs::UsbCamera frontCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
+	frontCamera.SetResolution(160, 120);
+
+	cs::UsbCamera backCamera = CameraServer::GetInstance()->StartAutomaticCapture(1);
+	backCamera.SetResolution(160, 120);
+}
 
 void Robot::RobotInit() {
+	// We need to run our vision program in a separate Thread.
+	// If not, our robot program will not run
+	std::thread visionThread(VisionThread);
+	visionThread.detach();
+
 	RobotMap::init();
 
 	ballIntake.reset(new BallIntake());
@@ -15,6 +29,8 @@ void Robot::RobotInit() {
 	drivetrain.reset(new Drivetrain());
 	gear.reset(new Gear());
 	shooter.reset(new Shooter());
+	ultrasonicSubsystem.reset(new UltrasonicSubsystem());
+
 	oi.reset(new OI());
 
 	chooser.AddDefault("Blue 1", new Blue1AutoMode());
@@ -36,9 +52,7 @@ void Robot::DisabledPeriodic() {
 
 void Robot::AutonomousInit() {
 	autonomousCommand.reset(chooser.GetSelected());
-	if (autonomousCommand.get() != nullptr) {
-		autonomousCommand->Cancel();
-	}
+	autonomousCommand->Start();
 }
 
 void Robot::AutonomousPeriodic() {

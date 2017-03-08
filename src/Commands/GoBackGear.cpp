@@ -4,9 +4,7 @@
  *  Created on: Feb 16, 2017
  *      Author: programmer
  */
-
-#include <Commands/GoBackGear.h>
-
+#include "GoBackGear.h"
 
 GoBackGear::GoBackGear() {
 	Requires(Robot::gear.get());
@@ -20,13 +18,12 @@ void GoBackGear::Initialize() {
 }
 
 void GoBackGear::Execute() {
-	SmartDashboard::PutNumber("Gear encoder:", Robot::gear->GetPosition());
+	Robot::gear->Log();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool GoBackGear::IsFinished() {
 	return Robot::gear->InCorrectReturnPosition();
-
 }
 
 // Called once after isFinished returns true
