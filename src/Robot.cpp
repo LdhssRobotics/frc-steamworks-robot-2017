@@ -39,7 +39,7 @@ void Robot::RobotInit() {
 	chooser.AddObject("Red 1", new Red1AutoMode());
 	chooser.AddObject("Red 2", new Red2AutoMode());
 	chooser.AddObject("Red 3", new Red3AutoMode());
-	SmartDashboard::PutData("Auto Modes", &chooser);
+	SmartDashboard::PutData("Auto Modes:", &chooser);
 }
 
 void Robot::DisabledInit() {

@@ -15,15 +15,25 @@ Climber::Climber() : Subsystem("Climber") {
 }
 
 void Climber::StartClimb() {
-	rachetServo->Set(0);
+	rachetServo->Set(1);
 	winchMotor->Set(1);
 }
 
 void Climber::StopClimb() {
 	winchMotor->Set(0);
+	rachetServo->Set(0);
+}
+
+void Climber::ReverseClimb() {
+	winchMotor->Set(-1);
 	rachetServo->Set(1);
 }
 
-void Climber::Reset() {
+void Climber::SlowClimb(){
+	winchMotor->Set(0.5);
+}
 
+void Climber::Reset() {
+	rachetServo->Set(1);
+	winchMotor->Set(0);
 }
