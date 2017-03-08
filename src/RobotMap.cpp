@@ -19,8 +19,10 @@
 #define RATCHET_SERVO_PORT 2
 
 		// Drivetrain subsystem
-#define LEFT_DRIVE_PORT 3
-#define RIGHT_DRIVE_PORT 4
+#define BACK_LEFT_DRIVE_PORT 3
+#define BACK_RIGHT_DRIVE_PORT 4
+#define FRONT_LEFT_DRIVE_PORT 6
+#define FRONT_RIGHT_DRIVE_PORT 7
 
 		// Gear subsystem
 #define GEAR_MOTOR_PORT 5
@@ -84,8 +86,10 @@ std::shared_ptr<Servo> RobotMap::rachetServo;
 std::shared_ptr<AnalogGyro> RobotMap::gyro;
 std::shared_ptr<Ultrasonic> RobotMap::ultrasonic;
 std::shared_ptr<Encoder> RobotMap::driveEncoder;
-std::shared_ptr<SpeedController> RobotMap::leftDrive;
-std::shared_ptr<SpeedController> RobotMap::rightDrive;
+std::shared_ptr<SpeedController> RobotMap::backLeftDrive;
+std::shared_ptr<SpeedController> RobotMap::backRightDrive;
+std::shared_ptr<SpeedController> RobotMap::frontLeftDrive;
+std::shared_ptr<SpeedController> RobotMap::frontRightDrive;
 std::shared_ptr<RobotDrive> RobotMap::robotDrive;
 
 	// Gear subsystem
@@ -123,11 +127,15 @@ void RobotMap::init() {
 	driveEncoder.reset(new Encoder(DRIVE_ENCODER_A_PORT, DRIVE_ENCODER_B_PORT, false, Encoder::EncodingType::k4X));
 	lw->AddSensor("Drive", "Encoder", driveEncoder);
 
-	leftDrive.reset(new Victor(LEFT_DRIVE_PORT));
-	rightDrive.reset(new Victor(RIGHT_DRIVE_PORT));
-	//rightDrive.reset(new Victor(15));
-	rightDrive->SetInverted(true);
-	robotDrive.reset(new RobotDrive(leftDrive, rightDrive));
+	backLeftDrive.reset(new Victor(BACK_LEFT_DRIVE_PORT));
+	backRightDrive.reset(new Victor(BACK_RIGHT_DRIVE_PORT));
+	frontLeftDrive.reset(new Victor(FRONT_LEFT_DRIVE_PORT));
+	frontRightDrive.reset(new Victor(FRONT_RIGHT_DRIVE_PORT));
+
+	backRightDrive->SetInverted(true);
+	frontRightDrive->SetInverted(true);
+
+	robotDrive.reset(new RobotDrive(frontRightDrive, backRightDrive, frontLeftDrive, backLeftDrive));
 
 	robotDrive->SetSafetyEnabled(false);
 	robotDrive->SetExpiration(0.1);
