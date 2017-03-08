@@ -19,7 +19,9 @@ private:
 public:
 	Climber();
 	void StartClimb();
+	void ReverseClimb();
 	void StopClimb();
+	void SlowClimb();
 	void Reset();
 };
 
