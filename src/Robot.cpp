@@ -32,7 +32,7 @@ void Robot::VisionThread() {
 		}
 
 		Robot::vision->process(source);
-		cv::Mat output = Robot::vision->gethslThresholdOutput();
+		cv::Mat output = Robot::vision->returnOutput();
 
 		// Give the output stream a new image to display
 		outputStream.PutFrame(output);
