@@ -15,10 +15,8 @@
 Drivetrain::Drivetrain() : Subsystem("Drivetrain"){
 	gyro = RobotMap::gyro;
 	driveEncoder = RobotMap::driveEncoder;
-	backLeftDrive = RobotMap::backLeftDrive;
-	backRightDrive = RobotMap::backRightDrive;
-	frontLeftDrive = RobotMap::frontLeftDrive;
-	frontRightDrive = RobotMap::frontRightDrive;
+	leftDrive = RobotMap::leftDrive;
+	rightDrive = RobotMap::rightDrive;
 	robotDrive = RobotMap::robotDrive;
 }
 

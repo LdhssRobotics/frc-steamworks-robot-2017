@@ -29,10 +29,8 @@ void SetHeading::Execute()
 		turningValue = 0.5;
 	}
 	//Turn robot
-	Robot::drivetrain->backLeftDrive->Set(turningValue);
-	Robot::drivetrain->backRightDrive->Set(turningValue);
-	Robot::drivetrain->frontLeftDrive->Set(turningValue);
-	Robot::drivetrain->frontRightDrive->Set(turningValue);
+	Robot::drivetrain->leftDrive->Set(turningValue);
+	Robot::drivetrain->rightDrive->Set(turningValue);
 
 	//Display current heading on Smart Dashboard
 	Robot::drivetrain->Log();
