@@ -14,6 +14,7 @@ void Vision::process(cv::Mat source) {
 	double resizeImageHeight = 120.0;  // default Double
 	int resizeImageInterpolation = cv::INTER_CUBIC;
 	resizeImage(resizeImageInput, resizeImageWidth, resizeImageHeight, resizeImageInterpolation, this->resizeImageOutput);
+
 	// CV dilate
 	cv::Mat cvDilateSrc = resizeImageOutput;
 	cv::Mat cvDilateKernel;
@@ -22,16 +23,19 @@ void Vision::process(cv::Mat source) {
 	int cvDilateBordertype = cv::BORDER_CONSTANT;
 	cv::Scalar cvDilateBordervalue(-1);
 	cvDilate(cvDilateSrc, cvDilateKernel, cvDilateAnchor, cvDilateIterations, cvDilateBordertype, cvDilateBordervalue, this->cvDilateOutput);
+
 	// HSL threshold
 	cv::Mat hslThresholdInput = cvDilateOutput;
 	double hslThresholdHue[] = {73.27635073338668, 102.39986158206233};
 	double hslThresholdSaturation[] = {38.05970262680481, 255.0};
 	double hslThresholdLuminance[] = {32.44927561423205, 240.49488607933904};
 	hslThreshold(hslThresholdInput, hslThresholdHue, hslThresholdSaturation, hslThresholdLuminance, this->hslThresholdOutput);
+
 	// Find contours
 	cv::Mat findContoursInput = hslThresholdOutput;
 	bool findContoursExternalOnly = false;  // default Boolean
 	findContours(findContoursInput, findContoursExternalOnly, this->findContoursOutput);
+
 	// Filter contours
 	std::vector<std::vector<cv::Point> > filterContoursContours = findContoursOutput;
 	double filterContoursMinArea = 25.0;  // default Double
@@ -52,28 +56,47 @@ void Vision::process(cv::Mat source) {
 
 	// Get the moments
 	vector<Moments> mu(filterContoursOutput.size());
-	for (int i = 0; i < +(filterContoursOutput.size()); i++) {
+	for (int i = 0; i < filterContoursOutput.size(); i++) {
 		mu[i] = moments(filterContoursOutput[i], false);
 	}
 
 	// Get the mass centres
-	vector<Point2f> mc(filterContoursOutput.size());
+	std::vector<cv::Point2f> mc(filterContoursOutput.size());
 	for (int i = 0; i < filterContoursOutput.size(); i++) {
 		mc[i] = Point2f(mu[i].m10/mu[i].m00, mu[i].m01/mu[i].m00);
 	}
+
+	// Get the x-coordinates
+	x1 = mc[1].x;
+	x2 = mc[2].x;
 
 	// Draw the contours
 	Mat drawing = Mat::zeros(cannyOutput.size(), CV_8UC3);
 	for (int i = 0; i < filterContoursOutput.size(); i++) {
 		Scalar colour = Scalar(rng.uniform(0, 255), rng.uniform(0, 255), rng.uniform(0, 255));
 		drawContours(drawing, filterContoursOutput, i, colour, 2, 8, hierarchy, 0, Point());
-		circle( drawing, mc[i], 4, colour, -1, 8, 0 );
+		circle(drawing, mc[i], 4, colour, -1, 8, 0);
 	}
 }
 
+short Vision::findTarget() {
+	// Make sure the x-coordinates are correct
+	frc::SmartDashboard::PutNumber("x1", x1);
+	frc::SmartDashboard::PutNumber("x2", x2);
+
+	int xAvg = (x1 + x2) / 2;
+	if ((xAvg + 10) > xCentre || (xAvg - 10) < xCentre) {
+		// On target
+		return 0;
+	} else if (xAvg < xCentre) {
+		// Need to turn left
+		return -1;
+	}
+	// Need to turn right
+	return 1;
+}
+
 cv::Mat Vision::returnOutput() {
-	//cvtColor(resizeImageOutput, base, CV_BGR2GRAY);
-	// Convert std::vector<std::vector<cv::Point> > to cv::Mat
 	return drawing;
 }
 

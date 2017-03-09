@@ -18,7 +18,8 @@ private:
 public:
 	UltrasonicSubsystem();
 	void InitDefaultCommand();
-	void GetRange();
+	float GetRangeInches();
+	void Log();
 	void Reset();
 };
 

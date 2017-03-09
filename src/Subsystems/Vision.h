@@ -20,10 +20,12 @@
 
 class Vision : public Subsystem {
 private:
+	int x1 = 0;
+	int x2 = 0;
+	int xCentre = 80;
 	int thresh = 100;
 	int max_thresh = 255;
 	cv::RNG rng;
-
 	std::vector<cv::Vec4i> hierarchy;
 	cv::Mat drawing;
 	cv::Mat cannyOutput;
@@ -49,6 +51,7 @@ public:
 	std::vector<std::vector<cv::Point> > getfindContoursOutput();
 	std::vector<std::vector<cv::Point> > getfilterContoursOutput();
 	cv::Mat returnOutput();
+	short findTarget();
 };
 
 #endif  // Vision_H

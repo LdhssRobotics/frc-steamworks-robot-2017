@@ -6,7 +6,7 @@ GetUltrasonic::GetUltrasonic() {
 
 // Called repeatedly when this Command is scheduled to run
 void GetUltrasonic::Execute() {
-	Robot::ultrasonicSubsystem->GetRange();
+	Robot::ultrasonicSubsystem->Log();
 }
 
 // Make this return true when this Command no longer needs to run execute()

@@ -19,10 +19,14 @@ void UltrasonicSubsystem::InitDefaultCommand() {
 	SetDefaultCommand(new GetUltrasonic());
 }
 
-void UltrasonicSubsystem::GetRange(){
+void UltrasonicSubsystem::Log(){
 	// Return distance in inches and feet
 	SmartDashboard::PutNumber("Distance-inches: ", ultrasonic->GetRangeInches());
 	SmartDashboard::PutNumber("Distance-feet: ", (ultrasonic->GetRangeInches() * 0.0833333));
+}
+
+float UltrasonicSubsystem::GetRangeInches() {
+	return ultrasonic->GetRangeInches();
 }
 
 void UltrasonicSubsystem::Reset(){
