@@ -31,6 +31,7 @@
 #include "Subsystems/Drivetrain.h"
 #include "Subsystems/Gear.h"
 #include "Subsystems/Shooter.h"
+#include "Subsystems/Vision.h"
 #include "Subsystems/UltrasonicSubsystem.h"
 
 #include "OI.h"
@@ -47,6 +48,7 @@ public:
 	static std::shared_ptr<Drivetrain> drivetrain;
 	static std::shared_ptr<Gear> gear;
 	static std::shared_ptr<Shooter> shooter;
+	static std::shared_ptr<Vision> vision;
 	static std::shared_ptr<UltrasonicSubsystem> ultrasonicSubsystem;
 
 	static void VisionThread();

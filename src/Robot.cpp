@@ -5,15 +5,38 @@ std::shared_ptr<Climber> Robot::climber;
 std::shared_ptr<Drivetrain> Robot::drivetrain;
 std::shared_ptr<Gear> Robot::gear;
 std::shared_ptr<Shooter> Robot::shooter;
-std::unique_ptr<OI> Robot::oi;
+std::shared_ptr<Vision> Robot::vision;
 std::shared_ptr<UltrasonicSubsystem> Robot::ultrasonicSubsystem;
+std::unique_ptr<OI> Robot::oi;
 
 void Robot::VisionThread() {
-	cs::UsbCamera frontCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
-	frontCamera.SetResolution(160, 120);
+	cs::UsbCamera gearCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
+	gearCamera.SetResolution(160, 120);
 
-	cs::UsbCamera backCamera = CameraServer::GetInstance()->StartAutomaticCapture(1);
-	backCamera.SetResolution(160, 120);
+	// Get a CvSink. This will capture Mats from the Camera
+	cs::CvSink cvSink = CameraServer::GetInstance()->GetVideo();
+	// Setup a CvSource. This will send images back to the Dashboard
+	cs::CvSource outputStream = CameraServer::GetInstance()->
+			PutVideo("Contours", 160, 120);
+
+	cv::Mat source;
+
+	while (true) {
+		// Tell the CvSink to grab a frame from the camera and put it
+		// in the source mat.  If there is an error notify the output.
+		if (cvSink.GrabFrame(source) == 0) {
+			// Send the output the error.
+			outputStream.NotifyError(cvSink.GetError());
+			// skip the rest of the current iteration
+			continue;
+		}
+
+		Robot::vision->process(source);
+		cv::Mat output = Robot::vision->gethslThresholdOutput();
+
+		// Give the output stream a new image to display
+		outputStream.PutFrame(output);
+	}
 }
 
 void Robot::RobotInit() {
@@ -29,6 +52,7 @@ void Robot::RobotInit() {
 	drivetrain.reset(new Drivetrain());
 	gear.reset(new Gear());
 	shooter.reset(new Shooter());
+	vision.reset(new Vision());
 	ultrasonicSubsystem.reset(new UltrasonicSubsystem());
 
 	oi.reset(new OI());
