@@ -16,6 +16,7 @@ SetHeading::SetHeading(float heading) :
 void SetHeading::Initialize()
 {
 	Robot::drivetrain->Reset();
+	SetTimeout(3);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -29,10 +30,10 @@ void SetHeading::Execute()
 		turningValue = 0.5;
 	}
 	//Turn robot
-	Robot::drivetrain->backLeftDrive->Set(turningValue);
-	Robot::drivetrain->backRightDrive->Set(turningValue);
 	Robot::drivetrain->frontLeftDrive->Set(turningValue);
+	Robot::drivetrain->backLeftDrive->Set(turningValue);
 	Robot::drivetrain->frontRightDrive->Set(turningValue);
+	Robot::drivetrain->backRightDrive->Set(turningValue);
 
 	//Display current heading on Smart Dashboard
 	Robot::drivetrain->Log();
@@ -42,7 +43,7 @@ void SetHeading::Execute()
 bool SetHeading::IsFinished()
 {
 	//Determine if robot has attained target within 2 degrees on each side
-	return ((desHeading + 2) >= Robot::drivetrain->GetHeading() && ((desHeading - 2) <= Robot::drivetrain->GetHeading()));
+	return IsTimedOut() || ((desHeading + 2) >= Robot::drivetrain->GetHeading() && ((desHeading - 2) <= Robot::drivetrain->GetHeading()));
 }
 // Called once after isFinished returns true
 void SetHeading::End()

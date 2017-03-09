@@ -17,10 +17,10 @@ public:
 	static std::shared_ptr<AnalogGyro> gyro;
 	static std::shared_ptr<frc::Ultrasonic> ultrasonic;
 	static std::shared_ptr<Encoder> driveEncoder;
-	static std::shared_ptr<SpeedController> backLeftDrive;
-	static std::shared_ptr<SpeedController> backRightDrive;
 	static std::shared_ptr<SpeedController> frontLeftDrive;
+	static std::shared_ptr<SpeedController> backLeftDrive;
 	static std::shared_ptr<SpeedController> frontRightDrive;
+	static std::shared_ptr<SpeedController> backRightDrive;
 	static std::shared_ptr<RobotDrive> robotDrive;
 
 	// Gear subsystem
@@ -38,13 +38,6 @@ public:
 	static std::shared_ptr<Servo> ballStopper;
 	static std::shared_ptr<Encoder> flywheelEncoder1;
 	static std::shared_ptr<Encoder> flywheelEncoder2;
-
-	//Ultrasonic Sensor subsystem
-	static std:: shared_ptr<DigitalInput> echo;
-	static std:: shared_ptr<DigitalOutput> trigger;
-
-
-
 
 	static void init();
 	static void reset();

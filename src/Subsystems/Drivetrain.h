@@ -19,10 +19,10 @@ private:
 
 public:
 	// Must be public to be used in SetHeading
-	std::shared_ptr<SpeedController> backLeftDrive;
-	std::shared_ptr<SpeedController> backRightDrive;
 	std::shared_ptr<SpeedController> frontLeftDrive;
+	std::shared_ptr<SpeedController> backLeftDrive;
 	std::shared_ptr<SpeedController> frontRightDrive;
+	std::shared_ptr<SpeedController> backRightDrive;
 
 	Drivetrain();
 	void InitDefaultCommand();

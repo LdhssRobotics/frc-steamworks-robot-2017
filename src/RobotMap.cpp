@@ -19,10 +19,10 @@
 #define RATCHET_SERVO_PORT 2
 
 		// Drivetrain subsystem
-#define BACK_LEFT_DRIVE_PORT 3
-#define BACK_RIGHT_DRIVE_PORT 4
-#define FRONT_LEFT_DRIVE_PORT 6
-#define FRONT_RIGHT_DRIVE_PORT 7
+#define FRONT_LEFT_DRIVE_PORT 3
+#define BACK_LEFT_DRIVE_PORT 4
+#define FRONT_RIGHT_DRIVE_PORT 6
+#define BACK_RIGHT_DRIVE_PORT 7
 
 		// Gear subsystem
 #define GEAR_MOTOR_PORT 5
@@ -86,10 +86,10 @@ std::shared_ptr<Servo> RobotMap::rachetServo;
 std::shared_ptr<AnalogGyro> RobotMap::gyro;
 std::shared_ptr<Ultrasonic> RobotMap::ultrasonic;
 std::shared_ptr<Encoder> RobotMap::driveEncoder;
-std::shared_ptr<SpeedController> RobotMap::backLeftDrive;
-std::shared_ptr<SpeedController> RobotMap::backRightDrive;
 std::shared_ptr<SpeedController> RobotMap::frontLeftDrive;
+std::shared_ptr<SpeedController> RobotMap::backLeftDrive;
 std::shared_ptr<SpeedController> RobotMap::frontRightDrive;
+std::shared_ptr<SpeedController> RobotMap::backRightDrive;
 std::shared_ptr<RobotDrive> RobotMap::robotDrive;
 
 	// Gear subsystem
