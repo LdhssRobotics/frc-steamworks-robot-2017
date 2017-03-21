@@ -127,6 +127,12 @@ void RobotMap::init() {
 	driveEncoder.reset(new Encoder(DRIVE_ENCODER_A_PORT, DRIVE_ENCODER_B_PORT, false, Encoder::EncodingType::k4X));
 	lw->AddSensor("Drive", "Encoder", driveEncoder);
 
+	driveEncoder->SetMaxPeriod(0.1);
+	driveEncoder->SetMinRate(1);
+	driveEncoder->SetSamplesToAverage(15);
+	driveEncoder->SetReverseDirection(true);
+	driveEncoder->SetDistancePerPulse((1/360)*3.14159265358979323*6);
+
 	backLeftDrive.reset(new Victor(BACK_LEFT_DRIVE_PORT));
 	backRightDrive.reset(new Victor(BACK_RIGHT_DRIVE_PORT));
 	frontLeftDrive.reset(new Victor(FRONT_LEFT_DRIVE_PORT));
