@@ -32,13 +32,14 @@
 #include "Subsystems/Gear.h"
 #include "Subsystems/Shooter.h"
 #include "Subsystems/UltrasonicSubsystem.h"
+#include "Subsystems/Vision.h"
 
 #include "OI.h"
 
 
 class Robot : public IterativeRobot {
 public:
-	bool isGearCamera = true;
+	bool gearIsFront;
 
 	std::unique_ptr<Command> autonomousCommand;
 	frc::SendableChooser<frc::Command*> chooser;
@@ -50,6 +51,7 @@ public:
 	static std::shared_ptr<Gear> gear;
 	static std::shared_ptr<Shooter> shooter;
 	static std::shared_ptr<UltrasonicSubsystem> ultrasonicSubsystem;
+	static std::shared_ptr<Vision> vision;
 
 	static void VisionThread();
 	virtual void RobotInit();

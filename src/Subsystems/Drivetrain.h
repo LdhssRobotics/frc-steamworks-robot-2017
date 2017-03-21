@@ -18,6 +18,8 @@ private:
 	std::shared_ptr<RobotDrive> robotDrive;
 
 public:
+	bool isDriveReversed;
+
 	// Must be public to be used in SetHeading
 	std::shared_ptr<SpeedController> frontLeftDrive;
 	std::shared_ptr<SpeedController> backLeftDrive;

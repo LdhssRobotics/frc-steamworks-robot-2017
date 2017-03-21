@@ -7,9 +7,12 @@ std::shared_ptr<Gear> Robot::gear;
 std::shared_ptr<Shooter> Robot::shooter;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<UltrasonicSubsystem> Robot::ultrasonicSubsystem;
+std::shared_ptr<Vision> Robot::vision;
+
+#include "Commands/ToggleReverseDrive.h"
 
 void Robot::VisionThread() {
-	if (isGearCamera) {
+	if (Robot::vision->gearIsFront) {
 		cs::UsbCamera frontCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
 		frontCamera.SetResolution(160, 120);
 	} else {
@@ -19,11 +22,6 @@ void Robot::VisionThread() {
 }
 
 void Robot::RobotInit() {
-	// We need to run our vision program in a separate Thread.
-	// If not, our robot program will not run
-	std::thread visionThread(VisionThread);
-	visionThread.detach();
-
 	RobotMap::init();
 
 	ballIntake.reset(new BallIntake());
@@ -32,8 +30,14 @@ void Robot::RobotInit() {
 	gear.reset(new Gear());
 	shooter.reset(new Shooter());
 	ultrasonicSubsystem.reset(new UltrasonicSubsystem());
+	vision.reset(new Vision());
 
 	oi.reset(new OI());
+
+	// We need to run our vision program in a separate Thread.
+	// If not, our robot program will not run
+	std::thread visionThread(VisionThread);
+	visionThread.detach();
 
 	chooser.AddDefault("Blue 1", new Blue1AutoMode());
 	chooser.AddObject("Blue 2", new Blue2AutoMode());
@@ -65,6 +69,9 @@ void Robot::TeleopInit() {
 	if (autonomousCommand.get() != nullptr) {
 		autonomousCommand->Cancel();
 	}
+
+	// Reverse drive to show SmartDashboard
+	ToggleReverseDrive();
 }
 
 void Robot::TeleopPeriodic() {
