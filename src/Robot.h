@@ -38,6 +38,8 @@
 
 class Robot : public IterativeRobot {
 public:
+	bool isGearCamera = true;
+
 	std::unique_ptr<Command> autonomousCommand;
 	frc::SendableChooser<frc::Command*> chooser;
 	static std::unique_ptr<OI> oi;
