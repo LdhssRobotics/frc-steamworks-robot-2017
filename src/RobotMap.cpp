@@ -39,8 +39,8 @@
 #define ULTRASONIC_ECHO_PORT 0
 #define ULTRASONIC_TRIGGER_PORT 1
 
-#define DRIVE_ENCODER_A_PORT 19
-#define DRIVE_ENCODER_B_PORT 20
+#define DRIVE_ENCODER_A_PORT 2
+#define DRIVE_ENCODER_B_PORT 3
 
 // Room for second drivetrain encoder to be added later
 //#define DRIVE_ENCODER_2A_PORT 4
@@ -129,9 +129,9 @@ void RobotMap::init() {
 
 	driveEncoder->SetMaxPeriod(0.1);
 	driveEncoder->SetMinRate(1);
-	driveEncoder->SetSamplesToAverage(7);
+	driveEncoder->SetSamplesToAverage(15);
 	driveEncoder->SetReverseDirection(true);
-	driveEncoder->SetDistancePerPulse((1/360.0)*3.14159265358979323*4);
+	driveEncoder->SetDistancePerPulse((1/360)*3.14159265358979323*6);
 
 	backLeftDrive.reset(new Victor(BACK_LEFT_DRIVE_PORT));
 	backRightDrive.reset(new Victor(BACK_RIGHT_DRIVE_PORT));

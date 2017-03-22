@@ -19,6 +19,8 @@ void DriveStraight::Initialize()
 void DriveStraight::Execute()
 {
     float currentHeading = Robot::drivetrain->GetHeading();
+
+
 	Robot::drivetrain->ArcadeDrive(speed, (heading-currentHeading) * 0.08);
 }
 

@@ -5,8 +5,8 @@
 const float kP = 0.025;
 
 DriveDistance::DriveDistance(float distance):
-	targetDistance(distance)
-	/*heading(0)*/
+	targetDistance(distance),
+	heading(0)
 {
 	Requires(Robot::drivetrain.get());
 }
@@ -14,21 +14,17 @@ DriveDistance::DriveDistance(float distance):
 // Called just before this Command runs the first time
 void DriveDistance::Initialize() {
 	Robot::drivetrain->Reset();
-	/*heading = Robot::drivetrain->GetHeading();*/
-	SmartDashboard::PutNumber("Target Distance", targetDistance);
+	heading = Robot::drivetrain->GetHeading();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveDistance::Execute() {
-	/*float turningValue = (Robot::drivetrain->GetHeading() - heading) * kP;*/
-	//SmartDashboard::PutNumber("TurningValue", turningValue);
-	//Robot::drivetrain->ArcadeDrive(0.65, turningValue);
-	//SmartDashboard::PutNumber("Distance", Robot::drivetrain->GetDistance());
+	Robot::drivetrain->ArcadeDrive(0.65, (Robot::drivetrain->GetHeading() - heading) * kP);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveDistance::IsFinished() {
-	return ((Robot::drivetrain->GetDistance() >= targetDistance) || Robot::drivetrain->GetDistance() <= (-1*targetDistance));
+	return (Robot::drivetrain->GetDistance() >= targetDistance);
 }
 
 // Called once after isFinished returns true

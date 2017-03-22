@@ -27,7 +27,7 @@ public:
 	Drivetrain();
 	void InitDefaultCommand();
 	void ArcadeDrive(double, double);
-	double GetDistance();
+	float GetDistance();
 	void Stop();
 	void Reset();
 	double GetHeading();
