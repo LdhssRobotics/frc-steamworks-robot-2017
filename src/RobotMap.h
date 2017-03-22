@@ -8,6 +8,7 @@ public:
 	// Climber subsystem
 	static std::shared_ptr<SpeedController> winchMotor;
 	static std::shared_ptr<Servo> rachetServo;
+	static std::shared_ptr<Servo> climberArm;
 
 	// Drivetrain subsystem
 	static std::shared_ptr<AnalogGyro> gyro;
@@ -22,6 +23,10 @@ public:
 	static std::shared_ptr<Encoder> gearEncoder;
 	static std::shared_ptr<SpeedController> gearMotor;
 	static std::shared_ptr<DigitalInput> gearLimitSwitch;
+
+	// Low ball shooter subsystem
+	static std::shared_ptr<Servo> leftLowBallArm;
+	static std::shared_ptr<Servo> rightLowBallArm;
 
 	// Ultrasonic subsystem
 	static std::shared_ptr<Ultrasonic> ultrasonic;
