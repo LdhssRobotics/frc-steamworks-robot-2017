@@ -26,11 +26,9 @@
 #include "Commands/AutoModes/Red3AutoMode.h"
 
 // Subsystem includes
-#include "Subsystems/BallIntake.h"
 #include "Subsystems/Climber.h"
 #include "Subsystems/Drivetrain.h"
 #include "Subsystems/Gear.h"
-#include "Subsystems/Shooter.h"
 #include "Subsystems/UltrasonicSubsystem.h"
 
 #include "OI.h"
@@ -42,11 +40,9 @@ public:
 	frc::SendableChooser<frc::Command*> chooser;
 	static std::unique_ptr<OI> oi;
 	LiveWindow *lw = LiveWindow::GetInstance();
-	static std::shared_ptr<BallIntake> ballIntake;
 	static std::shared_ptr<Climber> climber;
 	static std::shared_ptr<Drivetrain> drivetrain;
 	static std::shared_ptr<Gear> gear;
-	static std::shared_ptr<Shooter> shooter;
 	static std::shared_ptr<UltrasonicSubsystem> ultrasonicSubsystem;
 
 	static void VisionThread();
