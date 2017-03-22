@@ -1,16 +1,13 @@
 #include "ToggleReverseDrive.h"
 
 ToggleReverseDrive::ToggleReverseDrive() {
-	Requires(Robot::drivetrain.get());
-	Requires(Robot::vision.get());
 }
 
 // Called just before this Command runs the first time
 void ToggleReverseDrive::Initialize() {
-	Robot::drivetrain->isDriveReversed = false;
-	Robot::vision->gearIsFront = true;
+	Robot::drivetrain->isDriveReversed = true;
 
-	SmartDashboard::PutString("What is the front?", "gear");
+	SmartDashboard::PutString("Front of robot:", "Climber");
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -20,10 +17,9 @@ bool ToggleReverseDrive::IsFinished() {
 
 // Called once after isFinished returns true
 void ToggleReverseDrive::End() {
-	Robot::drivetrain->isDriveReversed = true;
-	Robot::vision->gearIsFront = false;
+	Robot::drivetrain->isDriveReversed = false;
 
-	SmartDashboard::PutString("What is the front?", "climber");
+	SmartDashboard::PutString("Front of robot:", "Gear");
 }
 
 // Called when another command which requires one or more of the same

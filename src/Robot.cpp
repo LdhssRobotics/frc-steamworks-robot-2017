@@ -9,16 +9,12 @@ std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<UltrasonicSubsystem> Robot::ultrasonicSubsystem;
 std::shared_ptr<Vision> Robot::vision;
 
-#include "Commands/ToggleReverseDrive.h"
-
 void Robot::VisionThread() {
-	if (Robot::vision->gearIsFront) {
-		cs::UsbCamera frontCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
-		frontCamera.SetResolution(160, 120);
-	} else {
-		cs::UsbCamera backCamera = CameraServer::GetInstance()->StartAutomaticCapture(1);
-		backCamera.SetResolution(160, 120);
-	}
+	cs::UsbCamera frontCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
+	frontCamera.SetResolution(160, 120);
+
+	cs::UsbCamera backCamera = CameraServer::GetInstance()->StartAutomaticCapture(1);
+	backCamera.SetResolution(160, 120);
 }
 
 void Robot::RobotInit() {
@@ -46,6 +42,9 @@ void Robot::RobotInit() {
 	chooser.AddObject("Red 2", new Red2AutoMode());
 	chooser.AddObject("Red 3", new Red3AutoMode());
 	SmartDashboard::PutData("Auto Modes:", &chooser);
+
+	// Indicate which end of the robot is the front upon startup
+	SmartDashboard::PutString("Front of robot:", "gear");
 }
 
 void Robot::DisabledInit() {
@@ -69,9 +68,6 @@ void Robot::TeleopInit() {
 	if (autonomousCommand.get() != nullptr) {
 		autonomousCommand->Cancel();
 	}
-
-	// Reverse drive to show SmartDashboard
-	ToggleReverseDrive();
 }
 
 void Robot::TeleopPeriodic() {

@@ -6,20 +6,21 @@ DriveWithJoystick::DriveWithJoystick() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveWithJoystick::Execute() {
-	float speedConstant = 1;
-	float turnConstant = 1;
+	float direction = 1;
+
 	if (Robot::drivetrain->isDriveReversed) {
-		float speedConstant = -1;
-		float turnConstant = -1;
+		direction = -1;
 	}
 
-	float speed = speedConstant * -Robot::oi->driveStick->GetRawAxis(OI::LEFT_Y_AXIS);
-	float turn = turnConstant * -0.75 * Robot::oi->driveStick->GetRawAxis(OI::RIGHT_X_AXIS);
+	float speed = direction * -Robot::oi->driveStick->GetRawAxis(OI::LEFT_Y_AXIS);
+	float turn = direction * -0.75 * Robot::oi->driveStick->GetRawAxis(OI::RIGHT_X_AXIS);
 
+	// Slow down the base speed while the left bumper is held
 	if (Robot::oi->driveStick->GetRawButton(5)) {
 		speed = 0.65 * speed;
 	}
 
+	// Slow down the turn speed while the right bumper is held
 	if (Robot::oi->driveStick->GetRawButton(6)) {
 		turn = 0.8 * turn;
 	}

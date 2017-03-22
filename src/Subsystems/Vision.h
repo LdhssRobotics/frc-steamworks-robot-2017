@@ -6,8 +6,6 @@
 
 class Vision : public Subsystem {
 public:
-	bool gearIsFront;
-
 	Vision();
 };
 
