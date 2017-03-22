@@ -1,29 +1,30 @@
 #include "DriveDistance.h"
 #include "../Robot.h"
 
-DriveDistance::DriveDistance(float speed, float time):mspeed(speed), duration(time) {
+// Set value for dampener
+const float kP = 0.025;
 
-
+DriveDistance::DriveDistance(float distance):
+	targetDistance(distance),
+	heading(0)
+{
 	Requires(Robot::drivetrain.get());
-
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
 void DriveDistance::Initialize() {
-	SetTimeout(duration);
+	Robot::drivetrain->Reset();
+	heading = Robot::drivetrain->GetHeading();
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveDistance::Execute() {
-	Robot::drivetrain->ArcadeDrive(mspeed, 0);
-
+	Robot::drivetrain->ArcadeDrive(0.65, (Robot::drivetrain->GetHeading() - heading) * kP);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveDistance::IsFinished() {
-	return IsTimedOut();
+	return (Robot::drivetrain->GetDistance() >= targetDistance);
 }
 
 // Called once after isFinished returns true

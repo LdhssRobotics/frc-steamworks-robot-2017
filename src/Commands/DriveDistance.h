@@ -6,11 +6,10 @@
 
 class DriveDistance : public Command {
 private:
-
-	float mspeed;
-	float duration;
+	float targetDistance;
+	float heading;
 public:
-	DriveDistance(float speed, float time);
+	DriveDistance(float distance);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
