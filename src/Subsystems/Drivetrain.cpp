@@ -13,6 +13,7 @@
 
 
 Drivetrain::Drivetrain() : Subsystem("Drivetrain"){
+	isDriveReversed = false;
 	gyro = RobotMap::gyro;
 	driveEncoder = RobotMap::driveEncoder;
 	frontLeftDrive = RobotMap::frontLeftDrive;
