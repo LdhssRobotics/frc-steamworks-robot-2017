@@ -10,6 +10,7 @@
 #include "Commands/ToggleBallIntake.h"
 #include "Commands/GoBackGear.h"
 #include "Commands/PlaceGear.h"
+#include "Commands/ToggleFrontEnd.h"
 
 OI::OI() {
 	driveStick.reset(new Joystick(0));
@@ -42,11 +43,12 @@ OI::OI() {
 	// Assigning Commands to Buttons
 	// Drive Stick Controls
 	startButtonD->ToggleWhenPressed(new ClimbRope()); // Climb the rope (full speed)
-	xButtonD->ToggleWhenPressed(new ReverseRope()); // Reverses the rope mechanism (to bring the robot down after a match)
+	selectButtonD->ToggleWhenPressed(new ReverseRope()); // Reverses the rope mechanism (to bring the robot down after a match)
 	//rightBumperButtonD->WhileHeld(new ManualShoot());
 	//rightBumperButtonD->WhenReleased(new ResetShooter());
 	aButtonD->WhenPressed(new PlaceGear()); // Place gear on peg
 	bButtonD->WhenPressed(new GoBackGear()); // Return to original position
+	xButtonD->ToggleWhenPressed(new ToggleFrontEnd());
 
 	// Recovery Stick Controls
 	bButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::INTAKE_SPEED));

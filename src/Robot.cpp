@@ -40,6 +40,10 @@ void Robot::RobotInit() {
 	chooser.AddObject("Red 2", new Red2AutoMode());
 	chooser.AddObject("Red 3", new Red3AutoMode());
 	SmartDashboard::PutData("Auto Modes:", &chooser);
+
+	// Indicate which side is the front of the robot
+	// Gear is always the front on startup
+	SmartDashboard::PutString("Front of robot:", "gear");
 }
 
 void Robot::DisabledInit() {

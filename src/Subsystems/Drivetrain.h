@@ -18,6 +18,9 @@ private:
 	std::shared_ptr<RobotDrive> robotDrive;
 
 public:
+	// Varibale controls direction of robot
+	bool isGearFront;
+
 	// Must be public to be used in SetHeading
 	std::shared_ptr<SpeedController> frontLeftDrive;
 	std::shared_ptr<SpeedController> backLeftDrive;
