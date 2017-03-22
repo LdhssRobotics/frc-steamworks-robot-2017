@@ -3,7 +3,6 @@
 #include "WPILib.h"
 
 // Set value for dampener
-
 const float kP = 0.025;
 
 SetHeading::SetHeading(float heading) :
