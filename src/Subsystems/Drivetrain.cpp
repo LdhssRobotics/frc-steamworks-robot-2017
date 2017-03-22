@@ -27,6 +27,10 @@ void Drivetrain::InitDefaultCommand(){
 	SetDefaultCommand(new DriveWithJoystick());
 }
 
+float Drivetrain::GetDistance() {
+	return driveEncoder->GetDistance();
+}
+
 void Drivetrain::ArcadeDrive(double speed, double turn){
 	robotDrive->ArcadeDrive(speed, turn);
 }
@@ -37,6 +41,7 @@ void Drivetrain::Stop(){
 
 void Drivetrain::Reset() {
 	gyro->Reset();
+	driveEncoder->Reset();
 	Stop();
 }
 
