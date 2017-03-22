@@ -6,6 +6,9 @@
 #include "Commands/ToggleBallIntake.h"
 #include "Commands/GoBackGear.h"
 #include "Commands/PlaceGear.h"
+#include "Commands/SetHeading.h"
+#include "Commands/DriveDistance.h"
+#include "Commands/DriveStraight.h"
 
 OI::OI() {
 	driveStick.reset(new Joystick(0));
@@ -39,9 +42,12 @@ OI::OI() {
 
 	// Drive Stick Controls
 	startButtonD->ToggleWhenPressed(new ClimbRope()); // Climb the rope (full speed)
-	xButtonD->ToggleWhenPressed(new ReverseRope()); // Reverses the rope mechanism (to bring the robot down after a match)
+	selectButtonD->ToggleWhenPressed(new ReverseRope()); // Reverses the rope mechanism (to bring the robot down after a match)
 	aButtonD->WhenPressed(new PlaceGear()); // Place gear on peg
 	bButtonD->WhenPressed(new GoBackGear()); // Return to original position
+	xButtonD->WhenPressed(new SetHeading(45));
+	//yButtonD->WhenPressed(new DriveDistance(200));
+	yButtonD->WhenPressed(new DriveStraight(0.65, 6));
 
 	// Recovery Stick Controls
 //	bButtonR->ToggleWhenPressed(new ToggleBallIntake(ToggleBallIntake::INTAKE_SPEED));

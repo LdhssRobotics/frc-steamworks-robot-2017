@@ -15,7 +15,7 @@ private:
 
 public:
 
-	DriveStraight(float, float);
+	DriveStraight(float speed, float duration);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

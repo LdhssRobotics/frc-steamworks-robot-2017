@@ -24,9 +24,9 @@ void SetHeading::Execute()
 	//Determine amount to turn
 	double turningValue = (desHeading - Robot::drivetrain->GetHeading())*kP;
 	if (turningValue < -0.5) {
-		turningValue = -0.5;
+		turningValue = -0.4;
 	} else if (turningValue > 0.5) {
-		turningValue = 0.5;
+		turningValue = 0.4;
 	}
 	//Turn robot
 	Robot::drivetrain->frontLeftDrive->Set(turningValue);

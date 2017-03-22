@@ -26,7 +26,7 @@ void Drivetrain::InitDefaultCommand(){
 	SetDefaultCommand(new DriveWithJoystick());
 }
 
-float Drivetrain::GetDistance() {
+double Drivetrain::GetDistance() {
 	return driveEncoder->GetDistance();
 }
 
@@ -53,3 +53,4 @@ void Drivetrain::Log()
 {
 	SmartDashboard::PutNumber("Robot heading in degrees", GetHeading());
 }
+

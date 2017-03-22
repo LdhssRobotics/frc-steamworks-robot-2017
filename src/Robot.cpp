@@ -9,11 +9,11 @@ std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<UltrasonicSubsystem> Robot::ultrasonicSubsystem;
 
 void Robot::VisionThread() {
-	cs::UsbCamera frontCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
-	frontCamera.SetResolution(160, 120);
+	//cs::UsbCamera frontCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
+	//frontCamera.SetResolution(160, 120);
 
-	cs::UsbCamera backCamera = CameraServer::GetInstance()->StartAutomaticCapture(1);
-	backCamera.SetResolution(160, 120);
+	//cs::UsbCamera backCamera = CameraServer::GetInstance()->StartAutomaticCapture(1);
+	//backCamera.SetResolution(160, 120);
 }
 
 void Robot::RobotInit() {
