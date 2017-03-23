@@ -5,6 +5,7 @@
 #include "Commands/ReverseRope.h"
 #include "Commands/GoBackGear.h"
 #include "Commands/PlaceGear.h"
+#include "Commands/ToggleFlap.h"
 
 OI::OI() {
 	driveStick.reset(new Joystick(0));
@@ -28,6 +29,7 @@ OI::OI() {
 	selectButtonD->ToggleWhenPressed(new ReverseRope()); // Reverses the rope mechanism (to bring the robot down after a match)
 	aButtonD->WhenPressed(new PlaceGear()); // Place gear on peg
 	bButtonD->WhenPressed(new GoBackGear()); // Return to original position
+	yButtonD->ToggleWhenPressed(new ToggleFlap());
 	// Left bumper button reduces base speed while held
 	// Right bumper button reduces turn speed while held
 	// Y-axis of left joystick controls base speed

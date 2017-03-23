@@ -12,9 +12,9 @@
 // PORT MAPPINGS
 	// PWM Ports
 		// Climber subsystem
-#define WINCH_MOTOR_PORT 4
-#define RATCHET_SERVO_PORT 5
-#define CLIMBER_ARM_PORT 6
+#define WINCH_MOTOR_PORT 1
+#define RATCHET_SERVO_PORT 2
+#define FLAP_SERVO_PORT 0
 
 		// Drivetrain subsystem
 #define FRONT_LEFT_DRIVE_PORT 0
@@ -51,7 +51,7 @@
 	// Climber subsystem
 std::shared_ptr<SpeedController> RobotMap::winchMotor;
 std::shared_ptr<Servo> RobotMap::rachetServo;
-std::shared_ptr<Servo> RobotMap::climberArm;
+std::shared_ptr<Servo> RobotMap::flapServo;
 
 	// Drivetrain subsystem
 std::shared_ptr<AnalogGyro> RobotMap::gyro;
@@ -80,7 +80,9 @@ void RobotMap::init() {
 	// Climber subsystem
 	winchMotor.reset(new Victor(WINCH_MOTOR_PORT));
 	rachetServo.reset(new Servo(RATCHET_SERVO_PORT));
-	climberArm.reset(new Servo(CLIMBER_ARM_PORT));
+
+	flapServo.reset(new Servo(FLAP_SERVO_PORT));
+	lw->AddActuator("Climber", "Flap", flapServo);
 
 	// Drivetrain subsystem
 	driveEncoder.reset(new Encoder(DRIVE_ENCODER_A_PORT, DRIVE_ENCODER_B_PORT, false, Encoder::EncodingType::k4X));
