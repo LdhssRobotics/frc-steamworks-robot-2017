@@ -13,7 +13,7 @@ void DriveWithJoystick::Execute() {
 	}
 
 	float speed = direction * (-Robot::oi->driveStick->GetRawAxis(OI::LEFT_Y_AXIS));
-	float turn = direction * (-0.75 * Robot::oi->driveStick->GetRawAxis(OI::RIGHT_X_AXIS));
+	float turn = (-0.75 * Robot::oi->driveStick->GetRawAxis(OI::RIGHT_X_AXIS));
 
 	// Reduce the base speed while the left bumper is held
 	if (Robot::oi->driveStick->GetRawButton(5)) {
