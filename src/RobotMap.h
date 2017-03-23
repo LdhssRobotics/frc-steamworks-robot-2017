@@ -24,10 +24,6 @@ public:
 	static std::shared_ptr<SpeedController> gearMotor;
 	static std::shared_ptr<DigitalInput> gearLimitSwitch;
 
-	// Low ball shooter subsystem
-	static std::shared_ptr<Servo> leftLowBallArm;
-	static std::shared_ptr<Servo> rightLowBallArm;
-
 	// Ultrasonic subsystem
 	static std::shared_ptr<Ultrasonic> ultrasonic;
 

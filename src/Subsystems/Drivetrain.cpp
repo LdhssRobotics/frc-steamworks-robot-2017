@@ -13,6 +13,8 @@
 
 
 Drivetrain::Drivetrain() : Subsystem("Drivetrain"){
+	isGearFront = true;
+
 	gyro = RobotMap::gyro;
 	driveEncoder = RobotMap::driveEncoder;
 	robotDrive = RobotMap::robotDrive;

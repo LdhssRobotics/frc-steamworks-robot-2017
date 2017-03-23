@@ -12,9 +12,9 @@
 // PORT MAPPINGS
 	// PWM Ports
 		// Climber subsystem
-#define WINCH_MOTOR_PORT 1
-#define RATCHET_SERVO_PORT 2
-#define FLAP_SERVO_PORT 0
+#define WINCH_MOTOR_PORT 4
+#define RATCHET_SERVO_PORT 5
+#define FLAP_SERVO_PORT 6
 
 		// Drivetrain subsystem
 #define FRONT_LEFT_DRIVE_PORT 0
@@ -23,11 +23,7 @@
 #define BACK_RIGHT_DRIVE_PORT 3
 
 		// Gear subsystem
-#define GEAR_MOTOR_PORT 9
-
-		// Low ball shooter subsystem
-#define LEFT_LOW_BALL_ARM_PORT 7
-#define RIGHT_LOW_BALL_ARM_PORT 8
+#define GEAR_MOTOR_PORT 7
 
 	// Digital Ports
 		// Drivetrain subsystem
@@ -66,10 +62,6 @@ std::shared_ptr<RobotDrive> RobotMap::robotDrive;
 std::shared_ptr<Encoder> RobotMap::gearEncoder;
 std::shared_ptr<SpeedController> RobotMap::gearMotor;
 std::shared_ptr<DigitalInput> RobotMap::gearLimitSwitch;
-
-	// Low ball shooter subsystem
-std::shared_ptr<Servo> RobotMap::leftLowBallArm;
-std::shared_ptr<Servo> RobotMap::rightLowBallArm;
 
 	// Ultrasonic subsystem
 std::shared_ptr<Ultrasonic> RobotMap::ultrasonic;
@@ -127,10 +119,6 @@ void RobotMap::init() {
 	gearEncoder->SetSamplesToAverage(7);
 	gearEncoder->SetReverseDirection(false);
 	gearEncoder->SetDistancePerPulse(1); // Not accurate measurement, ratio instead
-
-	// Low ball shooter subsystem
-	leftLowBallArm.reset(new Servo(LEFT_LOW_BALL_ARM_PORT));
-	rightLowBallArm.reset(new Servo(RIGHT_LOW_BALL_ARM_PORT));
 
 	// Ultrasonic subsystem
 	ultrasonic.reset(new Ultrasonic(ULTRASONIC_TRIGGER_PORT, ULTRASONIC_ECHO_PORT));

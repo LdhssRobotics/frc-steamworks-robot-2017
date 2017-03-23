@@ -6,12 +6,28 @@ std::shared_ptr<Gear> Robot::gear;
 std::unique_ptr<OI> Robot::oi;
 std::shared_ptr<UltrasonicSubsystem> Robot::ultrasonicSubsystem;
 
-void Robot::VisionThread() {
-	cs::UsbCamera frontCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
-	frontCamera.SetResolution(160, 120);
+cs::UsbCamera gearCamera;
+cs::UsbCamera climberCamera;
+cs::VideoSink server;
+cs::CvSink gearCvSink;
+cs::CvSink climberCvSink;
 
-	cs::UsbCamera backCamera = CameraServer::GetInstance()->StartAutomaticCapture(1);
-	backCamera.SetResolution(160, 120);
+void Robot::VisionThread() {
+	gearCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
+	gearCamera.SetResolution(160, 120);
+
+	climberCamera = CameraServer::GetInstance()->StartAutomaticCapture(1);
+	climberCamera.SetResolution(160, 120);
+
+	server = CameraServer::GetInstance()->GetServer();
+
+	// cscore disconnects any cameras not in use so dummy
+	// cvSinks are created to keep the camera connected
+	gearCvSink.SetSource(gearCamera);
+	gearCvSink.SetEnabled(true);
+
+	climberCvSink.SetSource(climberCamera);
+	climberCvSink.SetEnabled(true);
 }
 
 void Robot::RobotInit() {
@@ -36,6 +52,10 @@ void Robot::RobotInit() {
 	chooser.AddObject("Red 2", new Red2AutoMode());
 	chooser.AddObject("Red 3", new Red3AutoMode());
 	SmartDashboard::PutData("Auto Modes:", &chooser);
+
+	// Indicate which side is the front of the robot
+	// Gear is always the front on startup
+	SmartDashboard::PutString("Front of robot:", "gear");
 }
 
 void Robot::DisabledInit() {
@@ -63,6 +83,13 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
+
+	// Checks which side is at the front to determine which camera stream to display
+	if(Robot::drivetrain->isGearFront) {
+		server.SetSource(gearCamera);
+	} else {
+		server.SetSource(climberCamera);
+	}
 }
 
 void Robot::TestPeriodic() {
