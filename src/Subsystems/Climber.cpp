@@ -12,6 +12,7 @@
 Climber::Climber() : Subsystem("Climber") {
 	winchMotor = RobotMap::winchMotor;
 	rachetServo = RobotMap::rachetServo;
+	flapServo = RobotMap::flapServo;
 }
 
 void Climber::StartClimb() {
@@ -31,6 +32,10 @@ void Climber::ReverseClimb() {
 
 void Climber::SlowClimb(){
 	winchMotor->Set(0.5);
+}
+
+void Climber::SetFlapPosition(float position) {
+	flapServo->Set(position);
 }
 
 void Climber::Reset() {

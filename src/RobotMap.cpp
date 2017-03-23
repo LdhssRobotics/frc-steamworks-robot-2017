@@ -17,6 +17,7 @@
 		// Climber subsystem
 #define WINCH_MOTOR_PORT 1
 #define RATCHET_SERVO_PORT 2
+#define FLAP_SERVO_PORT 15
 
 		// Drivetrain subsystem
 #define FRONT_LEFT_DRIVE_PORT 3
@@ -81,6 +82,7 @@ std::shared_ptr<SpeedController> RobotMap::ballIntakeMotor;
 	// Climber subsystem
 std::shared_ptr<SpeedController> RobotMap::winchMotor;
 std::shared_ptr<Servo> RobotMap::rachetServo;
+std::shared_ptr<Servo> RobotMap::flapServo;
 
 	// Drivetrain subsystem
 std::shared_ptr<AnalogGyro> RobotMap::gyro;
@@ -117,6 +119,7 @@ void RobotMap::init() {
 	// Climber subsystem
 	winchMotor.reset(new Victor(WINCH_MOTOR_PORT));
 	rachetServo.reset(new Servo(RATCHET_SERVO_PORT));
+	flapServo.reset(new Servo(FLAP_SERVO_PORT));
 
 	// Drivetrain subsystem
 	ultrasonic.reset(new Ultrasonic(ULTRASONIC_TRIGGER_PORT, ULTRASONIC_ECHO_PORT));
