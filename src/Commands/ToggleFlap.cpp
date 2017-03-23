@@ -16,7 +16,8 @@ bool ToggleFlap::IsFinished() {
 
 // Called once after isFinished returns true
 void ToggleFlap::End() {
-	Robot::climber->SetFlapPosition(0);
+	Robot::climber->SetFlapPosition(0.22);
+	//Wait(5);
 }
 
 // Called when another command which requires one or more of the same
