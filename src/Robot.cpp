@@ -8,9 +8,9 @@ std::shared_ptr<UltrasonicSubsystem> Robot::ultrasonicSubsystem;
 
 cs::UsbCamera gearCamera;
 cs::UsbCamera climberCamera;
-cs::VideoSink server;
-cs::CvSink gearCvSink;
-cs::CvSink climberCvSink;
+//cs::VideoSink server;
+//cs::CvSink gearCvSink;
+//cs::CvSink climberCvSink;
 
 void Robot::VisionThread() {
 	gearCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
@@ -19,7 +19,7 @@ void Robot::VisionThread() {
 	climberCamera = CameraServer::GetInstance()->StartAutomaticCapture(1);
 	climberCamera.SetResolution(160, 120);
 
-	server = CameraServer::GetInstance()->GetServer();
+	/*server = CameraServer::GetInstance()->GetServer();
 
 	// cscore disconnects any cameras not in use so dummy
 	// cvSinks are created to keep the camera connected
@@ -27,7 +27,7 @@ void Robot::VisionThread() {
 	gearCvSink.SetEnabled(true);
 
 	climberCvSink.SetSource(climberCamera);
-	climberCvSink.SetEnabled(true);
+	climberCvSink.SetEnabled(true);*/
 }
 
 void Robot::RobotInit() {
@@ -45,12 +45,12 @@ void Robot::RobotInit() {
 
 	oi.reset(new OI());
 
-	chooser.AddDefault("Blue 1", new Blue1AutoMode());
-	chooser.AddObject("Blue 2", new Blue2AutoMode());
-	chooser.AddObject("Blue 3", new Blue3AutoMode());
-	chooser.AddObject("Red 1", new Red1AutoMode());
-	chooser.AddObject("Red 2", new Red2AutoMode());
-	chooser.AddObject("Red 3", new Red3AutoMode());
+	chooser.AddDefault("Blue Left", new Blue1AutoMode());
+	chooser.AddObject("Blue Centre", new Blue2AutoMode());
+	chooser.AddObject("Blue Right", new Blue3AutoMode());
+	chooser.AddObject("Red Left", new Red1AutoMode());
+	chooser.AddObject("Red Centre", new Red2AutoMode());
+	chooser.AddObject("Red Right", new Red3AutoMode());
 	SmartDashboard::PutData("Auto Modes:", &chooser);
 
 	// Indicate which side is the front of the robot
@@ -84,12 +84,12 @@ void Robot::TeleopInit() {
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
 
-	// Checks which side is at the front to determine which camera stream to display
+	/*// Checks which side is at the front to determine which camera stream to display
 	if(Robot::drivetrain->isGearFront) {
 		server.SetSource(gearCamera);
 	} else {
 		server.SetSource(climberCamera);
-	}
+	}*/
 }
 
 void Robot::TestPeriodic() {
