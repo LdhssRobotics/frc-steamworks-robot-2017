@@ -12,33 +12,33 @@
 // PORT MAPPINGS
 	// PWM Ports
 		// Climber subsystem
-#define WINCH_MOTOR_PORT 4
-#define RATCHET_SERVO_PORT 5
-#define FLAP_SERVO_PORT 6
+#define WINCH_MOTOR_PORT 1
+#define RATCHET_SERVO_PORT 2
+#define FLAP_SERVO_PORT 0
 
 		// Drivetrain subsystem
-#define FRONT_LEFT_DRIVE_PORT 0
-#define BACK_LEFT_DRIVE_PORT 1
-#define FRONT_RIGHT_DRIVE_PORT 2
-#define BACK_RIGHT_DRIVE_PORT 3
+#define FRONT_LEFT_DRIVE_PORT 3
+#define BACK_LEFT_DRIVE_PORT 4
+#define FRONT_RIGHT_DRIVE_PORT 6
+#define BACK_RIGHT_DRIVE_PORT 7
 
 		// Gear subsystem
-#define GEAR_MOTOR_PORT 7
+#define GEAR_MOTOR_PORT 5
 
 	// Digital Ports
 		// Drivetrain subsystem
-#define DRIVE_ENCODER_A_PORT 0
-#define DRIVE_ENCODER_B_PORT 1
+#define DRIVE_ENCODER_A_PORT 2
+#define DRIVE_ENCODER_B_PORT 3
 
 		// Gear subsystem
-#define GEAR_ENCODER_A_PORT 8
-#define GEAR_ENCODER_B_PORT 9
+#define GEAR_ENCODER_A_PORT 6
+#define GEAR_ENCODER_B_PORT 7
 
-#define GEAR_LIMIT_SWITCH_PORT 6
+#define GEAR_LIMIT_SWITCH_PORT 8
 
 		// Ultrasonic subsystem
-#define ULTRASONIC_TRIGGER_PORT 4
-#define ULTRASONIC_ECHO_PORT 5
+#define ULTRASONIC_TRIGGER_PORT 1
+#define ULTRASONIC_ECHO_PORT 0
 
 	//Analog Ports
 #define GYRO_PORT 0
