@@ -45,12 +45,9 @@ void Robot::RobotInit() {
 
 	oi.reset(new OI());
 
-	chooser.AddDefault("Blue Left", new Blue1AutoMode());
-	chooser.AddObject("Blue Centre", new Blue2AutoMode());
-	chooser.AddObject("Blue Right", new Blue3AutoMode());
-	chooser.AddObject("Red Left", new Red1AutoMode());
-	chooser.AddObject("Red Centre", new Red2AutoMode());
-	chooser.AddObject("Red Right", new Red3AutoMode());
+	chooser.AddDefault("Left", new LeftAutoMode());
+	chooser.AddObject("Centre", new CentreAutoMode());
+	chooser.AddObject("Right", new RightAutoMode());
 	SmartDashboard::PutData("Auto Modes:", &chooser);
 
 	// Indicate which side is the front of the robot

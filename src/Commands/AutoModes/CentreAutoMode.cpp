@@ -1,9 +1,9 @@
-#include "Red2AutoMode.h"
+#include <Commands/AutoModes/CentreAutoMode.h>
 #include "../DriveDistance.h"
 #include "../SetHeading.h"
 #include "../GearMechanism.h"
 
-Red2AutoMode::Red2AutoMode() {
+CentreAutoMode::CentreAutoMode() {
 	AddSequential(new DriveDistance(-93.307));
 	AddSequential(new GearMechanism());
 	AddSequential(new DriveDistance(20));

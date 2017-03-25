@@ -1,10 +1,9 @@
-#include "Blue1AutoMode.h"
+#include "LeftAutoMode.h"
 #include "../DriveDistance.h"
 #include "../SetHeading.h"
 #include "../GearMechanism.h"
 
-
-Blue1AutoMode::Blue1AutoMode() {
+LeftAutoMode::LeftAutoMode() {
 	AddSequential(new DriveDistance(93.307));
 	AddSequential(new SetHeading(45));
 	AddSequential(new DriveDistance(50));

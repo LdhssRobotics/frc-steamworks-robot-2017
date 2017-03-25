@@ -18,14 +18,9 @@
 #include <CameraServer.h>
 
 // Autonomous mode includes
-#include "Commands/AutoModes/Blue1AutoMode.h"
-#include "Commands/AutoModes/Blue2AutoMode.h"
-#include "Commands/AutoModes/Blue3AutoMode.h"
-#include "Commands/AutoModes/Red1AutoMode.h"
-#include "Commands/AutoModes/Red2AutoMode.h"
-#include "Commands/AutoModes/Red3AutoMode.h"
-
-// Subsystem includes
+#include <Commands/AutoModes/CentreAutoMode.h>
+#include <Commands/AutoModes/LeftAutoMode.h>
+#include <Commands/AutoModes/RightAutoMode.h>
 #include "Subsystems/Climber.h"
 #include "Subsystems/Drivetrain.h"
 #include "Subsystems/Gear.h"

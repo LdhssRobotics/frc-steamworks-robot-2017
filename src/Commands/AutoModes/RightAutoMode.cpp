@@ -1,9 +1,9 @@
-#include "Blue3AutoMode.h"
+#include <Commands/AutoModes/RightAutoMode.h>
 #include "../DriveDistance.h"
 #include "../SetHeading.h"
 #include "../GearMechanism.h"
 
-Blue3AutoMode::Blue3AutoMode() {
+RightAutoMode::RightAutoMode() {
 	AddSequential(new DriveDistance(93.307));
 	AddSequential(new SetHeading(-45));
 	AddSequential(new DriveDistance(50));
