@@ -1,7 +1,6 @@
 #include "ToggleFlap.h"
 
 ToggleFlap::ToggleFlap() {
-	Requires(Robot::climber.get());
 }
 
 // Called just before this Command runs the first time

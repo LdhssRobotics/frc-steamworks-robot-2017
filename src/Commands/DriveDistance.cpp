@@ -5,7 +5,7 @@
 const float kP = 0.025;
 
 DriveDistance::DriveDistance(float distance):
-	targetDistance(distance),
+	targetDistance(-distance),
 	heading(0)
 {
 	Requires(Robot::drivetrain.get());
@@ -24,7 +24,7 @@ void DriveDistance::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveDistance::IsFinished() {
-	return (Robot::drivetrain->GetDistance() >= targetDistance);
+	return (Robot::drivetrain->GetDistance() >= abs(targetDistance));
 }
 
 // Called once after isFinished returns true

@@ -5,8 +5,9 @@ ToggleFrontEnd::ToggleFrontEnd() {
 
 // Called just before this Command runs the first time
 void ToggleFrontEnd::Initialize() {
-	Robot::drivetrain->isGearFront = false;
-	SmartDashboard::PutString("Front of robot:", "climber");
+
+	Robot::drivetrain->isGearFront = true;
+	SmartDashboard::PutString("Front of robot:", "gear");
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -16,8 +17,8 @@ bool ToggleFrontEnd::IsFinished() {
 
 // Called once after isFinished returns true
 void ToggleFrontEnd::End() {
-	Robot::drivetrain->isGearFront = true;
-	SmartDashboard::PutString("Front of robot:", "gear");
+	Robot::drivetrain->isGearFront = false;
+	SmartDashboard::PutString("Front of robot:", "climber");
 }
 
 // Called when another command which requires one or more of the same
