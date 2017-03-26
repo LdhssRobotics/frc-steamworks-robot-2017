@@ -6,9 +6,7 @@
  */
 #include "GoBackGear.h"
 
-GoBackGear::GoBackGear(float duration) :
-duration(duration)
-{
+GoBackGear::GoBackGear() {
 	Requires(Robot::gear.get());
 }
 
@@ -16,7 +14,7 @@ duration(duration)
 void GoBackGear::Initialize() {
 	SmartDashboard::PutString("Gear:", "returning");
 	Robot::gear->SetMotorSpeed(-0.5); //GO BACKWARDS
-	SetTimeout(duration);
+	SetTimeout(2);
 }
 
 void GoBackGear::Execute() {
@@ -25,7 +23,7 @@ void GoBackGear::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool GoBackGear::IsFinished() {
-	return IsTimedOut()||Robot::gear->InCorrectReturnPosition();
+	return IsTimedOut() || Robot::gear->InCorrectReturnPosition();
 }
 
 // Called once after isFinished returns true
