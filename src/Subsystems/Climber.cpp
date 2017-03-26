@@ -17,17 +17,20 @@ Climber::Climber() : Subsystem("Climber") {
 
 void Climber::StartClimb() {
 	rachetServo->Set(0);
+	Wait(0.5);
 	winchMotor->Set(1);
 }
 
 void Climber::StopClimb() {
-	winchMotor->Set(0);
 	rachetServo->Set(1);
+	Wait(0.5);
+	winchMotor->Set(0);
 }
 
 void Climber::ReverseClimb() {
-	winchMotor->Set(-1);
 	rachetServo->Set(0);
+	Wait(0.5);
+	winchMotor->Set(-1);
 }
 
 void Climber::SlowClimb(){
@@ -39,7 +42,7 @@ void Climber::SetFlapPosition(float position) {
 }
 
 void Climber::Reset() {
-	rachetServo->Set(0);
+	rachetServo->Set(1);
 	winchMotor->Set(0);
 	flapServo->Set(0.22);
 }
