@@ -39,7 +39,7 @@ void Climber::SetFlapPosition(float position) {
 }
 
 void Climber::Reset() {
-	rachetServo->Set(1);
+	rachetServo->Set(0);
 	winchMotor->Set(0);
 	flapServo->Set(0.22);
 }

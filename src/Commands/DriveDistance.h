@@ -7,7 +7,6 @@
 class DriveDistance : public Command {
 private:
 	float targetDistance;
-	float heading;
 public:
 	DriveDistance(float distance);
 	void Initialize();

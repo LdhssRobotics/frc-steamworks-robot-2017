@@ -13,11 +13,11 @@ cs::CvSink gearCvSink;
 cs::CvSink climberCvSink;
 
 void Robot::VisionThread() {
-	gearCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
-	gearCamera.SetResolution(160, 120);
-
-	climberCamera = CameraServer::GetInstance()->StartAutomaticCapture(1);
+	climberCamera = CameraServer::GetInstance()->StartAutomaticCapture(0);
 	climberCamera.SetResolution(160, 120);
+
+	gearCamera = CameraServer::GetInstance()->StartAutomaticCapture(1);
+	gearCamera.SetResolution(160, 120);
 
 	server = CameraServer::GetInstance()->GetServer();
 
@@ -52,7 +52,6 @@ void Robot::RobotInit() {
 
 	// Indicate which side is the front of the robot
 	// Gear is always the front on startup
-	SmartDashboard::PutString("Front of robot:", "gear");
 }
 
 void Robot::DisabledInit() {

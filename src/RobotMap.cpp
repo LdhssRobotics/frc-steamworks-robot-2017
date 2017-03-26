@@ -27,8 +27,8 @@
 
 	// Digital Ports
 		// Drivetrain subsystem
-#define DRIVE_ENCODER_A_PORT 2
-#define DRIVE_ENCODER_B_PORT 3
+#define DRIVE_ENCODER_A_PORT 0
+#define DRIVE_ENCODER_B_PORT 1
 
 		// Gear subsystem
 #define GEAR_ENCODER_A_PORT 6
@@ -37,8 +37,8 @@
 #define GEAR_LIMIT_SWITCH_PORT 8
 
 		// Ultrasonic subsystem
-#define ULTRASONIC_TRIGGER_PORT 1
-#define ULTRASONIC_ECHO_PORT 0
+#define ULTRASONIC_TRIGGER_PORT 3
+#define ULTRASONIC_ECHO_PORT 2
 
 	//Analog Ports
 #define GYRO_PORT 0
@@ -84,7 +84,7 @@ void RobotMap::init() {
 	driveEncoder->SetMinRate(1);
 	driveEncoder->SetSamplesToAverage(15);
 	driveEncoder->SetReverseDirection(true);
-	driveEncoder->SetDistancePerPulse((1/360)*3.14159265358979323*6);
+	driveEncoder->SetDistancePerPulse(3.14159265358979323*6.0/360.0);
 
 	backLeftDrive.reset(new Victor(BACK_LEFT_DRIVE_PORT));
 	backRightDrive.reset(new Victor(BACK_RIGHT_DRIVE_PORT));
