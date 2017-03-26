@@ -29,7 +29,7 @@ OI::OI() {
 	startButtonD->ToggleWhenPressed(new ClimbRope()); // Climb the rope (full speed)
 	selectButtonD->ToggleWhenPressed(new ReverseRope()); // Reverses the rope mechanism (to bring the robot down after a match)
 	aButtonD->WhenPressed(new PlaceGear()); // Place gear on peg
-	bButtonD->WhenPressed(new GoBackGear()); // Return to original position
+	bButtonD->WhenPressed(new GoBackGear(2)); // Return to original position
 	xButtonD->ToggleWhenPressed(new ToggleFrontEnd());
 	yButtonD->ToggleWhenPressed(new ToggleFlap());
 	// Left bumper button reduces base speed while held

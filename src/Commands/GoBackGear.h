@@ -15,9 +15,10 @@
 #include "Commands/Subsystem.h"
 
 class GoBackGear : public Command {
-
+private:
+	float duration;
 public:
-	GoBackGear();
+	GoBackGear(float);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
