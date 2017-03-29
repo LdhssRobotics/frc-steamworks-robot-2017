@@ -9,12 +9,13 @@ ClimbRope::ClimbRope() {
 
 // Called just before this Command runs the first time
 void ClimbRope::Initialize() {
-	SmartDashboard::PutString("Climber:", "climbing");
 	Robot::climber->StartClimb();
+	SmartDashboard::PutString("Climber:", "climbing");
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ClimbRope::IsFinished() {
+	// It's on a toggle button
 	return false;
 }
 

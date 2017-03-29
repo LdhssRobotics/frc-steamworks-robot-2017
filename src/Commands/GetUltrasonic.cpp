@@ -6,6 +6,7 @@ GetUltrasonic::GetUltrasonic() {
 
 // Called repeatedly when this Command is scheduled to run
 void GetUltrasonic::Execute() {
+	// Send ultrasonic reading to SmartDashboard
 	Robot::ultrasonicSubsystem->GetRange();
 }
 

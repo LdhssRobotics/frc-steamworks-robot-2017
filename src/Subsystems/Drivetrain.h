@@ -16,25 +16,23 @@ private:
 	std::shared_ptr<AnalogGyro> gyro;
 	std::shared_ptr<Encoder> driveEncoder;
 	std::shared_ptr<RobotDrive> robotDrive;
-
-public:
-	// Varibale controls direction of robot
-	bool isGearFront;
-
-	// Must be public to be used in SetHeading
 	std::shared_ptr<SpeedController> frontLeftDrive;
 	std::shared_ptr<SpeedController> backLeftDrive;
 	std::shared_ptr<SpeedController> frontRightDrive;
 	std::shared_ptr<SpeedController> backRightDrive;
 
+public:
+	// Variable controls direction of robot
+	bool isGearFront;
+
 	Drivetrain();
 	void InitDefaultCommand();
 	void ArcadeDrive(double, double);
 	float GetDistance();
-	void Stop();
-	void Reset();
 	double GetHeading();
 	void Log();
+	void Stop();
+	void Reset();
 };
 
 #endif /* SRC_SUBSYSTEMS_DRIVETRAIN_H_ */

@@ -5,7 +5,6 @@ ToggleFrontEnd::ToggleFrontEnd() {
 
 // Called just before this Command runs the first time
 void ToggleFrontEnd::Initialize() {
-
 	Robot::drivetrain->isGearFront = true;
 	SmartDashboard::PutString("Front of robot:", "gear");
 }

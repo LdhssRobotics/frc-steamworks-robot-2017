@@ -14,7 +14,6 @@
 		// Climber subsystem
 #define WINCH_MOTOR_PORT 1
 #define RATCHET_SERVO_PORT 2
-#define FLAP_SERVO_PORT 0
 
 		// Drivetrain subsystem
 #define FRONT_LEFT_DRIVE_PORT 3
@@ -37,8 +36,8 @@
 #define GEAR_LIMIT_SWITCH_PORT 8
 
 		// Ultrasonic subsystem
-#define ULTRASONIC_TRIGGER_PORT 3
 #define ULTRASONIC_ECHO_PORT 2
+#define ULTRASONIC_TRIGGER_PORT 3
 
 	//Analog Ports
 #define GYRO_PORT 0
@@ -47,7 +46,6 @@
 	// Climber subsystem
 std::shared_ptr<SpeedController> RobotMap::winchMotor;
 std::shared_ptr<Servo> RobotMap::rachetServo;
-std::shared_ptr<Servo> RobotMap::flapServo;
 
 	// Drivetrain subsystem
 std::shared_ptr<AnalogGyro> RobotMap::gyro;
@@ -71,28 +69,25 @@ void RobotMap::init() {
 
 	// Climber subsystem
 	winchMotor.reset(new Victor(WINCH_MOTOR_PORT));
-	rachetServo.reset(new Servo(RATCHET_SERVO_PORT));
 
-	flapServo.reset(new Servo(FLAP_SERVO_PORT));
-	lw->AddActuator("Climber", "Flap", flapServo);
+	rachetServo.reset(new Servo(RATCHET_SERVO_PORT));
 
 	// Drivetrain subsystem
 	driveEncoder.reset(new Encoder(DRIVE_ENCODER_A_PORT, DRIVE_ENCODER_B_PORT, false, Encoder::EncodingType::k4X));
-	lw->AddSensor("Drive", "Encoder", driveEncoder);
-
 	driveEncoder->SetMaxPeriod(0.1);
 	driveEncoder->SetMinRate(1);
 	driveEncoder->SetSamplesToAverage(15);
 	driveEncoder->SetReverseDirection(true);
 	driveEncoder->SetDistancePerPulse(3.14159265358979323*6.0/360.0);
+	lw->AddSensor("Drive", "Encoder", driveEncoder);
 
 	backLeftDrive.reset(new Victor(BACK_LEFT_DRIVE_PORT));
-	backRightDrive.reset(new Victor(BACK_RIGHT_DRIVE_PORT));
-	frontLeftDrive.reset(new Victor(FRONT_LEFT_DRIVE_PORT));
-	frontRightDrive.reset(new Victor(FRONT_RIGHT_DRIVE_PORT));
 
-	backRightDrive->SetInverted(false);
-	frontRightDrive->SetInverted(false);
+	backRightDrive.reset(new Victor(BACK_RIGHT_DRIVE_PORT));
+
+	frontLeftDrive.reset(new Victor(FRONT_LEFT_DRIVE_PORT));
+
+	frontRightDrive.reset(new Victor(FRONT_RIGHT_DRIVE_PORT));
 
 	robotDrive.reset(new RobotDrive(frontLeftDrive, backLeftDrive, frontRightDrive, backRightDrive));
 	robotDrive->SetSafetyEnabled(false);
@@ -101,30 +96,29 @@ void RobotMap::init() {
 	robotDrive->SetMaxOutput(1.0);
 
 	gyro.reset(new AnalogGyro(GYRO_PORT));
-	lw->AddSensor("Drive", "Gyro", gyro);
 	gyro->SetSensitivity(0.00666);
 	gyro->Calibrate();
+	lw->AddSensor("Drive", "Gyro", gyro);
 
 	// Gear subsystem
 	gearMotor.reset(new Victor(GEAR_MOTOR_PORT));
+
 	gearLimitSwitch.reset(new DigitalInput(GEAR_LIMIT_SWITCH_PORT));
 	lw->AddSensor("Gear", "Limit Switch", gearLimitSwitch);
 
 	gearEncoder.reset(new Encoder(GEAR_ENCODER_A_PORT,
 			GEAR_ENCODER_B_PORT, false, Encoder::EncodingType::k4X));
-	lw->AddSensor("Gear", "Encoder", gearEncoder);
-
 	gearEncoder->SetMaxPeriod(0.1);
 	gearEncoder->SetMinRate(1);
 	gearEncoder->SetSamplesToAverage(7);
 	gearEncoder->SetReverseDirection(false);
-	gearEncoder->SetDistancePerPulse(1); // Not accurate measurement, ratio instead
+	gearEncoder->SetDistancePerPulse(1); // 70 rotations of inner motors for 1 rotation of shaft
+	lw->AddSensor("Gear", "Encoder", gearEncoder);
 
 	// Ultrasonic subsystem
 	ultrasonic.reset(new Ultrasonic(ULTRASONIC_TRIGGER_PORT, ULTRASONIC_ECHO_PORT));
-	lw->AddSensor("Drive", "Ultrasonic", ultrasonic);
-
 	ultrasonic->SetAutomaticMode(true);
+	lw->AddSensor("Drive", "Ultrasonic", ultrasonic);
 }
 
 void RobotMap::reset() {

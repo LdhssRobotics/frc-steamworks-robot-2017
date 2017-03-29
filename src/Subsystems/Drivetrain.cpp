@@ -9,8 +9,6 @@
 #include "../RobotMap.h"
 #include "Commands/DriveWithJoystick.h"
 #include "../Robot.h"
-#include "OI.h"
-
 
 Drivetrain::Drivetrain() : Subsystem("Drivetrain"){
 	isGearFront = true;
@@ -18,7 +16,6 @@ Drivetrain::Drivetrain() : Subsystem("Drivetrain"){
 	gyro = RobotMap::gyro;
 	driveEncoder = RobotMap::driveEncoder;
 	robotDrive = RobotMap::robotDrive;
-
 	frontLeftDrive = RobotMap::frontLeftDrive;
 	backLeftDrive = RobotMap::backLeftDrive;
 	frontRightDrive = RobotMap::frontRightDrive;

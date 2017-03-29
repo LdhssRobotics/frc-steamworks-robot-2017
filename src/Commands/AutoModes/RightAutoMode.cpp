@@ -5,12 +5,13 @@
 #include "../ToggleFrontEnd.h"
 
 RightAutoMode::RightAutoMode() {
+	// Deliver a gear and drive to centre field
 	AddParallel(new ToggleFrontEnd());
-	AddSequential(new DriveDistance(100));
-//	AddSequential(new SetHeading(-45));
-//	AddSequential(new DriveDistance(20));
-//	AddSequential(new GearMechanism());
-//	AddSequential(new DriveDistance(-50));
-//	AddSequential(new SetHeading(45));
-//	AddSequential(new DriveDistance(90));
+	AddSequential(new DriveDistance(60));
+	AddSequential(new SetHeading(-45));
+	AddSequential(new DriveDistance(20));
+	AddSequential(new GearMechanism());
+	AddSequential(new DriveDistance(-50));
+	AddSequential(new SetHeading(45));
+	AddSequential(new DriveDistance(90));
 }

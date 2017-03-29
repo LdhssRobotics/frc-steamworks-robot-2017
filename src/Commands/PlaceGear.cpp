@@ -9,7 +9,7 @@ PlaceGear::PlaceGear() {
 // Called just before this Command runs the first time
 void PlaceGear::Initialize() {
 	SmartDashboard::PutString("Gear:", "placing gear");
-	Robot::gear->SetMotorSpeed(0.8); //flap moves forwards
+	Robot::gear->SetMotorSpeed(0.8); // Tray moves outward
 }
 
 void PlaceGear::Execute() {

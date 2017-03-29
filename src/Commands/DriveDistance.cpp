@@ -24,12 +24,13 @@ void DriveDistance::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveDistance::IsFinished() {
-	return (Robot::drivetrain->GetDistance() >= targetDistance) || (Robot::drivetrain->GetDistance() <= (-1 * targetDistance));
+	return (abs(Robot::drivetrain->GetDistance()) >= targetDistance);
 }
 
 // Called once after isFinished returns true
 void DriveDistance::End() {
 	Robot::drivetrain->Stop();
+	// Ensure the robot has stopped moving before another command is used
 	Wait(1);
 }
 

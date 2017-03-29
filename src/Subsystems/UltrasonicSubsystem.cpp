@@ -26,5 +26,6 @@ void UltrasonicSubsystem::GetRange(){
 }
 
 void UltrasonicSubsystem::Reset(){
-
+	SmartDashboard::PutNumber("Distance-inches: ", 0.0);
+	SmartDashboard::PutNumber("Distance-feet: ", 0.0);
 }

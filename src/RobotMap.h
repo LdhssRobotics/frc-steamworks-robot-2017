@@ -8,7 +8,6 @@ public:
 	// Climber subsystem
 	static std::shared_ptr<SpeedController> winchMotor;
 	static std::shared_ptr<Servo> rachetServo;
-	static std::shared_ptr<Servo> flapServo;
 
 	// Drivetrain subsystem
 	static std::shared_ptr<AnalogGyro> gyro;

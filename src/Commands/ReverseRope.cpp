@@ -3,6 +3,8 @@
 #include "../RobotMap.h"
 #include "OI.h"
 
+// Used to unwind climber rope after match
+
 ReverseRope::ReverseRope() {
 	Requires(Robot::climber.get());
 }
@@ -14,6 +16,7 @@ void ReverseRope::Initialize() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool ReverseRope::IsFinished() {
+	// It's on a toggle button
 	return false;
 }
 

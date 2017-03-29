@@ -13,7 +13,7 @@ GoBackGear::GoBackGear() {
 // Called just before this Command runs the first time
 void GoBackGear::Initialize() {
 	SmartDashboard::PutString("Gear:", "returning");
-	Robot::gear->SetMotorSpeed(-0.4); //GO BACKWARDS
+	Robot::gear->SetMotorSpeed(-0.4); // Tray moves inwards
 	SetTimeout(1);
 }
 
@@ -23,12 +23,13 @@ void GoBackGear::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool GoBackGear::IsFinished() {
+	// The timeout is to prevent damage should the limit switch not be hit
+	// Loading a new gear will push the tray down to the return position
 	return IsTimedOut() || Robot::gear->InCorrectReturnPosition();
 }
 
 // Called once after isFinished returns true
 void GoBackGear::End() {
-	Wait(0.01);
 	Robot::gear->SetMotorSpeed(0);
 	SmartDashboard::PutString("Gear:", "finished");
 	Robot::gear->ResetEncoder();
