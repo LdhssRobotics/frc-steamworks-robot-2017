@@ -44,14 +44,6 @@ void Robot::RobotInit() {
 	ultrasonicSubsystem.reset(new UltrasonicSubsystem());
 
 	oi.reset(new OI());
-
-	chooser.AddDefault("Left", new LeftAutoMode());
-	chooser.AddObject("Centre", new CentreAutoMode());
-	chooser.AddObject("Right", new RightAutoMode());
-	SmartDashboard::PutData("Auto Modes:", &chooser);
-
-	// Indicate which side is the front of the robot
-	// Gear is always the front on startup
 }
 
 void Robot::DisabledInit() {
@@ -63,7 +55,7 @@ void Robot::DisabledPeriodic() {
 }
 
 void Robot::AutonomousInit() {
-	autonomousCommand.reset(chooser.GetSelected());
+	autonomousCommand.reset(new LeftAutoMode());
 
 	autonomousCommand->Start();
 }

@@ -6,7 +6,7 @@
 
 LeftAutoMode::LeftAutoMode() {
 	AddParallel(new ToggleFrontEnd());
-	AddSequential(new DriveDistance(100));
+	AddSequential(new DriveDistance(150));
 	//AddSequential(new SetHeading(45));
 	//AddSequential(new DriveDistance(20));
 	//AddSequential(new GearMechanism());

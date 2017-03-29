@@ -13,8 +13,8 @@ GoBackGear::GoBackGear() {
 // Called just before this Command runs the first time
 void GoBackGear::Initialize() {
 	SmartDashboard::PutString("Gear:", "returning");
-	Robot::gear->SetMotorSpeed(-0.5); //GO BACKWARDS
-	SetTimeout(2);
+	Robot::gear->SetMotorSpeed(-0.4); //GO BACKWARDS
+	SetTimeout(1);
 }
 
 void GoBackGear::Execute() {
